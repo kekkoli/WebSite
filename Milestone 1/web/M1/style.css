@@ -9,17 +9,13 @@ and open the template in the editor.
 */
 
 body{
-    /*background: linear-gradient(#ff5400,white);*/
-    background-repeat: no-repeat;
-
-}
-
-a:visited{
-    color: blue;
+    height: 100%;
+    background-image:linear-gradient(white,#b9b7a7);
+    font-family:serif;
+    background-repeat: repeat;
 }
 
 #titolo{
-    margin-top: 0px;
     margin-bottom: 0px;
 }
 
@@ -28,20 +24,62 @@ a:visited{
     bottom: 17px;
 }
 
-form{
-   background: linear-gradient(#caffb9,white);
-   position: static;
+#login{
    text-align: center;
    border-style:solid;
    margin-left:30%;
    margin-right:30%;
+   height: 80%;
+   margin-bottom:90px;
 }
 h4{
-    border-style: solid;
-    width: 10000px;
+    margin-top: 0px;
+}
+
+a{  
+    color: #c20904;
+    text-decoration: none;
+}
+
+.Dati{
+    position: relative;
+    right : 80px;
+    color: #c20904;
     
 }
 
-a{
-    text-decoration: none;
+#pulsante{
+    width: 246px;
+    color: #c20904;
+}
+#username,#password{
+    background: #b9b7a7;   
+    color: #c20904;
+}
+
+aside{
+    float: left;
+    height: 100%;
+    background: #b9b7a7;
+    width: 20%;
+}
+
+article{
+    margin-left: 25%;
+}
+
+#autori{
+    position: relative;
+    left: 20px;
+       
+}
+th{
+    background: #c20904;
+    height: 40px;
+    width: 70%; 
+}
+
+td{
+    height: 30px;
+    
 }
