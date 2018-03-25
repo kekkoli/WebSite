@@ -13,41 +13,33 @@ and open the template in the editor.
         <link href="style.css" rel="stylesheet" type="text/css">
     </head>
     
-    <body>
-        <header>
-            <h1 id="titolo">
-                <a href="articoli.html" ><img src="logo.png" title="moto"
-                   alt="Logo" height="70"></a>
-                <a href="articoli.html" id="titoloScritto">MOTO 24h</a>
-           </h1>   
-        </header>
-        
-        <nav>
-            
+    <body id="bodyLogin">   
+        <nav>            
             <h4><a href="../index.html">Home  | </a> 
                 <a href="articoli.html">Articoli | </a>
                 <a href="notizia.html">Notizie | </a>
                 <a href="scriviArticolo.html">Dì la tua | </a>
-                <a href="login.html">La tua area riservata | </a>
-                
-            
+                <a href="login.html">Login |</a>    
             </h4>
-            
         </nav>
         
-        <div>
-            <form action="M1/articoli.html" method="post">  
-                <h3>Login</h3>
+        <div>     
+            <form action="articoli.html" method="post" id="login" >  
+                <h1 id="titolo">
+                <a href="articoli.html" ><img src="logo.png" title="moto"
+                   alt="Logo" height="70"></a>
+                <a href="articoli.html" id="titoloScritto">MOTO 24h</a>
+                </h1>  
+                <h3><strong>Login</strong></h3>
                 <label for="username">Username</label>
                 <input type="text" name="username" id="username" value=" "><br>
                 
-                <label for="username">Password</label>
-                <input type="password" name="password" id="password" value=""><br>
+                <label for="username">Password<br></label>
+                <input type="password" name="password" id="password" value=""><br><br>
                 
-                <input type="submit" value="login" />
+                <input type="submit" value="Accedi"  id="pulsante"/>
                 
             </form>
-            <a href="notizia.html">Clicca</a>
 
         </div>
     </body>

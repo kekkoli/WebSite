@@ -10,8 +10,27 @@ and open the template in the editor.
 
 body{
     background-color:#d0cece;
-    font-family:serif;
+    font-size: 110%;
+    font-family:"Times New Roman",serif;
 }
+
+a{  
+    color: #c20904;
+    text-decoration: none;
+}
+
+
+#entra{
+    text-align: center;
+}
+
+#indice{
+    background-image: url(moto.jpeg);
+}
+#entra a:visited{
+    color:white;
+}
+
 
 #titolo{
     margin-bottom: 0px;
@@ -23,55 +42,41 @@ body{
 }
 
 #login{
-   text-align: center;
+   background-color: black;
    border-style:solid;
-   margin-left:30%;
-   margin-right:30%;
+   margin-left:68%;
+   margin-right:2%;
+   padding-left: 3%;
+   padding-right: 3%;
+   padding-bottom: 2%;
    height: 80%;
-   margin-bottom:90px;
+   background: linear-gradient(#eae5e5,white);
 }
+
 h4{
     margin-top: 0px;
 }
 
-a{  
-    color: #c20904;
-    text-decoration: none;
-}
 
-.Dati{
-    position: relative;
-    right : 80px;
-    color: #c20904;
-    
-}
-
-#pulsante{
-    width: 246px;
-    color: #c20904;
-}
-#username,#password{
+#username,#password,#pulsante{
     background: #b9b7a7;   
     color: #c20904;
+    width: 100%;
 }
+
+
 
 aside{
     float: left;
-    position: relative;
-    right: 15px;
-    width: 15%;
-    
+    width: 15%;   
 }
 
 article{
-    margin-left: 25%;
+    margin-left: 5%;
+    width: 80%;
+    float: left;
 }
 
-#autori{
-    position: relative;
-    left: 20px;
-       
-}
 th{
     background: #c20904;
     height: 40px;
@@ -85,12 +90,16 @@ td{
     border-collapse: collapse;
 }
 
-table{
-    border-style: solid;
-     border-collapse: collapse;
-    
+.articoli{
+    float: left;
+    width: 80%;
+    margin-left: 5%;
 }
 
+section table{    
+    border-style: solid;
+    border-collapse: collapse; 
+}
 tr.dispari{
     background: white;
 }
@@ -102,13 +111,21 @@ pulsantiTabella{
     width: 10%;
 }
 
-#entra{
-    text-align: center;
+
+#bodyLogin{  
+    background-image: url(sfondoLogin.jpg);
 }
 
-#indice{
-    background-image: url(moto.jpeg);
+label.art{
+    width: 20%;
+    display: block;
+    float: left;
+    clear: both;
 }
-#entra a:visited{
-    color:white;
+
+
+@media only screen and (max-width:540px){
+    nav,aside,article,table,.articoli{
+        clear:both;
+    }
 }
