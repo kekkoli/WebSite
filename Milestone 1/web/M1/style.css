@@ -12,6 +12,9 @@ body{
     background-color:#d0cece;
     font-size: 110%;
     font-family:"Times New Roman",serif;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 a{  
@@ -19,6 +22,9 @@ a{
     text-decoration: none;
 }
 
+div#contenuto{
+    min-height: 600px;
+}
 
 #entra{
     text-align: center;
@@ -42,7 +48,7 @@ a{
 }
 
 #login{
-   background-color: black;
+   background: linear-gradient(#eae5e5,white);
    border-style:solid;
    margin-left:68%;
    margin-right:2%;
@@ -50,7 +56,6 @@ a{
    padding-right: 3%;
    padding-bottom: 2%;
    height: 80%;
-   background: linear-gradient(#eae5e5,white);
 }
 
 h4{
@@ -92,8 +97,9 @@ td{
 
 .articoli{
     float: left;
-    width: 80%;
+    width: 75%;
     margin-left: 5%;
+    margin-right: 5%;
 }
 
 section table{    
@@ -116,16 +122,58 @@ pulsantiTabella{
     background-image: url(sfondoLogin.jpg);
 }
 
+#scriviArticolo{
+    margin-left: 5%;
+    width: 80%;
+    float:left;
+}
+
 label.art{
     width: 20%;
-    display: block;
-    float: left;
+    clear: left;
+    float:left;
+    margin-bottom: 1%;
+
+    
+}
+
+#data,#descrizione,#didascalia,#titoloArticolo,#urlImmagine{
+      margin-bottom: 1%;
+      border-style: solid;
+      border-color: black;
+}
+
+#pArticolo{
+    width: 43%;
+}
+
+#clear{
     clear: both;
 }
 
+footer{
+    background-color: black;
+    color:white;
+    margin-bottom:0px;
+}
 
 @media only screen and (max-width:540px){
-    nav,aside,article,table,.articoli{
+    nav,aside,article,table,.articoli,#scriviArticolo{
         clear:both;
+    }
+    #login{
+       margin-left: 10%;
+       border-style:solid;
+       height: 50%;
+       width: 80%;
+    }
+}
+
+@media only screen and (max-width: 680px){
+    #login{
+       margin-left: 10%;
+       border-style:solid;
+       height: 50%;
+       width: 80%;
     }
 }
