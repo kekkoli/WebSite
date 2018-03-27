@@ -23,6 +23,7 @@ header{
     border-style: solid;
     border-width: medium;
     width: 100%;
+    overflow:auto;
 }
 
 header h1 {
@@ -44,10 +45,6 @@ header h1 a img{
     font-weight: bold;   
 }
 
-h1{
-    color: red;
-}
-
 nav{
     position: relative;
     float:right;
@@ -61,6 +58,8 @@ nav{
 }
 
 nav ul{
+ 
+    
     padding-left: 0px;
     margin-bottom:0px;
     margin-top:0px;
@@ -87,20 +86,6 @@ nav ul li{
    float:right;
 }
 
-aside h2{
-    margin: 0px;
-    border-top:0px;
-    border-left:0px;
-    border-right:0px;
-    min-height: 35px;
-    width: 100%;
-    border-style: solid;
-}
-
-aside h2 input{
-    float: right;
-    width: 60%;
-}
 
 aside{
     position: relative;
@@ -108,21 +93,108 @@ aside{
     float: left;
     
     width: 20%;  
-    height: 450px;
+    height: 535px;
     
     border-top:0px;
   
     border-style: solid;
 }
 
-aside section{
-
-    margin: -1px;
+aside > h1{
+    height: 35px;
+    max-width: 100%;
+    
+    margin: 0px;
     border-top: 0px;
     border-right: 0px;
-    border-left: 0px;
+    border-left:0px;
+    
+    border-style: solid;
+    overflow: auto;
+}
+
+aside > h2{
+    position: relative;
+    display:block;
+    
+    width: 100%;
+    height: 17%;
+    
+    margin: 0px;
+    border-top:0px;
+    border-left:0px;
+    border-right:0px;
+
     border-style: solid;
 }
+
+aside h2 input{
+   max-width: 90%;
+   margin-left: 2%;
+   border-color: black;
+   border-style: solid;
+}
+
+aside section{
+    position: relative;
+}
+
+aside section h2{
+    max-width: 100%;
+    margin-top: 2%;   
+}
+
+#section2{
+    
+    width: 100%;
+        
+    border-bottom: 0px;
+    border-left: 0px;
+    border-right:0px;
+    border-style: solid;
+}
+
+body > section{
+    position:relative;
+    float:left;
+    height: 500px;
+    width: 80%;
+    
+    padding-left: 5%;
+    border-style: solid;
+    border-top:0px;
+    border-left:0px;
+    border-style: solid;
+    }
+
+body section table{
+    width: 90%;
+}
+body section form label{
+    float: left;
+    width: 30%;
+}
+body section form textarea,body section form input{
+    display: block;
+    float:left;
+    width:40%;
+    border-style: solid;
+    border-color: black;
+    
+
+}
+
+footer{
+    clear:both;
+    background-color: black;
+    color:white;
+    margin-bottom:0px;
+}
+
+
+
+
+
 
 
 
@@ -168,10 +240,6 @@ h4{
     color: #c20904;
     width: 100%;
 }
-
-
-
-
 
 article{
     margin-left: 5%;
@@ -219,40 +287,7 @@ pulsantiTabella{
     background-image: url(sfondoLogin.jpg);
 }
 
-#scriviArticolo{
-    margin-left: 5%;
-    width: 80%;
-    float:left;
-}
 
-label.art{
-    width: 20%;
-    float:left;
-    clear: left;
-    margin-bottom: 1%;
-
-    
-}
-
-.inputArticolo{
-      margin-bottom: 1%;
-      border-style: solid;
-      border-color: black;
-}
-
-#pArticolo{
-    width: 43%;
-}
-
-#clear{
-    clear: both;
-}
-
-footer{
-    background-color: black;
-    color:white;
-    margin-bottom:0px;
-}
 
 #footerSx{
     float:left;
