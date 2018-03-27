@@ -12,6 +12,39 @@ and open the template in the editor.
     box-sizing: border-box;
 }
 
+
+a:visited,a:link{
+    color:red;
+    text-decoration: none
+}
+
+
+a:hover,a:active{
+    color:blue;
+    text-decoration: none
+}
+
+h1{
+    color:red;
+    border-color: black;
+}
+h2{
+    color:#137b01;
+    font-weight: lighter;
+    border-color: black;
+    margin:0px;
+}
+input,textarea{
+   font-weight: bold;
+   color:black;
+   background-color: #f89858;
+}
+#pulsanteScrivi,#pulsanteLogin,#search{
+       background-color: white;
+}
+
+
+
 body{
     background-color:#d0cece;
     font-size: 110%;
@@ -19,31 +52,27 @@ body{
     margin:0px;
 }
 
+
 header{
     border-style: solid;
     border-width: medium;
     width: 100%;
-    overflow:auto;
+    background-color: black;
 }
-
 header h1 {
     position: relative;
     height: 100px;
     margin: 0px;  
-
 }
-
 header h1 a img{
     height: 100%; 
     top: 10px;    
 }
-
 #titolo{
     position: absolute;
-    top: 50%;
-    font-size: 40px;
-    font-weight: bold;   
+    top: 50%; 
 }
+
 
 nav{
     position: relative;
@@ -55,19 +84,17 @@ nav{
     border-top: 0px;
     
     font-size: 20px;
+    background-color: cyan;
 }
-
 nav ul{
- 
-    
     padding-left: 0px;
     margin-bottom:0px;
     margin-top:0px;
     height: 100%;
 }
-
 nav ul li{
     float:right;
+    position: relative;
     
     height: 100%;
     width: 25%;
@@ -81,9 +108,9 @@ nav ul li{
     text-align: center;
     list-style: none;
 }
-
-#personale{
-   float:right;
+nav ul li a{
+    position:relative;
+    top: 10%;
 }
 
 
@@ -96,10 +123,9 @@ aside{
     height: 535px;
     
     border-top:0px;
-  
+    background-color:#acb3ff ;
     border-style: solid;
 }
-
 aside > h1{
     height: 35px;
     max-width: 100%;
@@ -109,13 +135,12 @@ aside > h1{
     border-right: 0px;
     border-left:0px;
     
+    font-weight: lighter;
     border-style: solid;
-    overflow: auto;
+    background-color: cyan;
 }
-
 aside > h2{
     position: relative;
-    display:block;
     
     width: 100%;
     height: 17%;
@@ -127,25 +152,20 @@ aside > h2{
 
     border-style: solid;
 }
-
 aside h2 input{
    max-width: 90%;
    margin-left: 2%;
    border-color: black;
    border-style: solid;
 }
-
 aside section{
     position: relative;
 }
-
 aside section h2{
     max-width: 100%;
     margin-top: 2%;   
 }
-
 #section2{
-    
     width: 100%;
         
     border-bottom: 0px;
@@ -154,168 +174,101 @@ aside section h2{
     border-style: solid;
 }
 
-body > section{
+
+#content{
     position:relative;
     float:left;
     height: 500px;
     width: 80%;
     
     padding-left: 5%;
-    border-style: solid;
     border-top:0px;
     border-left:0px;
     border-style: solid;
-    }
+}
 
-body section table{
+    
+.articoli table{
+    position:relative;
     width: 90%;
 }
-body section form label{
-    float: left;
+.articoli table,td,th{
+    border-style: solid;
+    border-collapse: collapse;
+}
+th{
+    background-color: red;
+}
+.dispari{
+    background-color: cyan;
+}
+#pulsanteScrivi{
+    height: 25px;
+    width: 90%;
+    margin: 0px;
+    margin-top:5%;   
+}
+
+
+.scriviArticolo form label{
+    float:left;
     width: 30%;
 }
-body section form textarea,body section form input{
+.scriviArticolo form textarea,body section form input{
     display: block;
-    float:left;
+    
+    margin-left: 30%;
     width:40%;
+    
     border-style: solid;
     border-color: black;
-    
-
 }
+
+.login form{
+    position: relative;
+    
+    height: 80%;
+    width: 50%;
+    
+    margin-top: 2%;
+    padding-top: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
+    
+    background-color: white;
+    border-style: solid;
+}
+.login form input{
+    display: block;
+    
+    width: 100%;
+    
+    margin-top: 2%;
+        
+    border-color: black;
+    border-style: solid; 
+}
+.login form label{
+    font-weight:  bold;
+    width: 100%;
+}
+
+#pulsanteLogin{
+    height: 10%;
+    margin-top: 10%;
+}
+
+
+div #titolo{
+    top: 30%;
+    left: 40%;
+    right:40%
+}
+
 
 footer{
     clear:both;
     background-color: black;
     color:white;
     margin-bottom:0px;
-}
-
-
-
-
-
-
-
-
-a{  
-    color: #c20904;
-    text-decoration: none;
-}
-
-div#contenuto{
-    min-height: 600px;
-}
-
-#entra{
-    text-align: center;
-}
-
-#indice{
-    background-image: url(moto.jpeg);
-}
-#entra a:visited{
-    color:white;
-}
-
-
-#login{
-   background: linear-gradient(#eae5e5,white);
-   border-style:solid;
-   margin-left:68%;
-   margin-right:2%;
-   padding-left: 3%;
-   padding-right: 3%;
-   padding-bottom: 2%;
-   height: 80%;
-}
-
-h4{
-    margin-top: 0px;
-}
-
-
-#username,#password,#pulsante{
-    background: #b9b7a7;   
-    color: #c20904;
-    width: 100%;
-}
-
-article{
-    margin-left: 5%;
-    width: 80%;
-    float: left;
-}
-
-th{
-    background: #c20904;
-    height: 40px;
-    border-style: solid;
-    width: 70%; 
-}
-
-td{
-    height: 30px;
-    border-style: solid;
-    border-collapse: collapse;
-}
-
-.articoli{
-    float: left;
-    width: 75%;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-section table{    
-    border-style: solid;
-    border-collapse: collapse; 
-}
-tr.dispari{
-    background: white;
-}
-
-#DataTabella{
-    width: 15%;
-}
-pulsantiTabella{
-    width: 10%;
-}
-
-
-#bodyLogin{  
-    background-image: url(sfondoLogin.jpg);
-}
-
-
-
-#footerSx{
-    float:left;
-}
-
-#footerDx{
-    float:right;
-}
-
-
-
-@media only screen and (max-width:540px){
-    nav,aside,article,table,.articoli,#scriviArticolo{
-        clear:both;
-    }
-    #login{
-       margin-left: 10%;
-       border-style:solid;
-       height: 50%;
-       width: 80%;
-    }
-}
-
-@media only screen and (max-width: 680px){
-    #login{
-       margin-left: 10%;
-       border-style:solid;
-       height: 50%;
-       width: 80%;
-    }
 }
