@@ -22,15 +22,15 @@ and open the template in the editor.
         
         <nav> 
             <ul>
-                <li id="personale">Ciao,Francesco</li>
+                <li><h2>Ciao,Francesco</h2></li>
                 <li><a href="login.html">Profilo</a></li>
-                <li><a href="articoli.html">I miei articoli</a></li>
+                <li ><a href="articoli.html">I miei articoli</a></li>
                 <li><a href="notizia.html">Notizie</a></li>
             </ul>
         </nav>
         
         <aside>
-            <h1><a href="../index.html">MOTO 24H</a></h1>
+            <h1><a href="../index.html">Home</a></h1>
             
             <h2>
                 <label for="search">Cerca</label>
@@ -53,39 +53,47 @@ and open the template in the editor.
             </section>
         </aside>
         
-        <section>
+        <section id="content" class="articoli">
             <h2 >Articoli</h2>
             <table>    
                 <tr>
-                    <th id="DataTabella">Data</th>
-                    <th id="titoloTabella">Titolo</th>
-                    <th id="pulsantiTabella">Modifica</th>
+                    <th>Data</th>
+                    <th>Titolo</th>
+                    <th>Modifica</th>
                     <th>Cancella</th>
                 </tr>
                 <tr class="dispari">
                     <td>21/03/2018</td>
                     <td>Vittoria Del Dovi</td>
-                    <td><input type="image" src="modifica.jpg" height="15" width="15"></td>
-                    <td><input type="image" src="cancella.jpg" height="15" width="15"></td>
+                    <td><input type="image" src="modifica.jpg" 
+                               alt="modifica" height="15" width="15"></td>
+                    <td><input type="image" src="cancella.jpg" 
+                               alt="elimina" height="15" width="15"></td>
                 </tr>
                 <tr>
                     <td>22/03/2018</td>
                     <td>Prove per la Spagna</td>
-                    <td><input type="image" src="modifica.jpg" height="15" width="15"></td>
-                    <td><input type="image" src="cancella.jpg" height="15" width="15"></td>
+                    <td><input type="image" src="modifica.jpg"
+                               alt="modifica" height="15" width="15"></td>
+                    <td><input type="image" src="cancella.jpg"
+                               alt="elimina" height="15" width="15"></td>
                 </tr>
                 
                 <tr class="dispari">
                     <td>23/03/2018</td>
                     <td>Abolite le ragazze portaombrelli</td>
-                    <td><input type="image" src="modifica.jpg" height="15" width="15"></td>
-                    <td><input type="image" src="cancella.jpg" height="15" width="15"></td>
+                    <td><input type="image" src="modifica.jpg"
+                               alt="modifica" height="15" width="15"></td>
+                    <td><input type="image" src="cancella.jpg"
+                               alt="elimina" height="15" width="15"></td>
                 </tr>
-            </table>          
+            </table>  
+            <form action="scriviArticolo.html" method="post" >  
+                <input type="submit" value="Nuovo articolo" id="pulsanteScrivi"/>
+            </form>
         </section>
-       
+      
         <footer>Footer molto elegante</footer>
-            
         
     </body>
 </html>

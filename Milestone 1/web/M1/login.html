@@ -13,34 +13,63 @@ and open the template in the editor.
         <link href="style.css" rel="stylesheet" type="text/css">
     </head>
     
-    <body id="bodyLogin">   
-        <nav>            
-            <h4><a href="../index.html">Home  | </a> 
-                <a href="articoli.html">Articoli | </a>
-                <a href="notizia.html">Notizie | </a>
-                <a href="scriviArticolo.html">Dì la tua | </a>
-                <a href="login.html">Login |</a>    
-            </h4>
+    <body>   
+        <header>
+            <h1>
+                <a href="../index.html"><img src="logo.png" title="moto" alt="Logo"></a>
+                <a href="../index.html" id="titolo">MOTO 24h</a>    
+            </h1>
+        </header>
+        
+        <nav> 
+            <ul>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="login.html">Profilo</a></li>
+                <li><a href="articoli.html">I miei articoli</a></li>
+                <li><a href="notizia.html">Notizie</a></li>
+            </ul>
         </nav>
         
-        <div id="login" >     
-            <form action="articoli.html" method="post" >  
-                <h1 id="titolo">
-                <a href="articoli.html" ><img src="logo.png" title="moto"
+        <aside>
+            <h1><a href="../index.html">Home</a></h1>
+            
+            <h2>
+                <label for="search">Cerca</label>
+                <input type="text" name="ricerca" id="search" value="">
+            </h2>
+            <section>            
+                <h2>Categorie</h2>
+                <ul>
+                    <li><strong>News</strong></li>
+                    <li><strong>Prove</strong></li>
+                    <li><strong>Live Stream</strong></li>
+                    <li><strong>Scuderie</strong></li>
+                    <li><strong>Piloti</strong></li>
+                </ul>   
+            </section>
+            
+            <section id="section2">
+                <h2>Autori</h2>
+                <h4><strong>Francesco Ligas</strong></h4>
+            </section>
+        </aside>
+
+        <div id="content" class="login" >      
+                <form action="articoli.html" method="post" > 
+                   <a href="articoli.html" ><img src="logo.png" title="moto"
                    alt="Logo" height="70"></a>
-                <a href="articoli.html" id="titoloScritto">MOTO 24h</a>
-                </h1>  
-                <h3><strong>Login</strong></h3>
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" value=" "><br>
-                
-                <label for="username">Password<br></label>
-                <input type="password" name="password" id="password" value=""><br><br>
-                
-                <input type="submit" value="Accedi"  id="pulsante"/>
-                
-            </form>
+                    <h3><strong>Login</strong></h3>
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username" value=" ">
+
+                    <label for="username">Password<br></label>
+                    <input type="password" name="password" id="password" value="">
+
+                    <input type="submit" value="Accedi" id="pulsanteLogin"/>
+                </form>
 
         </div>
+        
+                <footer>Credit by Francesco Ligas</footer>
     </body>
 </html>
