@@ -12,67 +12,73 @@ and open the template in the editor.
          <link href="style.css" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <header>
-            <h1 id="titolo">
-                <a href="../index.html" ><img src="logo.png" title="moto"
-                   alt="Logo" height="70"></a>
-                <a href="../index.html" id="titoloScritto">MOTO 24h</a>
-           </h1>   
+       <header>
+            <h1>
+                <a href="../index.html"><img src="logo.png" title="moto" alt="Logo"></a>
+                <a href="../index.html" id="titolo">MOTO 24h</a>    
+            </h1>
         </header>
         
-        <nav>
-            <h4><a href="../index.html">Home  | </a> 
-                <a href="articoli.html">Articoli | </a>
-                <a href="notizia.html">Notizie | </a>
-                <a href="scriviArticolo.html">Dì la tua | </a>
-                <a href="login.html">Login | </a>
-                
-            
-            </h4>
-            
-        </nav>      
-        <aside>
+        <nav> 
             <ul>
-                <li><strong>News</strong></li>
-                <li><strong>Prove</strong></li>
-                <li><strong>Live Stream</strong></li>
-                <li><strong>Scuderie</strong></li>
-                <li><strong>Piloti</strong></li>
-            </ul>   
-            <hr>
-            <section id='autori'>
-            <h2>Autori</h2>
-            <h4><strong>Francesco Ligas</strong></h4>
+                <li id="personale">Ciao,Francesco</li>
+                <li><a href="login.html">Profilo</a></li>
+                <li><a href="articoli.html">I miei articoli</a></li>
+                <li><a href="notizia.html">Notizie</a></li>
+            </ul>
+        </nav>
+        
+        <aside>
+            <h1><a href="../index.html">MOTO 24H</a></h1>
+            
+            <h2>
+                <label for="search">Cerca</label>
+                <input type="text" name="ricerca" id="search" value="">
+            </h2>
+            <section>            
+                <h2>Categorie</h2>
+                <ul>
+                    <li><strong>News</strong></li>
+                    <li><strong>Prove</strong></li>
+                    <li><strong>Live Stream</strong></li>
+                    <li><strong>Scuderie</strong></li>
+                    <li><strong>Piloti</strong></li>
+                </ul>   
+            </section>
+            
+            <section id="section2">
+                <h2>Autori</h2>
+                <h4><strong>Francesco Ligas</strong></h4>
             </section>
         </aside>
+
+            <section>
+                <form action="articoli.html" method="post" id="scriviArticolo" >  
+                    <h2><strong>Scrivi un Articolo</strong></h2>
+
+                    <label for="titoloArticolo" class="art">Titolo</label>
+                    <input type="text" name="titolo" id="titoloArticolo" value=" " class="inputArticolo"><br>
+
+                    <label for="data" class="art">Data</label>
+                    <input type="text" name="data" id="data" value="" class="inputArticolo"><br>
+
+                    <label for="urlImmagine" class="art">Url Immagine</label>
+                    <input type="text" name="urlImmagine" id="urlImmagine" value="" class="inputArticolo"><br>
+
+                    <label for="didascalia" class="art">Inserire didascalia</label>
+                    <input type="text" name="didascalia" id="didascalia" value="" class="inputArticolo"><br>
+
+
+                    <label for="descrizione" class="art">Inserire descrizione</label>             
+                    <textarea rows="4" cols="32" name="descrizione" id="descrizione" class="inputArticolo">
+                    </textarea>
+                    <br>
+                    <input type="submit" value="Invia" id="pArticolo"/>
+
+                </form>
+            </section>
+        <footer>Footer molto elegante</footer>
         
-        <div>
-              <form action="articoli.html" method="post" id="scriviArticolo" >  
-                <h2><strong>Scrivi un Articolo</strong></h2>
-                
-                <label for="titoloArticolo" class="art">Titolo</label>
-                <input type="text" name="titolo" id="titoloArticolo" value=" "><br>
-                
-                <label for="data" class="art">Data</label>
-                <input type="text" name="data" id="data" value=""><br>
-                
-                <label for="urlImmagine" class="art">Url Immagine</label>
-                <input type="text" name="urlImmagine" id="urlImmagine" value=""><br>
-                
-                <label for="didascalia" class="art">Inserire didascalia</label>
-                <input type="text" name="didascalia" id="didascalia" value=""><br>
-                
-                
-                <label for="descrizione" class="art">Inserire didascalia</label>             
-                <textarea rows="4" cols="30" name="descrizione" id="descrizione">
-                </textarea>
-                
-                
-                <input type="submit" value="Invia"/>
-                
-            </form>
-            
-        </div>
         
         
     </body>

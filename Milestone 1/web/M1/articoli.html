@@ -14,41 +14,46 @@ and open the template in the editor.
     <body>
         
         <header>
-            <h1 id="titolo">
-                <a href="../index.html" ><img src="logo.png" title="moto"
-                   alt="Logo" height="70"></a>
-                <a href="../index.html" id="titoloScritto">MOTO 24h</a>
-           </h1>   
+            <h1>
+                <a href="../index.html"><img src="logo.png" title="moto" alt="Logo"></a>
+                <a href="../index.html" id="titolo">MOTO 24h</a>    
+            </h1>
         </header>
         
-        <nav>
-            
-            <h4><a href="../index.html">Home  | </a> 
-                <a href="articoli.html">Articoli | </a>
-                <a href="notizia.html">Notizie | </a>
-                <a href="scriviArticolo.html">Dì la tua | </a>
-                <a href="login.html">Login |</a>
-                
-            
-            </h4>
+        <nav> 
+            <ul>
+                <li id="personale">Ciao,Francesco</li>
+                <li><a href="login.html">Profilo</a></li>
+                <li><a href="articoli.html">I miei articoli</a></li>
+                <li><a href="notizia.html">Notizie</a></li>
+            </ul>
         </nav>
         
         <aside>
-            <ul>
-                <li><strong>News</strong></li>
-                <li><strong>Prove</strong></li>
-                <li><strong>Live Stream</strong></li>
-                <li><strong>Scuderie</strong></li>
-                <li><strong>Piloti</strong></li>
-            </ul>   
-            <hr>
-            <section id='autori'>
-            <h2>Autori</h2>
-            <h4><strong>Francesco Ligas</strong></h4>
+            <h1><a href="../index.html">MOTO 24H</a></h1>
+            
+            <h2>
+                <label for="search">Cerca</label>
+                <input type="text" name="ricerca" id="search" value="">
+            </h2>
+            <section>            
+                <h2>Categorie</h2>
+                <ul>
+                    <li><strong>News</strong></li>
+                    <li><strong>Prove</strong></li>
+                    <li><strong>Live Stream</strong></li>
+                    <li><strong>Scuderie</strong></li>
+                    <li><strong>Piloti</strong></li>
+                </ul>   
+            </section>
+            
+            <section id="section2">
+                <h2>Autori</h2>
+                <h4><strong>Francesco Ligas</strong></h4>
             </section>
         </aside>
         
-        <section class="articoli">
+        <section>
             <h2 >Articoli</h2>
             <table>    
                 <tr>
@@ -79,5 +84,8 @@ and open the template in the editor.
             </table>          
         </section>
        
+        <footer>Footer molto elegante</footer>
+            
+        
     </body>
 </html>
