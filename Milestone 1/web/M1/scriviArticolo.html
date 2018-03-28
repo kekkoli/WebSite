@@ -56,24 +56,32 @@ and open the template in the editor.
                 <form action="articoli.html" method="post" id="scriviArticolo" >  
                     <h2><strong>Scrivi un Articolo</strong></h2>
 
-                    <label for="titoloArticolo" class="art">Titolo</label>
-                    <input type="text" name="titolo" id="titoloArticolo" value=" " class="inputArticolo"><br>
+                    <label for="titoloArticolo">Titolo</label>
+                    <input type="text" name="titolo" id="titoloArticolo" value="">
 
-                    <label for="data" class="art">Data</label>
-                    <input type="text" name="data" id="data" value="" class="inputArticolo"><br>
+                    <label for="data">Data</label>
+                    <input type="text" name="data" id="data" value="">
 
-                    <label for="urlImmagine" class="art">Url Immagine</label>
-                    <input type="text" name="urlImmagine" id="urlImmagine" value="" class="inputArticolo"><br>
+                    <label for="urlImmagine">Url Immagine</label>
+                    <input type="text" name="urlImmagine" id="urlImmagine" value="">
 
-                    <label for="didascalia" class="art">Inserire didascalia</label>
-                    <input type="text" name="didascalia" id="didascalia" value="" class="inputArticolo"><br>
+                    <label for="didascalia">Inserire didascalia</label>
+                    <input type="text" name="didascalia" id="didascalia" value="">
 
 
-                    <label for="descrizione" class="art">Inserire descrizione</label>             
-                    <textarea rows="4" cols="32" name="descrizione" id="descrizione" class="inputArticolo">
+                    <label for="descrizione">Inserire descrizione</label>             
+                    <textarea rows="4" cols="32" name="descrizione" id="descrizione">
                     </textarea>
-                    <br>
-                    <input type="submit" value="Invia" id="pulsanteScrivi"/>
+                    
+
+                    <div>
+                        <h2>Categorie</h2>
+                        <input type="checkbox" name="scelta" value="news">News<br>
+                        <input type="checkbox" name="scelta" value="piloti">Piloti<br>
+                        <input type="checkbox" name="scelta" value="scuderie">Scuderie<br>
+                        <input type="checkbox" name="scelta" value="staff">Staff<br>
+                    </div>
+                    <input type="submit" value="Salva" id="pulsanteSalva"/>
 
                 </form>
             </section>

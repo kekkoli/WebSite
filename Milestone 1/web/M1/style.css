@@ -29,7 +29,6 @@ h1{
     border-color: black;
 }
 h2{
-    color:#137b01;
     font-weight: lighter;
     border-color: black;
     margin:0px;
@@ -37,7 +36,7 @@ h2{
 input,textarea{
    font-weight: bold;
    color:black;
-   background-color: #f89858;
+   background-color:#8ffcff;
 }
 #pulsanteScrivi,#pulsanteLogin,#search{
        background-color: white;
@@ -57,7 +56,7 @@ header{
     border-style: solid;
     border-width: medium;
     width: 100%;
-    background-color: black;
+    background-color: #282828;
 }
 header h1 {
     position: relative;
@@ -84,7 +83,7 @@ nav{
     border-top: 0px;
     
     font-size: 20px;
-    background-color: cyan;
+    background-color:#acb3ff ;
 }
 nav ul{
     padding-left: 0px;
@@ -137,7 +136,6 @@ aside > h1{
     
     font-weight: lighter;
     border-style: solid;
-    background-color: cyan;
 }
 aside > h2{
     position: relative;
@@ -200,7 +198,7 @@ th{
     background-color: red;
 }
 .dispari{
-    background-color: cyan;
+    background-color: #8ffcff;
 }
 #pulsanteScrivi{
     height: 25px;
@@ -209,20 +207,52 @@ th{
     margin-top:5%;   
 }
 
-
-.scriviArticolo form label{
-    float:left;
-    width: 30%;
+.scriviArticolo{
+    position: relative;
+    width: 100%;
 }
-.scriviArticolo form textarea,body section form input{
-    display: block;
+
+.scriviArticolo form{
+    position: relative;
+}
+
+.scriviArticolo form > h2{
+    width: 100%;
     
-    margin-left: 30%;
+}
+.scriviArticolo form label{
+    clear:both;
+    float:left;
+    
+    height: 23px;
+    
+    margin-top: 2%;
+    width: 30%;
+    
+}
+.scriviArticolo form textarea, .scriviArticolo form > input{
+    margin-top: 2%;
+    height: 5%;
     width:40%;
-    
     border-style: solid;
     border-color: black;
 }
+.scriviArticolo form div input{
+    margin-left: 30%;
+    
+}
+.scriviArticolo form div h2{
+    width:30%;
+}
+
+#pulsanteSalva{
+    height: 25px;
+    width: 70%;
+    margin: 0px;
+    margin-top:5%; 
+}
+
+
 
 .login form{
     position: relative;
