@@ -13,6 +13,7 @@ and open the template in the editor.
         <meta name="keywords" content="moto,motogp,scriviarticolo,nuovo,articolo,moto24h">
         <link href="style.css" rel="stylesheet" type="text/css">
     </head>
+    
     <body>
        <header>
             <h1>
@@ -25,14 +26,13 @@ and open the template in the editor.
             <ul>
                 <li><h3>Ciao</h3></li>
                 <li><a href="login.html">Profilo</a></li>
-               <li><a href="articoli.html">I miei articoli</a></li>
+                <li><a href="articoli.html">I miei articoli</a></li>
                 <li><a href="notizia.html">Notizie</a></li>
                 <li><a href="../index.html">Home</a></li>
             </ul>
         </nav>
         
-         <aside>
-            
+        <aside>
             <h2>
                 <label for="search">Cerca</label>
                 <input type="text" name="ricerca" id="search" value="">
@@ -40,7 +40,6 @@ and open the template in the editor.
             <section>            
                 <h2 class="mostra">Categorie</h2>
                 <h2 class="nascondi"><a href="articoli.html">Categorie</a></h2>
-                
                 <ul>
                     <li><strong>News</strong></li>
                     <li><strong>Prove</strong></li>
@@ -49,7 +48,6 @@ and open the template in the editor.
                     <li><strong>Piloti</strong></li>
                 </ul>   
             </section>
-            
             <section id="section2">
                 <h2 class="mostra">Autori</h2>
                 <h2 class="nascondi"><a class="nascondi" href="articoli.html">Autori</a></h2>
@@ -57,39 +55,45 @@ and open the template in the editor.
             </section>
         </aside>
 
-            <section id="content" class="scriviArticolo">
-                <form action="articoli.html" method="post" id="scriviArticolo" >  
-                    <h2><strong>Scrivi un Articolo</strong></h2>
+        <section id="content" class="scriviArticolo">
+            
+            <!--Questo form consente ad un autore di scivere un nuovo 
+            articolo.I campi prevedono l inserimento di titolo,data,
+            immagine,didascalia,testo e categoria-->
 
-                    <label for="titoloArticolo">Titolo</label>
-                    <input type="text" name="titolo" id="titoloArticolo" value="">
+            <form action="articoli.html" method="post">  
+                <h2><strong>Scrivi un Articolo</strong></h2>
 
-                    <label for="data">Data</label>
-                    <input type="date" name="data" id="data" value="">
+                <label for="titoloArticolo">Titolo</label>
+                <input type="text" name="titolo" id="titoloArticolo" value="">
 
-                    <label for="urlImmagine">Url Immagine</label>
-                    <input type="text" name="urlImmagine" id="urlImmagine" value="">
+                <label for="data">Data</label>
+                <input type="date" name="data" id="data" value="">
 
-                    <label for="didascalia">Inserire didascalia</label>
-                    <input type="text" name="didascalia" id="didascalia" value="">
+                <label for="urlImmagine">Url Immagine</label>
+                <input type="text" name="urlImmagine" id="urlImmagine" value="">
+
+                <label for="didascalia">Inserire didascalia</label>
+                <input type="text" name="didascalia" id="didascalia" value="">
 
 
-                    <label for="descrizione">Inserire descrizione</label>             
-                    <textarea rows="4" cols="32" name="descrizione" id="descrizione">
-                    </textarea>
-                    
+                <label for="descrizione">Inserire descrizione</label>             
+                <textarea rows="4" cols="32" name="descrizione" 
+                          id="descrizione"></textarea>
 
-                    <div>
-                        <h2>Categorie</h2>
-                        <input type="checkbox" name="scelta" value="news">News<br>
-                        <input type="checkbox" name="scelta" value="piloti">Piloti<br>
-                        <input type="checkbox" name="scelta" value="scuderie">Scuderie<br>
-                        <input type="checkbox" name="scelta" value="staff">Staff<br>
-                    </div>
-                    <input type="submit" value="Salva" id="pulsanteSalva"/>
+                <div>
+                    <h2>Categorie</h2>
+                    <input type="checkbox" name="scelta" value="news">News<br>
+                    <input type="checkbox" name="scelta" value="piloti">Piloti<br>
+                    <input type="checkbox" name="scelta" value="scuderie">Scuderie<br>
+                    <input type="checkbox" name="scelta" value="staff">Staff<br>
+                </div>
+                <input type="submit" value="Salva" id="pulsanteSalva"/>
 
-                </form>
-            </section>
+            </form>
+        </section>
+        
         <footer>Credit by Francesco Ligas</footer>
+        
     </body>
 </html>

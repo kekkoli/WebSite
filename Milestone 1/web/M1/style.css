@@ -34,6 +34,8 @@ h2{
     border-color: black;
     margin:0px;
 }
+
+/*Colore campi input*/
 input,textarea{
    font-weight: bold;
    color:black;
@@ -43,13 +45,14 @@ input,textarea{
     background-color: white;
 }
 
+
 body{
     background-color:#d0cece;
     font-family:"Times New Roman",serif;
     margin:0px;
 }
 
-
+/*Regole per l header*/
 header{
     border-style: solid;
     border-width: medium;
@@ -70,7 +73,7 @@ header h1 a img{
     top: 50%; 
 }
 
-
+/*Regole per la navigation bar*/
 nav{
     position: relative;
     float:right;
@@ -117,8 +120,7 @@ li > h3 {
    font-weight:  lighter;
     
 }
-
-
+/*Regole per l aside*/
 aside{
     position: relative;
     display: block;
@@ -129,6 +131,7 @@ aside{
     
     border-right:0px;
     border-top:0px;
+    
     background-color:#acb3ff ;
     border-style: solid;
 }
@@ -173,22 +176,28 @@ aside section h2{
     display: none;
 }
 
+/*Inizio regole del contenuto della pagina.Un id content generico
+accompgnato da delle rifiniture legato alle singole pagine.
+Ogni pagina infatti avra' una specifica classe*/
 
 #content{
     position:relative;
     float:left;
+    
     height: 565px;
     width: 80%;
     
     padding-top:2%;
     padding-left: 5%;
     border-top:0px;
+    
     border-style: solid;
 }
 
-    
+/*CSS legato alla pagina articoli.html*/    
 .articoli table{
     position:relative;
+    
     height: 200px;
     width: 90%;
     
@@ -208,13 +217,15 @@ th{
 #pulsanteScrivi{
     height: 25px;
     width: 90%;
+    
     margin: 0px;
     margin-top:5%;   
+    
     border-style: solid;
     border-color: black;
 }
 
-
+/*CSS legato alla pagina scriviarticolo.hmtl*/
 .scriviArticolo{
     position: relative;
     width: 100%;
@@ -233,15 +244,17 @@ th{
     float:left;
     
     height: 23px;
-    
-    margin-top: 2%;
     width: 30%;
     
+    margin-top: 2%;    
 }
 .scriviArticolo form textarea, .scriviArticolo form > input{
-    margin-top: 2%;
+
     height: 5%;
     width:40%;
+    
+    margin-top: 2%;
+    
     border-style: solid;
     border-color: black;
 }
@@ -261,7 +274,7 @@ th{
 }
 
 
-
+/*CSS legato alla pagina di login*/
 .login form{
     position: relative;
     
@@ -303,65 +316,70 @@ div #titolo{
     right:40%
 }
 
-
+/*CSS footer*/
 footer{
     clear:both;
+    margin-bottom:0px;
     background-color: black;
     color:white;
-    margin-bottom:0px;
+
 }
 
 
 
 @media only screen and(min-width:480px){
-    
+    /*la classe "nascondi" si riferisci a 2 elementi che compariranno solo
+    quando la larghezza della finestra sara' inferiore ai 480px;*/
     .nascondi{
        display:none;
     }
 }
-
+/*Viene settata la dimensione dei font piu' piccola per evitare fuoriuscite '*/
 @media only screen and (max-width:960px){
     nav ul li a{ 
         font-size: 80%;
     }
 }
 
-@media only screen and (max-width:480px){    
+@media only screen and (max-width:480px){ 
+    
+    /*Questa media query si occupa della visione del sito ad una sola colonna*/
     nav {
         height: 60px;
     }
-    
-    
+       
     aside{
-        float:none;
-        width:100%;
         display: block;
-        height: 120px;
+        float:none;
         clear: both;
+        
+        width:100%;
+        height: 120px;
+       
+        
         border-right:  3px;
         border-style: solid;
-        
     }
-    
     aside > h2{
         height: 65px;
     }
     aside section,#section2{
         border:none;
     }
-   
-    
+    /*Questi elementi dell aside non devono essere mostrati nella versiona 
+    ad una colonna*/
     aside section ul li,#section2 h4,.mostra{
         display:none;
     }
-    
+    /*Questi elementi invece compaiono*/
      .nascondi{
         display: inline;
         float:left;
         padding-left: 10%;
         width: 50%;
     }
-
+    
+    /*Settaggi contenuto pagina*/
     #content{
        float: none;
        height: 600px;
@@ -376,8 +394,7 @@ footer{
         border-style: none;
 
     }
-    
-  
+ 
     .articoli table,tr{
         border-style: solid;
         border-color: black;
@@ -388,7 +405,6 @@ footer{
     .notizia > p{
         margin: 0px;
     }
-    
     .notizia img{
         max-width: 100%;
     }
