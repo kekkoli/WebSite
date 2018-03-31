@@ -25,7 +25,7 @@ and open the template in the editor.
         
         <nav> 
             <ul>
-                <li><h3>Ciao,Francesco</h3></li>
+                <li><h3>Ciao</h3></li>
                 <li><a href="login.html">Profilo</a></li>
                <li><a href="articoli.html">I miei articoli</a></li>
                 <li><a href="notizia.html">Notizie</a></li>
@@ -40,7 +40,9 @@ and open the template in the editor.
                 <input type="text" name="ricerca" id="search" value="">
             </h2>
             <section>            
-                <h2>Categorie</h2>
+                <h2 class="mostra">Categorie</h2>
+                <h2 class="nascondi"><a href="articoli.html">Categorie</a></h2>
+                
                 <ul>
                     <li><strong>News</strong></li>
                     <li><strong>Prove</strong></li>
@@ -51,12 +53,13 @@ and open the template in the editor.
             </section>
             
             <section id="section2">
-                <h2>Autori</h2>
-                <h4><strong>Francesco Ligas</strong></h4>
+                <h2 class="mostra">Autori</h2>
+                <h2 class="nascondi"><a class="nascondi" href="articoli.html">Autori</a></h2>
+                <h4 ><strong>Francesco Ligas</strong></h4>
             </section>
         </aside>
         
-        <section id="content">
+        <section id="content" class="notizia">
             <p>Categoria: <strong>Sport </strong> -- Data: 23/03/2018 -- Scritto da: <strong>Francesco Ligas </strong></p>
             <h2>Vittoria di Dovizioso a Loasil</h2>
             <h3>

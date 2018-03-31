@@ -113,12 +113,10 @@ nav ul li a{
 }
 
 li > h3 {
-    margin: 0px;
+   margin: 0px;
+   font-weight:  lighter;
+    
 }
-
-
-
-
 
 
 aside{
@@ -171,6 +169,10 @@ aside section h2{
     border-style: solid;
 }
 
+.nascondi{
+    display: none;
+}
+
 
 #content{
     position:relative;
@@ -187,11 +189,12 @@ aside section h2{
     
 .articoli table{
     position:relative;
-    height: 30%;
+    height: 200px;
     width: 90%;
     
     margin-top: 2%;
 }
+
 .articoli table,td,th{
     border-style: solid;
     border-collapse: collapse;
@@ -309,16 +312,21 @@ footer{
 }
 
 
-@media only screen and (min-width:480px) and (max-width:960px){
+
+@media only screen and(min-width:480px){
+    
+    .nascondi{
+       display:none;
+    }
+}
+
+@media only screen and (max-width:960px){
     nav ul li a{ 
         font-size: 80%;
     }
 }
 
-@media only screen and (max-width:480px){
-    nav ul li a{
-        font-size: 80%;
-    }
+@media only screen and (max-width:480px){    
     nav {
         height: 60px;
     }
@@ -341,35 +349,47 @@ footer{
     aside section,#section2{
         border:none;
     }
+   
     
-    aside section > h2{
-        float:left;
-        padding-right: 5%;
-    }
-    #section2 h2{
-        float:right;
-    }
-    
-    aside section ul li,#section2 h4{
+    aside section ul li,#section2 h4,.mostra{
         display:none;
     }
     
-    
-    
+     .nascondi{
+        display: inline;
+        float:left;
+        padding-left: 10%;
+        width: 50%;
+    }
+
     #content{
-       position: static;
-       padding: 0px;
-       margin: 0px;
        float: none;
-       clear:both;
-       height: 300px;
+       height: 600px;
+       margin: 0px;
+       padding: 0px;
        width:100%; 
     }
-    .login {
-        height: 200px;
-    }
     .login form{
-        position: static;
-        height: 200px;
+        margin: 0px;
+        height: 100%;
+        width:100%; 
+        border-style: none;
+
+    }
+    
+  
+    .articoli table,tr{
+        border-style: solid;
+        border-color: black;
+        border-left: 0px;
+        border-right: 0px;
+    }
+    
+    .notizia > p{
+        margin: 0px;
+    }
+    
+    .notizia img{
+        max-width: 100%;
     }
 }
