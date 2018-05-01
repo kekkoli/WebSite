@@ -61,7 +61,7 @@
             </form>
         </section>
         
-        <footer>Credit by Francesco Ligas</footer>
+        <jsp:include page="footer.jsp" />
         
     </body>
 </html>

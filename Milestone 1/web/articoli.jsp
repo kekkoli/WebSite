@@ -67,5 +67,8 @@
                 <input type="submit" value="Nuovo articolo" id="pulsanteScrivi"/>
             </form>
         </section>
+        
+        <jsp:include page="footer.jsp" />
+
     </body>
 </html>

@@ -38,6 +38,9 @@
                 <input type="submit" value="Accedi" id="pulsanteLogin"/>
             </form>
         </div>
+        
+        <jsp:include page="footer.jsp" />
+
        
     </body>
 </html>
