@@ -114,7 +114,10 @@ nav ul li a{
     position:relative;
     top: 10%;
 }
-
+nav ul li input{
+    margin-top: 2%;
+    float: right;
+}
 li > h3 {
    margin: 0px;
    font-weight:  lighter;

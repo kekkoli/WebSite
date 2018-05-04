@@ -15,6 +15,7 @@ public class User {
     private String urlImagine;
     private String description;
     private String password;
+    private String email;
     private int id;
     private int day,month,year;
     
@@ -26,6 +27,7 @@ public class User {
         this.description = "e' bello cio' che piace";
         this.id=0;
         this.password = "123456";
+        this.email= "ginopippo@gmail.com";
         this.day = 1;
         this.month = 6;
         this.year = 2012;
@@ -157,6 +159,21 @@ public class User {
     public void setId(int id) {
         this.id = id;
     }
+
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    
     
     
     

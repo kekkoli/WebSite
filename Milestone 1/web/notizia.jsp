@@ -3,7 +3,7 @@
     Created on : 1-mag-2018, 10.06.52
     Author     : kekko
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,11 +25,19 @@
         <jsp:include page="aside.jsp" />
         
         <section id="content" class="notizia">
+             
+                <div>
+                    Notizia di: ${news.getUser().getName()}
+                    <br>
+                     ${news.getDescrizione()}
+                </div>
+                 
+            
             
             <!--Il contenuto di questa pagina e' una notizia di motoGp
             All' interno e' presente un immagine e una sezione di testo 
             descrittiva.-->
-            
+             <!--
             <p>Categoria: <strong>Sport </strong> -- Data: 23/03/2018 
                -- Scritto da: <strong>Francesco Ligas </strong></p>
             <h2>Vittoria di Dovizioso a Loasil</h2>
@@ -47,6 +55,7 @@
             e Giappone l'anno scorso si è dovuto arrendere sul filo di lana 
             dell'ultima curva: secondo, ma che show.     
             </p>
+             -->
         </section>   
         
         <jsp:include page="footer.jsp" />

@@ -26,28 +26,31 @@ public class UserFactory {
         user1.setPassword("bluesky");
         user1.setUrlImagine("immagine1.jpg");
         user1.setDescription("Il cielo e' sempre piu blu");
+        user1.setEmail("ginopippo@gmail.com");
         user1.setDay(1);
         user1.setMonth(4);
         user1.setYear(1990);
 
         User user2 = new User();
         user2.setId(1);
-        user2.setName("mario");
+        user2.setName("Mario");
         user2.setSurname("molinaro");
         user2.setPassword("wasabi");
         user2.setUrlImagine("immagine2.jpg");
         user2.setDescription("Cio che non ti uccide ti fortifica");
+        user2.setEmail("frellele@gmail.com");
         user2.setDay(4);
         user2.setMonth(11);
         user2.setYear(1995);
         
         User user3 = new User();
         user3.setId(2);
-        user3.setName("giulio");
+        user3.setName("Giulio");
         user3.setSurname("campus");
         user3.setPassword("crosta");
         user3.setUrlImagine("immagine3.jpg");
-        user3.setDescription("Non guardare al passato pensa al futuro");
+        user3.setDescription("Non guardare al passato pensa al futuro");       
+        user3.setEmail("asdrubale@gmail.com");
         user3.setDay(7);
         user3.setMonth(2);
         user3.setYear(1998);
@@ -71,4 +74,20 @@ public class UserFactory {
                 return user;
         return null;
     }
-}
+    public boolean login(String email, String password){
+        for(User user : userList ){
+            if(user.getEmail().equals(email) && user.getPassword().equals(password))
+                return true;
+        }
+        return false;
+    }
+    
+    public User getUserByEmail(String email){
+        for(User user : userList ){
+            if(user.getEmail().equals(email))
+                return user;
+        }
+        return null; 
+    }
+    
+}   

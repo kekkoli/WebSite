@@ -14,10 +14,18 @@
     <body>
         <nav> 
             <ul>
-                <li><h3>Ciao</h3></li>
-                <li><a href="login.jsp">Profilo</a></li>
-                <li><a href="articoli.jsp">I miei articoli</a></li>
-                <li><a href="notizia.jsp">Notizie</a></li>
+                <c:if test="${ session.getAttribute("loggedIn").equals(true)}">
+                    <li><h3>Ciao, ${user.getName()}<form action="login.html">
+                                                      <input type="submit"
+                                                      value="Logout"
+                                                      href="login.jsp">
+                                                    </form>
+                    </h3>
+                    </li>
+                </c:if>
+                <li><a href="login.html">Profilo</a></li>
+                <li><a href="articoli.html">I miei articoli</a></li>
+                <li><a href="Notizia">Notizie</a></li>
                 <li><a href="index.html">Home</a></li>
             </ul>
         </nav>

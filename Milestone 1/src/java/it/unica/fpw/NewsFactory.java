@@ -29,20 +29,20 @@ public class NewsFactory {
         news1.setUser(userFactory.getUserById(0));
         
         News news2 = new News();
-        news1.setId(1);
-        news1.setCategory("second");
-        news1.setDescrizione("crosticino");
-        news1.setUrlImagine("Immagine2.jpg");
-        news1.setTitle("crosta");
-        news1.setUser(userFactory.getUserById(1));
+        news2.setId(1);
+        news2.setCategory("second");
+        news2.setDescrizione("crosticino");
+        news2.setUrlImagine("Immagine2.jpg");
+        news2.setTitle("crosta");
+        news2.setUser(userFactory.getUserById(1));
         
         News news3 = new News();
-        news1.setId(2);
-        news1.setCategory("third");
-        news1.setDescrizione("grattastinchi");
-        news1.setUrlImagine("Immagine1.jpg");
-        news1.setTitle("gatto");
-        news1.setUser(userFactory.getUserById(2));
+        news3.setId(2);
+        news3.setCategory("third");
+        news3.setDescrizione("grattastinchi");
+        news3.setUrlImagine("Immagine1.jpg");
+        news3.setTitle("gatto");
+        news3.setUser(userFactory.getUserById(2));
         
         listNews.add(news1);
         listNews.add(news2);
@@ -56,5 +56,15 @@ public class NewsFactory {
         
         return instance;
     }
-    
+     public ArrayList<News> getNews(){
+         return listNews;
+     }
+     
+     public News getNewsById(int id){
+         for(News news : listNews){
+             if(news.getId() == id)
+                 return news;
+         }
+         return null;
+     }
 }

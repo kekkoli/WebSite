@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package it.unica.fpw;
+import java.util.ArrayList;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,12 +12,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author kekko
  */
-public class notizia extends HttpServlet {
+public class NewsDetail extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,17 +33,22 @@ public class notizia extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet notizia</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet notizia at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+            int idNews = Integer.parseInt(request.getParameter("nid"));
+            NewsFactory newsfactory =  NewsFactory.getInstance();
+            request.setAttribute("news", newsfactory.getNewsById(idNews));
+            request.getRequestDispatcher("notizia.jsp").forward(request, response);
+            
+            
+            HttpSession session = request.getSession();
+            
+            if (session.getAttribute("loggedIn") != null &&
+                session.getAttribute("loggedIn").equals(true)){
+                UserFactory userfactory = UserFactory.getInstance();
+                int idUser =(int) session.getAttribute("userId");
+                session.setAttribute("user",userfactory.getUserById(idUser));
+            }
+
+        }   
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
