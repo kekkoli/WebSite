@@ -24,8 +24,8 @@ public class NewsFactory {
 
         News news1 = new News();
         news1.setId(0);
-        news1.setCategory("first");
-        news1.setDescrizione("Molto bello");
+        news1.setCategory("Prove");
+        news1.setDescrizione("Molto belloMolto belloMolto belloMolto belloMolto bello");
         news1.setUrlImagine("img/dovizioso.jpeg");
         news1.setTitle("BEllo");
         news1.setDate(new Date(2000,10,3));
@@ -33,18 +33,18 @@ public class NewsFactory {
         
         News news2 = new News();
         news2.setId(1);
-        news2.setCategory("second");
-        news2.setDescrizione("crosticino");
-        news2.setUrlImagine("Immagine2.jpg");
+        news2.setCategory("Piloti");
+        news2.setDescrizione("crosticinocrosticinocrosticinocrosticino");
+        news2.setUrlImagine("img/dovizioso.jpeg");
         news2.setTitle("crosta");
         news2.setDate(new Date(2018,11,30));    
         news2.setUser(userFactory.getUserById(1));
         
         News news3 = new News();
         news3.setId(2);
-        news3.setCategory("third");
-        news3.setDescrizione("grattastinchi");
-        news3.setUrlImagine("Immagine1.jpg");
+        news3.setCategory("Piloti");
+        news3.setDescrizione("grattastinchiksjefhkshfziszhfsofzmsoa");
+        news3.setUrlImagine("img/dovizioso.jpeg");
         news3.setTitle("gatto");
         news3.setDate(new Date(1,2,3));
         news3.setUser(userFactory.getUserById(2));
@@ -64,15 +64,22 @@ public class NewsFactory {
      public ArrayList<News> getNews(){
          Collections.sort(listNews);
          return listNews;
-     }
+    }
      
-     public News getNewsById(int id){
-         for(News news : listNews){
-             if(news.getId() == id)
-                 return news;
-         }
-         return null;
-     }
+    public News getNewsById(int id){
+        for(News news : listNews){
+            if(news.getId() == id)
+                return news;
+        }
+        return null;
+    }
+    public ArrayList<News> getNewsByCategory(String category){
+        ArrayList<News> listNewsCategory = new ArrayList<>();
+        for(News news : listNews)
+            if(news.getCategory().equals(category))
+                listNewsCategory.add(news);
+        return listNewsCategory;
+    }
 }
      
      

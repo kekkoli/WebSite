@@ -204,6 +204,9 @@ Ogni pagina infatti avra' una specifica classe*/
     border-top:0px;
     
     border-style: solid;
+    
+    overflow:scroll;
+    
 }
 
 /*CSS legato alla pagina articoli.html*/    

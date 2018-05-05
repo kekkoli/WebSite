@@ -21,11 +21,11 @@
                 <h2 class="mostra">Categorie</h2>
                 <h2 class="nascondi"><a href="articoli.html">Categorie</a></h2>
                 <ul>
-                    <li><strong>News</strong></li>
-                    <li><strong>Prove</strong></li>
-                    <li><strong>Live Stream</strong></li>
-                    <li><strong>Scuderie</strong></li>
-                    <li><strong>Piloti</strong></li>
+                    <li><strong><a href="notizie.html?category=News">News</a></strong></li>
+                    <li><strong><a href="notizie.html?category=Prove">Prove</a></strong></li>
+                    <li><strong><a href="notizie.html?category=Ruote">Ruote</a></strong></li>
+                    <li><strong><a href="notizie.html?category=Scuderie">Scuderie</a></strong></li>
+                    <li><strong><a href="notizie.html?category=Piloti">Piloti</a></strong></li>
                 </ul>   
             </section>
             <section id="section2">

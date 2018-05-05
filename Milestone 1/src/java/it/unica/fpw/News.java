@@ -142,9 +142,14 @@ public class News implements Comparable<News> {
 
     @Override
     public int compareTo(News o) {
-        if(date.after(o.date))
+        if(date.before(o.date))
             return 1;
        return -1; 
+    }
+    
+    public String estraiCaratteri(){
+        String a = descrizione.substring(0, 30);
+        return a;
     }
     
  

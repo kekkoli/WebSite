@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author kekko
  */
-public class Notizie extends HttpServlet {
+public class Articles extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,17 +31,16 @@ public class Notizie extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            NewsFactory news = NewsFactory.getInstance();
-            
-            String s = request.getParameter("category");
-            if (s!=null)
-                request.setAttribute("listNews", news.getNewsByCategory(s));
-            else
-                request.setAttribute("listNews", news.getNews());
-            
-            request.getRequestDispatcher("notizie.jsp").forward(request, response);
-            
-            
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet Articles</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet Articles at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

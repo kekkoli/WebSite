@@ -22,7 +22,7 @@
                 </c:if>
                 <li><a href="login.html">Profilo</a></li>
                 <li><a href="articoli.html">I miei articoli</a></li>
-                <li><a href="Notizia">Notizie</a></li>
+                <li><a href="notizie.html">Notizie</a></li>
                  
             </ul>
         </nav>
