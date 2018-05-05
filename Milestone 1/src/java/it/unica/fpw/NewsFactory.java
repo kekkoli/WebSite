@@ -5,6 +5,8 @@
  */
 package it.unica.fpw;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 /**
  *
  * @author kekko
@@ -24,8 +26,9 @@ public class NewsFactory {
         news1.setId(0);
         news1.setCategory("first");
         news1.setDescrizione("Molto bello");
-        news1.setUrlImagine("Immagine1.jpg");
+        news1.setUrlImagine("img/dovizioso.jpeg");
         news1.setTitle("BEllo");
+        news1.setDate(new Date(2000,10,3));
         news1.setUser(userFactory.getUserById(0));
         
         News news2 = new News();
@@ -34,6 +37,7 @@ public class NewsFactory {
         news2.setDescrizione("crosticino");
         news2.setUrlImagine("Immagine2.jpg");
         news2.setTitle("crosta");
+        news2.setDate(new Date(2018,11,30));    
         news2.setUser(userFactory.getUserById(1));
         
         News news3 = new News();
@@ -42,6 +46,7 @@ public class NewsFactory {
         news3.setDescrizione("grattastinchi");
         news3.setUrlImagine("Immagine1.jpg");
         news3.setTitle("gatto");
+        news3.setDate(new Date(1,2,3));
         news3.setUser(userFactory.getUserById(2));
         
         listNews.add(news1);
@@ -57,6 +62,7 @@ public class NewsFactory {
         return instance;
     }
      public ArrayList<News> getNews(){
+         Collections.sort(listNews);
          return listNews;
      }
      
@@ -68,3 +74,6 @@ public class NewsFactory {
          return null;
      }
 }
+     
+     
+

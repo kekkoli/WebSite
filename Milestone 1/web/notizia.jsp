@@ -25,16 +25,22 @@
         <jsp:include page="aside.jsp" />
         
         <section id="content" class="notizia">
-             
-                <div>
-                    Notizia di: ${news.getUser().getName()}
-                    <br>
-                     ${news.getDescrizione()}
-                </div>
+            <p><strong>Categoria :</strong>${news.getCategory()} -- 
+            <strong>Data:</strong> ${news.printDate()}</p>
+            <p>Scritto da: <strong>${news.getUser().getName()} </strong></p>
+            <div>${news.getTitle()}</div>
+            <h3><img src="${news.getUrlImagine()}"width="400" height="200"></h3>
+            <p>${news.getDescrizione()}</p>
+
+            
+            
                  
             
             
-            <!--Il contenuto di questa pagina e' una notizia di motoGp
+            <!--
+        -- 
+
+            Il contenuto di questa pagina e' una notizia di motoGp
             All' interno e' presente un immagine e una sezione di testo 
             descrittiva.-->
              <!--

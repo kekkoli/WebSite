@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package it.unica.fpw;
-import java.util.ArrayList;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,7 +11,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -35,19 +33,10 @@ public class NewsDetail extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             int idNews = Integer.parseInt(request.getParameter("nid"));
             NewsFactory newsfactory =  NewsFactory.getInstance();
+            
             request.setAttribute("news", newsfactory.getNewsById(idNews));
             request.getRequestDispatcher("notizia.jsp").forward(request, response);
             
-            
-            HttpSession session = request.getSession();
-            
-            if (session.getAttribute("loggedIn") != null &&
-                session.getAttribute("loggedIn").equals(true)){
-                UserFactory userfactory = UserFactory.getInstance();
-                int idUser =(int) session.getAttribute("userId");
-                session.setAttribute("user",userfactory.getUserById(idUser));
-            }
-
         }   
     }
 

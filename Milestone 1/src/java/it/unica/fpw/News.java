@@ -4,15 +4,17 @@
  * and open the template in the editor.
  */
 package it.unica.fpw;
+import java.util.Date;
+
 
 /**
  *
  * @author kekko
  */
-public class News {
+public class News implements Comparable<News> {
 
     private int id;
-    private int day,month,year;
+    private Date date;
     private String title;
     private String category;
     private String urlImagine;
@@ -26,6 +28,7 @@ public class News {
         this.descrizione = "Dal web ci sono giunte notizie bellissime";
         this.urlImagine = "immagine.jpg";
         this.user = new User();
+        this.date = new Date(1,2,3);
     }
 
     /**
@@ -45,45 +48,6 @@ public class News {
     /**
      * @return the day
      */
-    public int getDay() {
-        return day;
-    }
-
-    /**
-     * @param day the day to set
-     */
-    public void setDay(int day) {
-        this.day = day;
-    }
-
-    /**
-     * @return the month
-     */
-    public int getMonth() {
-        return month;
-    }
-
-    /**
-     * @param month the month to set
-     */
-    public void setMonth(int month) {
-        this.month = month;
-    }
-
-    /**
-     * @return the year
-     */
-    public int getYear() {
-        return year;
-    }
-
-    /**
-     * @param year the year to set
-     */
-    public void setYear(int year) {
-        this.year = year;
-    }
-
     /**
      * @return the title
      */
@@ -153,6 +117,39 @@ public class News {
     public void setUser(User user) {
         this.user = user;
     }
-        
+
+    /**
+     * @return the date
+     */
+    public Date getDate() {
+        return date;
+    }
+
+    /**
+     * @param date the date to set
+     */
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    /**
+     * @return the date
+     */
+    public String printDate(){
+        String a = date.getDate() + "/" +  (date.getMonth()+1) + "/" +date.getYear();
+        return a;
+    }
+
+    @Override
+    public int compareTo(News o) {
+        if(date.after(o.date))
+            return 1;
+       return -1; 
+    }
+    
+ 
+
+ 
+
                 
 }

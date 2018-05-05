@@ -11,13 +11,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author kekko
  */
-public class Login extends HttpServlet {
+public class Notizie extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,50 +28,15 @@ public class Login extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            HttpSession session = request.getSession();
-            
-            if (request.getParameter("logout") != null){
-                session.invalidate();
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-                return;
-            }
-            
-            //loggato
-            if (session.getAttribute("loggedIn") != null &&
-                session.getAttribute("loggedIn").equals(true)){
-                    response.sendRedirect("notizie.html");
-                    return;
-            }
-            else{
-                //da loggare
-                String email = request.getParameter("email");
-                String password = request.getParameter("password");
-                UserFactory factory = UserFactory.getInstance();
-                
-                if (email != null && password != null && factory.login(email, password)){
-                     //loggato cn succueso
-                    int userId = factory.getUserByEmail(email).getId();
-                    session.setAttribute("loggedIn", true);
-                    session.setAttribute("user", factory.getUserById(userId));
-                    
-                    response.sendRedirect("notizie.html");
-                    return;
-                }
-                else if(email != null && password != null){
-                    //login male
-                    request.setAttribute("invalidData", true);
-                    request.getRequestDispatcher("login.jsp").forward(request, response);
-                    return;
-                }
-            }
-
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            NewsFactory news = NewsFactory.getInstance();
+            request.setAttribute("listnews", news.getNews());
+            request.getRequestDispatcher("notizie.jsp").forward(request, response);
         }
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -111,5 +75,5 @@ public class Login extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    
+
 }
