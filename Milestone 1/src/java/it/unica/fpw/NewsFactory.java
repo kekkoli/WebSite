@@ -31,6 +31,8 @@ public class NewsFactory {
         news1.setDate(new Date(2000,10,3));
         news1.setUser(userFactory.getUserById(0));
         
+        
+        
         News news2 = new News();
         news2.setId(1);
         news2.setCategory("Piloti");
@@ -49,9 +51,19 @@ public class NewsFactory {
         news3.setDate(new Date(1,2,3));
         news3.setUser(userFactory.getUserById(2));
         
+        News news4 = new News();
+        news4.setId(4);
+        news4.setCategory("Prove");
+        news4.setDescrizione("Molto belloMolto belloMolto belloMolto belloMolto bello");
+        news4.setUrlImagine("img/dovizioso.jpeg");
+        news4.setTitle("BEllo");
+        news4.setDate(new Date(2000,10,15));
+        news4.setUser(userFactory.getUserById(0));
+        
         listNews.add(news1);
         listNews.add(news2);
         listNews.add(news3);
+        listNews.add(news4);
 }
     
     public static NewsFactory getInstance()
@@ -77,6 +89,14 @@ public class NewsFactory {
         ArrayList<News> listNewsCategory = new ArrayList<>();
         for(News news : listNews)
             if(news.getCategory().equals(category))
+                listNewsCategory.add(news);
+        return listNewsCategory;
+    }
+    
+    public ArrayList<News> getNewsByUser(User user){
+        ArrayList<News> listNewsCategory = new ArrayList<>();
+        for(News news : listNews)
+            if(news.getUser().getId() == user.getId())
                 listNewsCategory.add(news);
         return listNewsCategory;
     }

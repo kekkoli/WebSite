@@ -27,7 +27,7 @@
         <div id="content" class="login" >     
         <!--Questo form richiede le credenziali per l accesso alla pagina-->
           
-            <form action="#" method="post">
+            <form action="login.html" method="post">
                <img src="img/logo.png" title="moto"
                alt="Logo" height="70"></a>
             <h3>Login:</h3>

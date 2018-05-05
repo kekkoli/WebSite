@@ -18,6 +18,7 @@ public class User {
     private String email;
     private int id;
     private int day,month,year;
+    private Ruolo ruolo;
     
     
     public User(){
@@ -31,6 +32,7 @@ public class User {
         this.day = 1;
         this.month = 6;
         this.year = 2012;
+        this.ruolo = Ruolo.Ospite;
         
     }
 
@@ -172,6 +174,20 @@ public class User {
      */
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    /**
+     * @return the ruolo
+     */
+    public Ruolo getRuolo() {
+        return ruolo;
+    }
+
+    /**
+     * @param ruolo the ruolo to set
+     */
+    public void setRuolo(Ruolo ruolo) {
+        this.ruolo = ruolo;
     }
     
     

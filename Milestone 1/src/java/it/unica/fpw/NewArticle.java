@@ -11,13 +11,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author kekko
  */
-public class Articles extends HttpServlet {
+public class NewArticle extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,17 +31,11 @@ public class Articles extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            HttpSession session = request.getSession();
-            User currentUser = (User)session.getAttribute("user");
-            if(currentUser.getRuolo() == Ruolo.Autore){
-                NewsFactory newsFactory = NewsFactory.getInstance();
-                request.setAttribute("listNews", newsFactory.getNewsByUser(currentUser));
-                request.setAttribute("accesso", true);
-
-            }
-            else
-                request.setAttribute("accesso", false);
-        request.getRequestDispatcher("articoli.jsp").forward(request, response);
+           NewsFactory newsFactory = NewsFactory.getInstance();
+           int idNews = Integer.parseInt(request.getParameter("nid"));
+           request.setAttribute("news", newsFactory.getNewsById(idNews));
+           request.setAttribute("scelta", newsFactory.getNewsById(idNews).getCategory());
+           request.getRequestDispatcher("scriviArticolo.jsp").forward(request, response);
         }
     }
 

@@ -205,6 +205,8 @@ Ogni pagina infatti avra' una specifica classe*/
     
     border-style: solid;
     
+    
+    display:block;
     overflow:scroll;
     
 }
@@ -218,6 +220,9 @@ Ogni pagina infatti avra' una specifica classe*/
     
     margin-top: 2%;
 }
+table tr:nth-child(even){
+    background-color: #8ffcff;
+}
 
 .articoli table,td,th{
     border-style: solid;
@@ -226,9 +231,7 @@ Ogni pagina infatti avra' una specifica classe*/
 th{
     background-color: red;
 }
-.dispari{
-    background-color: #8ffcff;
-}
+
 #pulsanteScrivi{
     height: 25px;
     width: 90%;

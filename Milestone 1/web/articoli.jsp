@@ -3,6 +3,7 @@
     Created on : 24-apr-2018, 17.12.41
     Author     : kekko
 --%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,9 +26,49 @@
         <jsp:include page="aside.jsp" />
 
         <section id="content" class="articoli">
-            <!--Il contenuto di questa pagina e' una tabella che 
+            
+            <c:if test="${accesso == false}">
+                <h2>Acceso negato. Non sei un autore.</h2>
+            </c:if>
+                
+            <c:if test="${accesso == true}">
+                <h2 >Articoli</h2>
+                <table>    
+                    <tr>
+                        <th>Data</th>
+                        <th>Titolo</th>
+                        <th>Modifica</th>
+                        <th>Cancella</th>
+                    </tr>
+                    <c:forEach var="news" items="${listNews}">
+                        <tr>
+                            <td>${news.printDate()}</td>
+                            <td>${news.getTitle()}</td>
+                            <td><a href="scriviArticolo.html?nid=${news.getId()}">
+                                    <input type="image" src="img/modifica.jpg" 
+                                    accept=""alt="modifica" height="15" width="15">
+                            </a></td>
+                            <td>Cancella</td>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </c:if>
+                
+            <form action="scriviArticolo.jsp" method="post" >  
+                <input type="submit" value="Nuovo articolo" id="pulsanteScrivi"/>
+            </form>
+           
+        </section>
+        
+        <jsp:include page="footer.jsp" />
+
+    </body>
+</html>
+
+
+ <!--Il contenuto di questa pagina e' una tabella che 
             racchiude data e titolo degli articoli. Inoltre sara' possibile
-            attuare delle modifiche e eliminare l' articolo.-->
+            attuare delle modifiche e eliminare l' articolo.
 
             <h2 >Articoli</h2>
             <table>    
@@ -63,12 +104,5 @@
                                alt="elimina" height="15" width="15"></td>
                 </tr>
             </table>  
-            <form action="scriviArticolo.jsp" method="post" >  
-                <input type="submit" value="Nuovo articolo" id="pulsanteScrivi"/>
-            </form>
-        </section>
-        
-        <jsp:include page="footer.jsp" />
-
-    </body>
-</html>
+           
+            -->

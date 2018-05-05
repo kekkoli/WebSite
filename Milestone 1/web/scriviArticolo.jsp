@@ -33,13 +33,14 @@
                 <h2><strong>Scrivi un Articolo</strong></h2>
 
                 <label for="titoloArticolo">Titolo</label>
-                <input type="text" name="titolo" id="titoloArticolo" value="">
+                <input type="text" name="titolo" id="titoloArticolo" value="${news.getTitle()}">
 
                 <label for="data">Data</label>
                 <input type="date" name="data" id="data" value="">
 
+
                 <label for="urlImmagine">Url Immagine</label>
-                <input type="text" name="urlImmagine" id="urlImmagine" value="">
+                <input type="text" name="urlImmagine" id="urlImmagine" value="${news.getUrlImagine()}">
 
                 <label for="didascalia">Inserire didascalia</label>
                 <input type="text" name="didascalia" id="didascalia" value="">
@@ -47,11 +48,11 @@
 
                 <label for="descrizione">Inserire descrizione</label>             
                 <textarea rows="4" cols="32" name="descrizione" 
-                          id="descrizione"></textarea>
+                          id="descrizione">${news.getDescrizione()}</textarea>
 
                 <div>
                     <h2>Categorie</h2>
-                    <input type="checkbox" name="scelta" value="news">News<br>
+                    <input type="checkbox" name="scelta" value="true">${scelta}<br>
                     <input type="checkbox" name="scelta" value="piloti">Piloti<br>
                     <input type="checkbox" name="scelta" value="scuderie">Scuderie<br>
                     <input type="checkbox" name="scelta" value="staff">Staff<br>
