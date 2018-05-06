@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package it.unica.fpw;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -25,12 +26,10 @@ public class UserFactory {
         user1.setSurname("De Luca");
         user1.setPassword("bluesky");
         user1.setUrlImagine("immagine1.jpg");
+        user1.setDate(LocalDate.of(2010,2,3));
         user1.setDescription("Il cielo e' sempre piu blu");
         user1.setEmail("ginopippo@gmail.com");
-        user1.setDay(1);
         user1.setRuolo(Ruolo.Autore);
-        user1.setMonth(4);
-        user1.setYear(1990);
 
         User user2 = new User();
         user2.setId(1);
@@ -38,25 +37,21 @@ public class UserFactory {
         user2.setSurname("molinaro");
         user2.setPassword("wasabi");
         user2.setUrlImagine("immagine2.jpg");
+        user1.setDate(LocalDate.of(2012,11,4));
         user2.setDescription("Cio che non ti uccide ti fortifica");
         user2.setEmail("frellele@gmail.com");
-        user2.setDay(4);
         user2.setRuolo(Ruolo.Autore);
-        user2.setMonth(11);
-        user2.setYear(1995);
         
         User user3 = new User();
         user3.setId(2);
         user3.setName("Giulio");
         user3.setSurname("campus");
         user3.setPassword("crosta");
+        user1.setDate(LocalDate.of(2017,2,13));
         user3.setUrlImagine("immagine3.jpg");
         user3.setDescription("Non guardare al passato pensa al futuro");       
         user3.setEmail("asdrubale@gmail.com");
         user3.setRuolo(Ruolo.Ospite);
-        user3.setDay(7);
-        user3.setMonth(2);
-        user3.setYear(1998);
        
         userList.add(user1);
         userList.add(user2);

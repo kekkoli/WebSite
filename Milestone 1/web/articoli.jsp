@@ -42,7 +42,7 @@
                     </tr>
                     <c:forEach var="news" items="${listNews}">
                         <tr>
-                            <td>${news.printDate()}</td>
+                            <td>${news.getDate().toString()}</td>
                             <td>${news.getTitle()}</td>
                             <td><a href="scriviArticolo.html?nid=${news.getId()}">
                                     <input type="image" src="img/modifica.jpg" 

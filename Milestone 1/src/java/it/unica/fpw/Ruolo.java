@@ -11,4 +11,5 @@ package it.unica.fpw;
  */
 public enum Ruolo {
     Autore,Scrittore,Ospite;
-}
+
+  }

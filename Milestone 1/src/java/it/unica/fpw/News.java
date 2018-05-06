@@ -4,17 +4,17 @@
  * and open the template in the editor.
  */
 package it.unica.fpw;
-import java.util.Date;
+import java.time.LocalDate;
 
 
 /**
  *
  * @author kekko
  */
-public class News implements Comparable<News> {
+public class News implements Comparable <News>  {
 
     private int id;
-    private Date date;
+    private LocalDate date;
     private String title;
     private String category;
     private String urlImagine;
@@ -28,7 +28,7 @@ public class News implements Comparable<News> {
         this.descrizione = "Dal web ci sono giunte notizie bellissime";
         this.urlImagine = "immagine.jpg";
         this.user = new User();
-        this.date = new Date(1,2,3);
+        this.date = LocalDate.of(1,2,3);
     }
 
     /**
@@ -121,35 +121,31 @@ public class News implements Comparable<News> {
     /**
      * @return the date
      */
-    public Date getDate() {
+    
+    public String estraiCaratteri(){
+        String a = descrizione.substring(0, 30);
+        return a;
+    }
+
+    /**
+     * @return the date
+     */
+    public LocalDate getDate() {
         return date;
     }
 
     /**
      * @param date the date to set
      */
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
-    }
-
-    /**
-     * @return the date
-     */
-    public String printDate(){
-        String a = date.getDate() + "/" +  (date.getMonth()+1) + "/" +date.getYear();
-        return a;
     }
 
     @Override
     public int compareTo(News o) {
-        if(date.before(o.date))
+        if(this.date.compareTo(o.getDate())<0)
             return 1;
-       return -1; 
-    }
-    
-    public String estraiCaratteri(){
-        String a = descrizione.substring(0, 30);
-        return a;
+        return -1;
     }
     
  

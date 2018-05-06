@@ -4,9 +4,9 @@
  * and open the template in the editor.
  */
 package it.unica.fpw;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 /**
  *
  * @author kekko
@@ -28,7 +28,7 @@ public class NewsFactory {
         news1.setDescrizione("Molto belloMolto belloMolto belloMolto belloMolto bello");
         news1.setUrlImagine("img/dovizioso.jpeg");
         news1.setTitle("BEllo");
-        news1.setDate(new Date(2000,10,3));
+        news1.setDate(LocalDate.of(2000,10,3));
         news1.setUser(userFactory.getUserById(0));
         
         
@@ -39,7 +39,7 @@ public class NewsFactory {
         news2.setDescrizione("crosticinocrosticinocrosticinocrosticino");
         news2.setUrlImagine("img/dovizioso.jpeg");
         news2.setTitle("crosta");
-        news2.setDate(new Date(2018,11,30));    
+        news2.setDate(LocalDate.of(2018,11,30));    
         news2.setUser(userFactory.getUserById(1));
         
         News news3 = new News();
@@ -48,7 +48,7 @@ public class NewsFactory {
         news3.setDescrizione("grattastinchiksjefhkshfziszhfsofzmsoa");
         news3.setUrlImagine("img/dovizioso.jpeg");
         news3.setTitle("gatto");
-        news3.setDate(new Date(1,2,3));
+        news3.setDate(LocalDate.of(1904,10,6));
         news3.setUser(userFactory.getUserById(2));
         
         News news4 = new News();
@@ -57,7 +57,7 @@ public class NewsFactory {
         news4.setDescrizione("Molto belloMolto belloMolto belloMolto belloMolto bello");
         news4.setUrlImagine("img/dovizioso.jpeg");
         news4.setTitle("BEllo");
-        news4.setDate(new Date(2000,10,15));
+        news4.setDate(LocalDate.of(2000,10,15));
         news4.setUser(userFactory.getUserById(0));
         
         listNews.add(news1);
@@ -90,15 +90,16 @@ public class NewsFactory {
         for(News news : listNews)
             if(news.getCategory().equals(category))
                 listNewsCategory.add(news);
+        Collections.sort(listNewsCategory);
         return listNewsCategory;
     }
     
     public ArrayList<News> getNewsByUser(User user){
-        ArrayList<News> listNewsCategory = new ArrayList<>();
+        ArrayList<News> listNewsByUser = new ArrayList<>();
         for(News news : listNews)
             if(news.getUser().getId() == user.getId())
-                listNewsCategory.add(news);
-        return listNewsCategory;
+                listNewsByUser.add(news);
+        return listNewsByUser;
     }
 }
      

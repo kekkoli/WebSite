@@ -20,6 +20,10 @@
         <servlet-name>NewArticle</servlet-name>
         <servlet-class>it.unica.fpw.NewArticle</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Profilo</servlet-name>
+        <servlet-class>it.unica.fpw.Profilo</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/login.html</url-pattern>
@@ -42,6 +46,10 @@
     <servlet-mapping>
         <servlet-name>NewArticle</servlet-name>
         <url-pattern>/scriviArticolo.html</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Profilo</servlet-name>
+        <url-pattern>/profilo.html</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -257,7 +257,7 @@ th{
     width: 100%;
     
 }
-.scriviArticolo form label{
+.scriviArticolo form label, .modificaProfilo form label{
     clear:both;
     float:left;
     
@@ -266,7 +266,7 @@ th{
     
     margin-top: 2%;    
 }
-.scriviArticolo form textarea, .scriviArticolo form > input{
+.scriviArticolo form textarea, .scriviArticolo form > input, .modificaProfilo form > input, .ruolo{
 
     height: 5%;
     width:40%;

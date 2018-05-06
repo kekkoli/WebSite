@@ -23,7 +23,7 @@
         
             <c:forEach var="news" items="${listNews}">
                 <p><strong>Categoria :</strong>${news.getCategory()} -- 
-                <strong>Data:</strong> ${news.printDate()}</p>
+                <strong>Data:</strong> ${news.getDate().toString()}</p>
                 <p>Scritto da: <strong>${news.getUser().getName()} </strong></p>
                 <div>${news.getTitle()}</div>
                 <h3><img src="${news.getUrlImagine()}"width="400" height="200"></h3>

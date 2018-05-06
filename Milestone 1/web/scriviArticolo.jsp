@@ -30,18 +30,9 @@
             immagine,didascalia,testo e categoria-->
 
             <form action="articoli.jsp" method="post">  
-                <h2><strong>Scrivi un Articolo</strong></h2>
+                <h2><strong>Modifica profilo</strong></h2>
 
-                <label for="titoloArticolo">Titolo</label>
-                <input type="text" name="titolo" id="titoloArticolo" value="${news.getTitle()}">
-
-                <label for="data">Data</label>
-                <input type="date" name="data" id="data" value="">
-
-
-                <label for="urlImmagine">Url Immagine</label>
-                <input type="text" name="urlImmagine" id="urlImmagine" value="${news.getUrlImagine()}">
-
+               
                 <label for="didascalia">Inserire didascalia</label>
                 <input type="text" name="didascalia" id="didascalia" value="">
 
