@@ -48,14 +48,14 @@
                     <input type="text" name="didascalia" id="didascalia" value="${news.getDescrizione()}">
 
 
-                    <label for="descrizione">Inserire Testo</label>             
+                    <label for="testo">Inserire Testo</label>             
                     <textarea rows="4" cols="32" name="testo" 
                               id="testo">${news.getTesto()}</textarea>
 
 
 
                     <label for="categoria">Categoria</label>
-                    <select name="categoria" class="ruolo">
+                    <select name="categoria" class="ruolo" id="categoria">
                         <option class="ruolo" value="null">Scegli...(Attualmente ${news.getCategory().toString()})</option>
                         <c:forEach var="val" items="${categorie}">
                             <option class="ruolo" value="${val.toString()}">

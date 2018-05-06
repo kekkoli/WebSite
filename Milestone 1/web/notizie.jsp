@@ -8,7 +8,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="author" content="Francesco">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="keywords" content="moto,motogp,moto24h,Spagna,Dovizioso">
         <link href="style.css" rel="stylesheet" type="text/css">
         <title>Notizie</title>
     </head>
@@ -30,12 +33,12 @@
                 <a href="notizia.html?nid=${news.getId()}">
                     <h1>${news.getTitle()}</h1></a>
                 <a href="notizia.html?nid=${news.getId()}">
-                <img src="${news.getUrlImagine()}"width="400" height="200" 
-                     class="imgNews"></a>
+                <img src="${news.getUrlImagine()}" width="400" height="200" 
+                     class="imgNews" alt="foto"></a>
                 
                 <p>${news.getDescrizione()}</p>
                 <p >${news.estraiCaratteri()}</p>
-                <hr id="blocco">
+                <hr class="blocco">
                 </div>
                 
             </c:forEach>

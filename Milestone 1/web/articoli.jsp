@@ -13,7 +13,7 @@
         <meta name="author" content="Francesco">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="keywords" content="moto,motogp,moto24h,articoli,Spagna,Dovizioso">
+        <meta name="keywords" content="moto,motogp,moto24h,Spagna,Dovizioso">
         <link href="style.css" rel="stylesheet" type="text/css">
     </head>
     
@@ -46,7 +46,7 @@
                             <td>${news.getTitle()}</td>
                             <td><a href="scriviArticolo.html?nid=${news.getId()}">
                                     <input type="image" src="img/modifica.jpg" 
-                                    accept=""alt="modifica" height="15" width="15">
+                                    alt="modifica" height="15" width="15" >
                             </a></td>
                             <td><input type="image" src="img/cancella.jpg"
                                alt="elimina" height="15" width="15"></td>

@@ -29,7 +29,7 @@
           
             <form action="login.html" method="post">
                <img src="img/logo.png" title="moto"
-               alt="Logo" height="70"></a>
+               alt="Logo" height="70">
             <h3>Login:</h3>
             
             <c:if test="${invalidData == true}">

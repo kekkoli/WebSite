@@ -227,7 +227,7 @@ Ogni pagina infatti avra' una specifica classe*/
     display:inline;
     float:left;
 }
-#blocco{
+.blocco{
     margin-top: 15%;
     clear:both;
 }
