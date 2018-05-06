@@ -32,6 +32,17 @@
             <h3><img src="${news.getUrlImagine()}"width="400" height="200"></h3>
             <p>${news.getDescrizione()}</p>
             <p>${news.getTesto()}</p>
+            <hr>
+            <h2>Commenti</h2>
+            <div id="Commenti"> 
+                <h3>${commento.getUser().getName()}:</h3>
+                <p>${commento.getContenuto()}</p>
+            </div>
+           
+            
+            <textarea rows="4" cols="32" name="testo" 
+                >Scrivi un commento</textarea>
+            <input type="submit" value="Commenta" id="pulsanteCommenti"/>
 
             
             

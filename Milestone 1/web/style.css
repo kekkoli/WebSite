@@ -90,7 +90,11 @@ nav{
     background-color:#acb3ff ;
 }
 nav ul{
+    border-top: 0px;
+    border-right: 0px;
+    border-left: 0px;
     
+    border-style: solid;
     padding-left: 0px;
     margin-bottom:0px;
     margin-top:0px;
@@ -106,7 +110,8 @@ nav ul li{
     
     border-top: 0px;
     border-left: 0px;
-    padding: 0px;
+    border-bottom: 0px;
+    padding: 5px;
     
     border-style: solid;
     text-align: center;
@@ -214,7 +219,6 @@ Ogni pagina infatti avra' una specifica classe*/
     padding-left: 0px;
 }
 .singolaNotizia{
-
     padding-left:5%;
     
     clear:both;
@@ -228,6 +232,26 @@ Ogni pagina infatti avra' una specifica classe*/
     clear:both;
 }
 
+#Commenti{
+    margin-top: 2%;
+    border-style: solid;
+    width: 33%;
+    margin-bottom: 2%;
+}
+
+#Commenti p, #Commenti h3{
+    margin:9px;
+}
+
+#pulsanteCommenti{
+    width:33%;
+}
+
+.notizia textarea{
+    display: block;
+    width: 33%;
+    margin-bottom: 2%;
+}
 
 /*CSS legato alla pagina articoli.html*/    
 .articoli table{
@@ -295,7 +319,7 @@ th{
     border-color: black;
 }
 
-.scriviArticolo form textarea{
+.scriviArticolo form textarea, #Commenti textarea{
     display:block;
 }
 .scriviArticolo form div input{

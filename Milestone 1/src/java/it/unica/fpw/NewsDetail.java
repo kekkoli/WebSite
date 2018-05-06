@@ -33,8 +33,11 @@ public class NewsDetail extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             int idNews = Integer.parseInt(request.getParameter("nid"));
             NewsFactory newsfactory =  NewsFactory.getInstance();
+            CommentiFactory com = CommentiFactory.getInstance();
             
             request.setAttribute("news", newsfactory.getNewsById(idNews));
+            
+            request.setAttribute("commento", com.getCommentsById(idNews));
             request.getRequestDispatcher("notizia.jsp").forward(request, response);
             
         }   

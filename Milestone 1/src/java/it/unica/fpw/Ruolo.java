@@ -10,6 +10,6 @@ package it.unica.fpw;
  * @author kekko
  */
 public enum Ruolo {
-    Autore,Scrittore,Ospite;
+    Autore,Lettore,Ospite;
 
   }

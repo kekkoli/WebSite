@@ -9,6 +9,6 @@ package it.unica.fpw;
  *
  * @author kekko
  */
-public enum Categorie {
+public enum Categoria {
     News,Prove,Ruote,Scuderie,Piloti;
 }

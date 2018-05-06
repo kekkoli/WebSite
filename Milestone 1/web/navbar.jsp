@@ -14,7 +14,7 @@
     <body>
         <nav> 
             <ul>
-                <li><a href="index.html">Home</a></li>
+                <li><a href="notizie.html">Home</a></li>
                 <c:if test="${loggedIn == true }">
                     <li>Ciao, ${user.getName()}
                         <a href="login.html?logout=true">Logout</a></li>

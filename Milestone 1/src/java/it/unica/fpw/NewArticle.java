@@ -37,7 +37,7 @@ public class NewArticle extends HttpServlet {
            News news = newsFactory.getNewsById(idNews);
            
            request.setAttribute("news", newsFactory.getNewsById(idNews));
-           request.setAttribute("categorie", Categorie.values());
+           request.setAttribute("categorie", Categoria.values());
            
            String s = request.getParameter("titolo");
            if(s!=null && !s.equals(news.getTitle()))
@@ -62,7 +62,7 @@ public class NewArticle extends HttpServlet {
            
            s = request.getParameter("categoria");
             if(s!=null && !s.equals(news.getCategory().toString())){
-                for(Categorie cat : Categorie.values())
+                for(Categoria cat : Categoria.values())
                     if(cat.toString( ).equals(s)){
                         news.setCategory(cat);
                     }

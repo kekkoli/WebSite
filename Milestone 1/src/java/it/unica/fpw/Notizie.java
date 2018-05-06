@@ -35,9 +35,9 @@ public class Notizie extends HttpServlet {
             
             String s = request.getParameter("category");
             
-            Categorie c;
+            Categoria c;
             if (s!=null)
-                for(Categorie cat : Categorie.values()){
+                for(Categoria cat : Categoria.values()){
                     if(cat.toString( ).equals(s)){
                       request.setAttribute("listNews", news.getNewsByCategory(cat));
                     }
