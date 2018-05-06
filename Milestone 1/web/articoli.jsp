@@ -44,10 +44,13 @@
                         <tr>
                             <td>${news.getDate().toString()}</td>
                             <td>${news.getTitle()}</td>
-                            <td><a href="scriviArticolo.html?nid=${news.getId()}">
-                                    <input type="image" src="img/modifica.jpg" 
-                                    alt="modifica" height="15" width="15" >
-                            </a></td>
+                            <td><form action="scriviArticolo.html?nid=${news.getId()}"
+                                      method="post">
+                                    <button type="submit">
+                                        <img src="img/modifica.jpg" 
+                                        alt="modifica" height="15" width="15" >
+                                    </button>
+                                </form></td>
                             <td><input type="image" src="img/cancella.jpg"
                                alt="elimina" height="15" width="15"></td>
                         </tr>
