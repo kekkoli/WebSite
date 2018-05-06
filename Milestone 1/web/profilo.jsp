@@ -27,9 +27,18 @@
             </c:if> 
 
             <c:if test="${loggedIn == true}">
+                
+                <c:if test="${!parametriCambiati.isEmpty()}" >
+                    <h2>Dati salvati con successo.Son stati modificati i seguenti campi : </h2>
+                    <ul>
+                        <c:forEach var="attuale" items="${parametriCambiati}">
+                            <li>${attuale}</li>
+                        </c:forEach>
+                    </ul>
+                </c:if>
             
                 <form action="profilo.html" method="post">  
-                <h2><strong>Modifica Profilo</strong></h2>
+                <h1><strong>Modifica Profilo</strong></h1>
                 
                 <label for="nome">Nome</label>
                 <input type="text" name="nome" id="nome" value="${user.getName()}">
@@ -60,7 +69,7 @@
                             ${val.toString()}</option>
                     </c:forEach>
                 </select>
-                <input type="submit" value="Salva" id="pulsanteSalva"/>
+                <input type="submit" value="Salva" name="invio" id="pulsanteSalva"/>
 
                 
                 </form>

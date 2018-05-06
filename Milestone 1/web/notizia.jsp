@@ -31,6 +31,7 @@
             <div>${news.getTitle()}</div>
             <h3><img src="${news.getUrlImagine()}"width="400" height="200"></h3>
             <p>${news.getDescrizione()}</p>
+            <p>${news.getTesto()}</p>
 
             
             

@@ -24,26 +24,34 @@
         <jsp:include page="aside.jsp" />
         
       
-        <section id="content" class="scriviArticolo">
+       <section id="content" class="scriviArticolo">
             <!--Questo form consente ad un autore di scivere un nuovo 
             articolo.I campi prevedono l inserimento di titolo,data,
             immagine,didascalia,testo e categoria-->
 
             <form action="articoli.jsp" method="post">  
-                <h2><strong>Modifica profilo</strong></h2>
+                <h2><strong>Scrivi un Articolo</strong></h2>
 
-               
+                <label for="titoloArticolo">Titolo</label>
+                <input type="text" name="titolo" id="titoloArticolo" value="">
+
+                <label for="data">Data</label>
+                <input type="date" name="data" id="data" value="">
+
+                <label for="urlImmagine">Url Immagine</label>
+                <input type="text" name="urlImmagine" id="urlImmagine" value="">
+
                 <label for="didascalia">Inserire didascalia</label>
                 <input type="text" name="didascalia" id="didascalia" value="">
 
 
                 <label for="descrizione">Inserire descrizione</label>             
                 <textarea rows="4" cols="32" name="descrizione" 
-                          id="descrizione">${news.getDescrizione()}</textarea>
+                          id="descrizione"></textarea>
 
                 <div>
                     <h2>Categorie</h2>
-                    <input type="checkbox" name="scelta" value="true">${scelta}<br>
+                    <input type="checkbox" name="scelta" value="news">News<br>
                     <input type="checkbox" name="scelta" value="piloti">Piloti<br>
                     <input type="checkbox" name="scelta" value="scuderie">Scuderie<br>
                     <input type="checkbox" name="scelta" value="staff">Staff<br>
@@ -51,7 +59,7 @@
                 <input type="submit" value="Salva" id="pulsanteSalva"/>
 
             </form>
-        </section>
+</section>
         
         <jsp:include page="footer.jsp" />
         

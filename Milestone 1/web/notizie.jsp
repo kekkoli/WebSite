@@ -22,12 +22,19 @@
         <section id="content" class="notizia">
         
             <c:forEach var="news" items="${listNews}">
+                
                 <p><strong>Categoria :</strong>${news.getCategory()} -- 
                 <strong>Data:</strong> ${news.getDate().toString()}</p>
                 <p>Scritto da: <strong>${news.getUser().getName()} </strong></p>
-                <div>${news.getTitle()}</div>
-                <h3><img src="${news.getUrlImagine()}"width="400" height="200"></h3>
+                
+                <a href="notizia.html?nid=${news.getId()}">${news.getTitle()}</a>
+                <a href="notizia.html?nid=${news.getId()}">
+                <img src="${news.getUrlImagine()}"width="400" height="200" 
+                     class="imgN"></a>
+                
+                <p>${news.getDescrizione()}</p>
                 <p>${news.estraiCaratteri()}</p>
+                
             </c:forEach>
         </section>   
         

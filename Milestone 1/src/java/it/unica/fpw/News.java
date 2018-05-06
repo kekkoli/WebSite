@@ -19,6 +19,7 @@ public class News implements Comparable <News>  {
     private String category;
     private String urlImagine;
     private String descrizione;
+    private String testo;
     private User user;
 
     public News(){
@@ -29,6 +30,7 @@ public class News implements Comparable <News>  {
         this.urlImagine = "immagine.jpg";
         this.user = new User();
         this.date = LocalDate.of(1,2,3);
+        this.testo = "testo";
     }
 
     /**
@@ -123,7 +125,7 @@ public class News implements Comparable <News>  {
      */
     
     public String estraiCaratteri(){
-        String a = descrizione.substring(0, 30);
+        String a = testo.substring(0, 100) + "...";
         return a;
     }
 
@@ -146,6 +148,20 @@ public class News implements Comparable <News>  {
         if(this.date.compareTo(o.getDate())<0)
             return 1;
         return -1;
+    }
+
+    /**
+     * @return the testo
+     */
+    public String getTesto() {
+        return testo;
+    }
+
+    /**
+     * @param testo the testo to set
+     */
+    public void setTesto(String testo) {
+        this.testo = testo;
     }
     
  
