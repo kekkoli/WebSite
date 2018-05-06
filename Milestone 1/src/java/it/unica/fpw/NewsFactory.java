@@ -24,7 +24,7 @@ public class NewsFactory {
 
         News news1 = new News();
         news1.setId(0);
-        news1.setCategory("Prove");
+        news1.setCategory(Categorie.News);
         news1.setDescrizione("Molto belloMolto");
         news1.setUrlImagine("img/dovizioso.jpeg");
         news1.setTitle("BEllo");
@@ -40,20 +40,23 @@ public class NewsFactory {
         
         News news2 = new News();
         news2.setId(1);
-        news2.setCategory("Piloti");
-        news2.setDescrizione("crosticinocrosticinocrosticinocrosticino");
-        news2.setUrlImagine("img/dovizioso.jpeg");
+        news2.setCategory(Categorie.Piloti);
         news2.setTitle("crosta");
+        news2.setUrlImagine("img/dovizioso.jpeg");
         news2.setDate(LocalDate.of(2018,11,30));    
         news2.setUser(userFactory.getUserById(1));
+        news2.setDescrizione("grattastinchiksjefhkshfziszhfsofzmsoa");
         news2.setTesto("Nessuno pensava sarebbe sopravvissuta. E invece questa"
                 + " gattina randagia trovata tutta sola a West Covina"
                 + ", in California, dopo essere stata abbandonata dalla madre, "
                 + "ha sorpreso tutti. ");
+
+        
+        
         
         News news3 = new News();
         news3.setId(2);
-        news3.setCategory("Piloti");
+        news3.setCategory(Categorie.Piloti);
         news3.setDescrizione("grattastinchiksjefhkshfziszhfsofzmsoa");
         news3.setUrlImagine("img/dovizioso.jpeg");
         news3.setTitle("gatto");
@@ -67,9 +70,10 @@ public class NewsFactory {
                 + " 2° a +0\"259, e la Yamaha di Zarco: il francese , l'unico che"
                 + " è riuscito a fara andare forte la M1, che però è quella del team Tech3.");
         
+        
         News news4 = new News();
         news4.setId(4);
-        news4.setCategory("Prove");
+        news4.setCategory(Categorie.Prove);
         news4.setDescrizione("Molto belloMolto belloMolto belloMolto belloMolto bello");
         news4.setUrlImagine("img/dovizioso.jpeg");
         news4.setTitle("BEllo");
@@ -110,7 +114,8 @@ public class NewsFactory {
         }
         return null;
     }
-    public ArrayList<News> getNewsByCategory(String category){
+    
+    public ArrayList<News> getNewsByCategory(Categorie category){
         ArrayList<News> listNewsCategory = new ArrayList<>();
         for(News news : listNews)
             if(news.getCategory().equals(category))

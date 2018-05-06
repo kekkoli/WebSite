@@ -34,8 +34,14 @@ public class Notizie extends HttpServlet {
             NewsFactory news = NewsFactory.getInstance();
             
             String s = request.getParameter("category");
+            
+            Categorie c;
             if (s!=null)
-                request.setAttribute("listNews", news.getNewsByCategory(s));
+                for(Categorie cat : Categorie.values()){
+                    if(cat.toString( ).equals(s)){
+                      request.setAttribute("listNews", news.getNewsByCategory(cat));
+                    }
+                }
             else
                 request.setAttribute("listNews", news.getNews());
             

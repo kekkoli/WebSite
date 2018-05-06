@@ -16,7 +16,7 @@ public class News implements Comparable <News>  {
     private int id;
     private LocalDate date;
     private String title;
-    private String category;
+    private Categorie category;
     private String urlImagine;
     private String descrizione;
     private String testo;
@@ -25,7 +25,7 @@ public class News implements Comparable <News>  {
     public News(){
         this.id = 3;
         this.title = "Curiosita dal web";
-        this.category = "News";
+        this.category = Categorie.News;
         this.descrizione = "Dal web ci sono giunte notizie bellissime";
         this.urlImagine = "immagine.jpg";
         this.user = new User();
@@ -62,20 +62,6 @@ public class News implements Comparable <News>  {
      */
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    /**
-     * @return the category
-     */
-    public String getCategory() {
-        return category;
-    }
-
-    /**
-     * @param category the category to set
-     */
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     /**
@@ -162,6 +148,20 @@ public class News implements Comparable <News>  {
      */
     public void setTesto(String testo) {
         this.testo = testo;
+    }
+
+    /**
+     * @param category the category to set
+     */
+    public void setCategory(Categorie category) {
+        this.category = category;
+    }
+
+    /**
+     * @return the category
+     */
+    public Categorie getCategory() {
+        return category;
     }
     
  

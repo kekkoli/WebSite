@@ -15,8 +15,8 @@
     <body>
          <header>
             <h1>
-                <a href="index.html"><img src="img/logo.png" title="moto" alt="Logo"></a>
-                <a href="1index.html" id="titolo">MOTO 24h</a>    
+                <a href="notizie.html"><img src="img/logo.png" title="moto" alt="Logo"></a>
+                <a href="notizie.html" id="titolo">MOTO 24h</a>    
             </h1>
         </header>
     </body>

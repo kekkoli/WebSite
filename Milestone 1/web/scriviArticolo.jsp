@@ -3,7 +3,7 @@
     Created on : 24-apr-2018, 16.56.24
     Author     : kekko
 --%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -29,33 +29,36 @@
             articolo.I campi prevedono l inserimento di titolo,data,
             immagine,didascalia,testo e categoria-->
 
-            <form action="articoli.jsp" method="post">  
+            <form action="scriviArticolo.html?nid=${news.getId()}" method="post">  
                 <h2><strong>Scrivi un Articolo</strong></h2>
 
                 <label for="titoloArticolo">Titolo</label>
-                <input type="text" name="titolo" id="titoloArticolo" value="">
+                <input type="text" name="titolo" id="titoloArticolo" value="${news.getTitle()}">
 
                 <label for="data">Data</label>
-                <input type="date" name="data" id="data" value="">
+                <input type="date" name="data" id="data" value="${news.getDate().toString()}">
 
                 <label for="urlImmagine">Url Immagine</label>
-                <input type="text" name="urlImmagine" id="urlImmagine" value="">
+                <input type="text" name="urlImmagine" id="urlImmagine" value="${news.getUrlImagine()}">
 
                 <label for="didascalia">Inserire didascalia</label>
-                <input type="text" name="didascalia" id="didascalia" value="">
+                <input type="text" name="didascalia" id="didascalia" value="${news.getDescrizione()}">
 
 
-                <label for="descrizione">Inserire descrizione</label>             
-                <textarea rows="4" cols="32" name="descrizione" 
-                          id="descrizione"></textarea>
+                <label for="descrizione">Inserire Testo</label>             
+                <textarea rows="4" cols="32" name="testo" 
+                          id="testo">${news.getTesto()}</textarea>
+                          
 
-                <div>
-                    <h2>Categorie</h2>
-                    <input type="checkbox" name="scelta" value="news">News<br>
-                    <input type="checkbox" name="scelta" value="piloti">Piloti<br>
-                    <input type="checkbox" name="scelta" value="scuderie">Scuderie<br>
-                    <input type="checkbox" name="scelta" value="staff">Staff<br>
-                </div>
+
+                <label for="categoria">Categoria</label>
+                <select name="categoria" class="ruolo">
+                    <option class="ruolo" value="null">Scegli...(Attualmente ${news.getCategory().toString()})</option>
+                    <c:forEach var="val" items="${categorie}">
+                        <option class="ruolo" value="${val.toString()}">
+                            ${val.toString()}</option>
+                    </c:forEach>
+                </select>
                 <input type="submit" value="Salva" id="pulsanteSalva"/>
 
             </form>

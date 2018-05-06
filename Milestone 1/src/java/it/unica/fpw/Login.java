@@ -58,6 +58,8 @@ public class Login extends HttpServlet {
                     int userId = factory.getUserByEmail(email).getId();
                     session.setAttribute("loggedIn", true);
                     session.setAttribute("user", factory.getUserById(userId));
+                    if(factory.getUserById(userId).getRuolo().equals(Ruolo.Autore))
+                        session.setAttribute("autore", true);
                     
                     response.sendRedirect("notizie.html");
                     return;

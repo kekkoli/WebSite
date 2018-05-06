@@ -86,6 +86,10 @@ public class Profilo extends HttpServlet {
             if(s!=null && !s.equals(user.getRuolo().toString())){
                 for(Ruolo ruolo : Ruolo.values())
                     if(ruolo.toString( ).equals(s)){
+                        if(user.getRuolo().equals(Ruolo.Autore))
+                            session.setAttribute("autore", false);
+                        if(ruolo.equals(Ruolo.Autore))
+                            session.setAttribute("autore", true);
                         user.setRuolo(ruolo);
                         cambiati.add("Ruolo");
                     }

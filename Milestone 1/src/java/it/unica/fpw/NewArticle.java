@@ -7,6 +7,7 @@ package it.unica.fpw;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,9 +34,43 @@ public class NewArticle extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
            NewsFactory newsFactory = NewsFactory.getInstance();
            int idNews = Integer.parseInt(request.getParameter("nid"));
+           News news = newsFactory.getNewsById(idNews);
+           
            request.setAttribute("news", newsFactory.getNewsById(idNews));
-           request.setAttribute("scelta", newsFactory.getNewsById(idNews).getCategory());
+           request.setAttribute("categorie", Categorie.values());
+           
+           String s = request.getParameter("titolo");
+           if(s!=null && !s.equals(news.getTitle()))
+               news.setTitle(s);
+           
+            s = request.getParameter("data");
+            if(s!=null && !s.equals(news.getDate().toString()))
+                news.setDate(LocalDate.parse(s));
+            
+           
+           s = request.getParameter("urlImmagine");
+           if(s!=null && !s.equals(news.getUrlImagine()))
+               news.setUrlImagine(s);
+           
+           s = request.getParameter("didascalia");
+           if(s!=null && !s.equals(news.getDescrizione()))
+               news.setDescrizione(s);
+           
+           s = request.getParameter("testo");
+           if(s!=null && !s.equals(news.getTesto()))
+               news.setTesto(s);
+           
+           s = request.getParameter("categoria");
+            if(s!=null && !s.equals(news.getCategory().toString())){
+                for(Categorie cat : Categorie.values())
+                    if(cat.toString( ).equals(s)){
+                        news.setCategory(cat);
+                    }
+            }
+           
            request.getRequestDispatcher("scriviArticolo.jsp").forward(request, response);
+           
+           
         }
     }
 

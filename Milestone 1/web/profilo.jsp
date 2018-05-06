@@ -61,7 +61,7 @@
                 <label for="email">Email</label>
                 <input type="text" name="email" id="coemailgnome" value="${user.getEmail()}">
                 
-                <label for="ruolo" value>Ruolo</label>
+                <label for="ruolo">Ruolo</label>
                 <select name="ruolo" class="ruolo">
                     <option class="ruolo" value="null">Scegli...(Attualmente ${user.getRuolo().toString()})</option>
                     <c:forEach var="val" items="${ruolo}">

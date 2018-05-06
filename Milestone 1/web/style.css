@@ -210,6 +210,24 @@ Ogni pagina infatti avra' una specifica classe*/
     overflow:scroll;
     
 }
+.notizie#content{
+    padding-left: 0px;
+}
+.singolaNotizia{
+
+    padding-left:5%;
+    
+    clear:both;
+}
+.imgNews{
+    display:inline;
+    float:left;
+}
+#blocco{
+    margin-top: 15%;
+    clear:both;
+}
+
 
 /*CSS legato alla pagina articoli.html*/    
 .articoli table{
@@ -275,6 +293,10 @@ th{
     
     border-style: solid;
     border-color: black;
+}
+
+.scriviArticolo form textarea{
+    display:block;
 }
 .scriviArticolo form div input{
     margin-left: 30%;
@@ -421,10 +443,11 @@ footer{
         border-right: 0px;
     }
     
-    .notizia > p{
+    .notizie > p{
         margin: 0px;
     }
-    .notizia img{
+    .notizie img{
         max-width: 100%;
     }
+    
 }

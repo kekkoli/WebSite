@@ -19,21 +19,24 @@
 
         <jsp:include page="aside.jsp" />
         
-        <section id="content" class="notizia">
+        <section id="content" class="notizie">
         
-            <c:forEach var="news" items="${listNews}">
-                
+            <c:forEach var="news" items="${listNews}" >
+                <div class="singolaNotizia">
                 <p><strong>Categoria :</strong>${news.getCategory()} -- 
-                <strong>Data:</strong> ${news.getDate().toString()}</p>
-                <p>Scritto da: <strong>${news.getUser().getName()} </strong></p>
+                <strong>Data:</strong> ${news.getDate().toString()}
+                Scritto da: <strong>${news.getUser().getName()} </strong></p>
                 
-                <a href="notizia.html?nid=${news.getId()}">${news.getTitle()}</a>
+                <a href="notizia.html?nid=${news.getId()}">
+                    <h1>${news.getTitle()}</h1></a>
                 <a href="notizia.html?nid=${news.getId()}">
                 <img src="${news.getUrlImagine()}"width="400" height="200" 
-                     class="imgN"></a>
+                     class="imgNews"></a>
                 
                 <p>${news.getDescrizione()}</p>
-                <p>${news.estraiCaratteri()}</p>
+                <p >${news.estraiCaratteri()}</p>
+                <hr id="blocco">
+                </div>
                 
             </c:forEach>
         </section>   
