@@ -22,7 +22,7 @@
         <jsp:include page="aside.jsp" />
 
         <section id="content" class = "modificaProfilo">
-            <c:if test="${loggedIn == false}">
+            <c:if test="${loggedIn == false || loggedIn ==null }">
                 <h2>Acceso negato. Non sei Loggato.</h2>
             </c:if> 
 

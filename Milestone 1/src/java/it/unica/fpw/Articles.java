@@ -34,15 +34,10 @@ public class Articles extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
             User currentUser = (User)session.getAttribute("user");
-            if(currentUser.getRuolo() == Ruolo.Autore){
-                NewsFactory newsFactory = NewsFactory.getInstance();
-                request.setAttribute("listNews", newsFactory.getNewsByUser(currentUser));
-                request.setAttribute("accesso", true);
+            NewsFactory newsFactory = NewsFactory.getInstance();
+            request.setAttribute("listNews", newsFactory.getNewsByUser(currentUser));
 
-            }
-            else
-                request.setAttribute("accesso", false);
-        request.getRequestDispatcher("articoli.jsp").forward(request, response);
+            request.getRequestDispatcher("articoli.jsp").forward(request, response);
         }
     }
 

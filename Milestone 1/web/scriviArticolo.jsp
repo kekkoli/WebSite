@@ -28,41 +28,45 @@
             <!--Questo form consente ad un autore di scivere un nuovo 
             articolo.I campi prevedono l inserimento di titolo,data,
             immagine,didascalia,testo e categoria-->
+             <c:if test="${autore == false}">
+                <h2>Acceso negato. Non sei un autore.</h2>
+            </c:if>
+            <c:if test="${autore == true}">
+                <form action="scriviArticolo.html?nid=${news.getId()}" method="post">  
+                    <h2><strong>Scrivi un Articolo</strong></h2>
 
-            <form action="scriviArticolo.html?nid=${news.getId()}" method="post">  
-                <h2><strong>Scrivi un Articolo</strong></h2>
+                    <label for="titoloArticolo">Titolo</label>
+                    <input type="text" name="titolo" id="titoloArticolo" value="${news.getTitle()}">
 
-                <label for="titoloArticolo">Titolo</label>
-                <input type="text" name="titolo" id="titoloArticolo" value="${news.getTitle()}">
+                    <label for="data">Data</label>
+                    <input type="date" name="data" id="data" value="${news.getDate().toString()}">
 
-                <label for="data">Data</label>
-                <input type="date" name="data" id="data" value="${news.getDate().toString()}">
+                    <label for="urlImmagine">Url Immagine</label>
+                    <input type="text" name="urlImmagine" id="urlImmagine" value="${news.getUrlImagine()}">
 
-                <label for="urlImmagine">Url Immagine</label>
-                <input type="text" name="urlImmagine" id="urlImmagine" value="${news.getUrlImagine()}">
-
-                <label for="didascalia">Inserire didascalia</label>
-                <input type="text" name="didascalia" id="didascalia" value="${news.getDescrizione()}">
-
-
-                <label for="descrizione">Inserire Testo</label>             
-                <textarea rows="4" cols="32" name="testo" 
-                          id="testo">${news.getTesto()}</textarea>
-                          
+                    <label for="didascalia">Inserire didascalia</label>
+                    <input type="text" name="didascalia" id="didascalia" value="${news.getDescrizione()}">
 
 
-                <label for="categoria">Categoria</label>
-                <select name="categoria" class="ruolo">
-                    <option class="ruolo" value="null">Scegli...(Attualmente ${news.getCategory().toString()})</option>
-                    <c:forEach var="val" items="${categorie}">
-                        <option class="ruolo" value="${val.toString()}">
-                            ${val.toString()}</option>
-                    </c:forEach>
-                </select>
-                <input type="submit" value="Salva" id="pulsanteSalva"/>
+                    <label for="descrizione">Inserire Testo</label>             
+                    <textarea rows="4" cols="32" name="testo" 
+                              id="testo">${news.getTesto()}</textarea>
 
-            </form>
-</section>
+
+
+                    <label for="categoria">Categoria</label>
+                    <select name="categoria" class="ruolo">
+                        <option class="ruolo" value="null">Scegli...(Attualmente ${news.getCategory().toString()})</option>
+                        <c:forEach var="val" items="${categorie}">
+                            <option class="ruolo" value="${val.toString()}">
+                                ${val.toString()}</option>
+                        </c:forEach>
+                    </select>
+                    <input type="submit" value="Salva" id="pulsanteSalva"/>
+
+                </form>
+            </c:if>
+        </section>
         
         <jsp:include page="footer.jsp" />
         

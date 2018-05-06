@@ -18,7 +18,6 @@
                 <c:if test="${loggedIn == true }">
                     <li>Ciao, ${user.getName()}
                         <a href="login.html?logout=true">Logout</a></li>
-                    <li><a href="profilo.html">Profilo</a></li>
                 </c:if>
                     
                 <c:if test="${loggedIn == false || loggedIn ==null }">
@@ -28,7 +27,7 @@
                 <c:if test="${autore == true}">
                     <li><a href="articoli.html">I miei articoli</a></li>
                 </c:if>
-
+                <li><a href="profilo.html">Profilo</a></li>
                 <li><a href="notizie.html">Notizie</a></li>
                  
             </ul>
