@@ -4,88 +4,156 @@
  * and open the template in the editor.
  */
 package it.unica.fpw;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author kekko
  */
-
 public class UserFactory {
-    
-    
+
     private static UserFactory instance;
     private ArrayList<User> userList = new ArrayList<>();
-    
-    private UserFactory(){
-        
-        User user1 = new User();
-        user1.setId(0);
-        user1.setName("Davide");
-        user1.setSurname("De Luca");
-        user1.setPassword("bluesky");
-        user1.setUrlImagine("immagine1.jpg");
-        user1.setDate(LocalDate.of(2010,2,3));
-        user1.setDescription("Il cielo e' sempre piu blu");
-        user1.setEmail("ginopippo@gmail.com");
-        user1.setRuolo(Ruolo.Autore);
 
-        User user2 = new User();
-        user2.setId(1);
-        user2.setName("Mario");
-        user2.setSurname("molinaro");
-        user2.setPassword("wasabi");
-        user2.setUrlImagine("immagine2.jpg");
-        user1.setDate(LocalDate.of(2012,11,4));
-        user2.setDescription("Cio che non ti uccide ti fortifica");
-        user2.setEmail("frellele@gmail.com");
-        user2.setRuolo(Ruolo.Autore);
-        
-        User user3 = new User();
-        user3.setId(2);
-        user3.setName("Giulio");
-        user3.setSurname("campus");
-        user3.setPassword("crosta");
-        user1.setDate(LocalDate.of(2017,2,13));
-        user3.setUrlImagine("immagine3.jpg");
-        user3.setDescription("Non guardare al passato pensa al futuro");       
-        user3.setEmail("asdrubale@gmail.com");
-        user3.setRuolo(Ruolo.Ospite);
-       
-        userList.add(user1);
-        userList.add(user2);
-        userList.add(user3);
+    private UserFactory() {
     }
-    
-    public static UserFactory getInstance()
-    {
-        if (instance == null)
+
+    public static UserFactory getInstance() {
+        if (instance == null) {
             instance = new UserFactory();
+        }
         return instance;
     }
-    
-    public User getUserById(int id)
-    {
-        for (User user : userList)
-            if (user.getId() == id)
-                return user;
+
+    public User getUserById(int id)   {
+        try {
+            Connection conn = DatabaseManager.getInstance().getConnection();
+            String sql = "select * from Users where id_user = ?";
+            User userToReturn = new User();
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            
+            stmt.setInt(1, id);
+            
+            ResultSet set = stmt.executeQuery();
+            
+            if (set.next()){
+                userToReturn.setId(set.getInt("id_user"));
+                userToReturn.setName(set.getString("name"));
+                userToReturn.setSurname(set.getString("surname"));
+                userToReturn.setEmail(set.getString("email"));
+                userToReturn.setPassword(set.getString("password"));
+                userToReturn.setUrlImagine(set.getString("urlProfImg"));
+            }
+            
+            stmt.close();
+            conn.close();
+            
+            return userToReturn;
+        } catch (SQLException ex) {
+            Logger.getLogger(UserFactory.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         return null;
-    }
-    public boolean login(String email, String password){
-        for(User user : userList ){
-            if(user.getEmail().equals(email) && user.getPassword().equals(password))
-                return true;
+}
+
+    public boolean login(String email, String password) {
+       try {
+            Connection conn = DatabaseManager.getInstance().getConnection();
+            String sql = "select * from Users where email = ? and password =?";
+            Boolean loggedIn = false;
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            
+            stmt.setString(1,email);
+            stmt.setString(2,password);
+            
+            ResultSet set = stmt.executeQuery();
+            
+            loggedIn = set.next();
+
+            
+            stmt.close();
+            conn.close();
+            
+            return loggedIn;
+                    
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
+       return false;
     }
-    
-    public User getUserByEmail(String email){
-        for(User user : userList ){
-            if(user.getEmail().equals(email))
-                return user;
+
+    public User getUserByEmail(String email) {
+         try {
+            Connection conn = DatabaseManager.getInstance().getConnection();
+            String sql = "select * from Users where email = ?";
+            User userToReturn = new User();
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            
+            stmt.setString(1, email);
+            
+            ResultSet set = stmt.executeQuery();
+            
+            if (set.next()){
+                userToReturn.setId(set.getInt("id_user"));
+                userToReturn.setName(set.getString("name"));
+                userToReturn.setSurname(set.getString("surname"));
+                userToReturn.setEmail(set.getString("email"));
+                userToReturn.setPassword(set.getString("password"));
+                userToReturn.setUrlImagine(set.getString("urlProfImg"));
+            }
+            
+            stmt.close();
+            conn.close();
+            
+            return userToReturn;
+                    
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null; 
+       return null;
     }
+
     
-}   
+    public ArrayList<User> getUsers() {
+        ArrayList<User> userDb = new ArrayList<User>();
+
+        try {
+            Connection conn = DatabaseManager.getInstance().getConnection();
+            Statement stmt = conn.createStatement();
+            String sql = "select * from Users";
+            ResultSet set = stmt.executeQuery(sql);
+
+            while (set.next()) {
+                User userNuovo = new User();
+                userNuovo.setId(set.getInt("id_user"));
+                userNuovo.setName(set.getString("name"));
+                userNuovo.setDescription(set.getString("descrizione"));
+                userNuovo.setEmail(set.getString("email"));
+                userNuovo.setDate(set.getDate("data").toLocalDate());
+                userNuovo.setPassword(set.getString("password"));
+                userNuovo.setUrlImagine(set.getString("urlProfImg"));
+                
+                
+                
+                userDb.add(userNuovo);
+            }
+                    
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return userDb;
+    }
+}
