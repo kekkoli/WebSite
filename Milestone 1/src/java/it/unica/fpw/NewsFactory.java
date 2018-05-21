@@ -5,7 +5,9 @@
  */
 package it.unica.fpw;
 import java.util.Collections;
+import java.time.LocalDate;
 
+import java.sql.Date;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -100,20 +102,105 @@ public class NewsFactory {
     }
     
     public ArrayList<News> getNewsByCategory(Categoria category){
-        ArrayList<News> listNewsCategory = new ArrayList<>();
-        for(News news : listNews)
-            if(news.getCategory().equals(category))
-                listNewsCategory.add(news);
-        Collections.sort(listNewsCategory);
-        return listNewsCategory;
+        ArrayList<News>  newsDb = new ArrayList<News>();
+        try {
+            Connection conn = DatabaseManager.getInstance().getConnection();
+            String sql = "select * from News where categoria = ?";
+            UserFactory usr = UserFactory.getInstance();
+
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, category.ordinal());
+
+            ResultSet set = stmt.executeQuery();
+            while (set.next()) {
+                News news = new News();
+                news.setId(set.getInt("id_news"));
+                news.setTitle(set.getString("titolo"));
+                news.setTesto(set.getString("testo"));
+                news.setUrlImagine(set.getString("img"));
+                news.setDescrizione(set.getString("didascalia"));
+                news.setCategory(set.getInt("categoria"));
+                news.setDate(set.getDate("data").toLocalDate());
+                news.setUser(usr.getUserById(set.getInt("autore")));
+                newsDb.add(news);
+            }
+                    
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return newsDb;
+    }
+   
+    public ArrayList<News> getNewsByUser(User user) {
+        ArrayList<News> newsDb = new ArrayList<News>();
+        try {
+            Connection conn = DatabaseManager.getInstance().getConnection();
+            String sql = "select * from News where autore = ?";
+            UserFactory usr = UserFactory.getInstance();
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, user.getId());
+
+            ResultSet set = stmt.executeQuery();
+            while (set.next()) {
+                News news = new News();
+                news.setId(set.getInt("id_news"));
+                news.setTitle(set.getString("titolo"));
+                news.setTesto(set.getString("testo"));
+                news.setUrlImagine(set.getString("img"));
+                news.setDescrizione(set.getString("didascalia"));
+                news.setCategory(set.getInt("categoria"));
+                news.setDate(set.getDate("data").toLocalDate());
+                news.setUser(usr.getUserById(set.getInt("autore")));
+                newsDb.add(news);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return newsDb;
     }
     
-    public ArrayList<News> getNewsByUser(User user){
-        ArrayList<News> listNewsByUser = new ArrayList<>();
-        for(News news : listNews)
-            if(news.getUser().getId() == user.getId())
-                listNewsByUser.add(news);
-        return listNewsByUser;
+    public int addNews(String tit,String tes,String url,String descr,
+            Categoria c,LocalDate dat,User us){
+        int idNuova = -1;
+         try {
+            Connection conn = DatabaseManager.getInstance().getConnection();
+            conn.setAutoCommit(false);
+            String sql = "insert into News(titolo, testo,img,didascalia,categoria,"
+                    + "data,autore) values (?, ?, ?, ?, ?, ?, ?)" ;
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            
+            stmt.setString(1, tit);
+            stmt.setString(2, tes);
+            stmt.setString(3, url);
+            stmt.setString(4, descr);
+            stmt.setInt(5, c.ordinal());
+            stmt.setDate(6,Date.valueOf(dat));
+            stmt.setInt(7, us.getId());
+            
+            stmt.executeUpdate();
+            conn.commit();
+             
+            sql = "SELECT FROM News where testo = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1,tes);
+            ResultSet set = stmt.executeQuery();
+            if(set.next())
+                idNuova = (set.getInt("id_news"));
+            
+            
+             stmt.close();
+             conn.close();
+
+         }
+         catch (SQLException ex) {
+            Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return idNuova;
     }
 }
      

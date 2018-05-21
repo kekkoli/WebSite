@@ -37,6 +37,8 @@ create table News(
 DROP TABLE  News;
 DROP TABLE  Users;
 
+delete from News where id_news = 8;
+
 
 insert into Users(name, surname, email, password, urlProfImg,descrizione,ruolo,data)
 values ("Davide", "De Luca", "ginopippo@gmail.com", "bluesky", "immagine1.jpg",

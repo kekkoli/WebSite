@@ -56,6 +56,13 @@
                         </tr>
                     </c:forEach>
                 </table>
+                <form action="scriviArticolo.html?new=1"
+                      method="post">
+                    <button type="submit">
+                        <img src="img/modifica.jpg" 
+                             alt="modifica" height="15" width="15" >
+                    </button>
+                </form>
             </c:if>
                 
         </section>

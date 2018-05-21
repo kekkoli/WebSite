@@ -23,7 +23,7 @@ public class News implements Comparable <News>  {
     private User user;
 
     public News(){
-        this.id = 3;
+        this.id = -1;
         this.title = "Curiosita dal web";
         this.category = Categoria.News;
         this.descrizione = "Dal web ci sono giunte notizie bellissime";
@@ -170,17 +170,16 @@ public class News implements Comparable <News>  {
                 this.category = Categoria.News;
                 break;
             case 1:
-                this.category = Categoria.Piloti;
-                break;
-            case 2:
                 this.category = Categoria.Prove;
                 break;
-                
-            case 3 :
+            case 2:
                 this.category = Categoria.Ruote;
                 break;
-            case 4:
+            case 3 :
                 this.category = Categoria.Scuderie;
+                break;
+            case 4:
+                this.category = Categoria.Piloti;
         }
     }
     

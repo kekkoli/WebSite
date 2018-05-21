@@ -15,20 +15,20 @@
 
         <title>Scrivi nuovo articolo</title>
     </head>
-    
+
     <body>
         <jsp:include page="header.jsp" />
-        
+
         <jsp:include page="navbar.jsp" />
-      
+
         <jsp:include page="aside.jsp" />
-        
-      
-       <section id="content" class="scriviArticolo">
+
+
+        <section id="content" class="scriviArticolo">
             <!--Questo form consente ad un autore di scivere un nuovo 
             articolo.I campi prevedono l inserimento di titolo,data,
             immagine,didascalia,testo e categoria-->
-             <c:if test="${autore == false}">
+            <c:if test="${autore == false}">
                 <h2>Acceso negato. Non sei un autore.</h2>
             </c:if>
             <c:if test="${autore == true}">
@@ -56,20 +56,30 @@
 
                     <label for="categoria">Categoria</label>
                     <select name="categoria" class="ruolo" id="categoria">
-                        <option class="ruolo" value="null">Scegli...(Attualmente ${news.getCategory().toString()})</option>
+                        <c:if test="${news.getTitle() != null}">
+                            <option class="ruolo" value="null">Scegli...(Attualmente
+                                ${news.getCategory().toString()}) </option>
+                        </c:if>
+
+                        <c:if test="${news.getTitle() == null}">
+                            <option class="ruolo" value="null">Scegli... </option>
+                        </c:if>
+
+
                         <c:forEach var="val" items="${categorie}">
-                            <option class="ruolo" value="${val.toString()}">
-                                ${val.toString()}</option>
+
+                        <option class="ruolo" value="${val.toString()}">
+                            ${val.toString()}</option>
                         </c:forEach>
                     </select>
                     <input type="submit" value="Salva" id="pulsanteSalva"/>
 
-                </form>
+                </form>        
             </c:if>
         </section>
-        
+
         <jsp:include page="footer.jsp" />
-        
+
     </body>
 </html>
 

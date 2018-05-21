@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,12 +33,55 @@ public class NewArticle extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           NewsFactory newsFactory = NewsFactory.getInstance();
+            HttpSession session = request.getSession();
+            request.setAttribute("categorie", Categoria.values());
+
+            
+            NewsFactory newsFactory = NewsFactory.getInstance();
+            News news = new News();
+            
+            if((request.getParameter("new")) != null ){
+                news.setTitle(null);
+                news.setCategory(null);
+                news.setDate(null);
+                news.setDescrizione(null);
+                news.setUrlImagine(null);
+                news.setCategory(null);
+                request.setAttribute("news", news);
+                
+                request.getRequestDispatcher("scriviArticolo.jsp").forward(request, response);
+            }
+                
+           
            int idNews = Integer.parseInt(request.getParameter("nid"));
-           News news = newsFactory.getNewsById(idNews);
+            
+           if (idNews == -1) {
+                if (request.getParameter("titolo") != null
+                        && request.getParameter("data") != null
+                        && request.getParameter("urlImmagine") != null
+                        && request.getParameter("didascalia") != null
+                        && request.getParameter("testo") != null
+                        && request.getParameter("categoria") != null) {
+
+                    String tit = request.getParameter("titolo");
+                    String tes = request.getParameter("testo");
+                    String descr = request.getParameter("didascalia");
+                    LocalDate data = LocalDate.parse(request.getParameter("data"));
+                    String url = request.getParameter("urlImmagine");
+                    Categoria cat = Categoria.valueOf(request.getParameter("categoria"));
+                    
+                    newsFactory.addNews(tit, tes, url, descr, cat, data, (User)session.getAttribute("user"));
+
+                
+                }
+            }else{
+       
+                       
+           
+           
+           news = newsFactory.getNewsById(idNews);
            
            request.setAttribute("news", newsFactory.getNewsById(idNews));
-           request.setAttribute("categorie", Categoria.values());
            
            String s = request.getParameter("titolo");
            if(s!=null && !s.equals(news.getTitle()))
@@ -70,7 +114,7 @@ public class NewArticle extends HttpServlet {
            
            request.getRequestDispatcher("scriviArticolo.jsp").forward(request, response);
            
-           
+           } 
         }
     }
 
