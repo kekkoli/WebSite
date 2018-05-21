@@ -148,6 +148,19 @@ public class User {
         this.ruolo = ruolo;
     }
     
+    public void setRuolo(int r){
+        switch(r){
+            case 0:
+                this.ruolo = Ruolo.Autore;
+                break;
+            case 1:
+                this.ruolo = Ruolo.Lettore;
+                break;
+            case 2:
+                this.ruolo = Ruolo.Ospite;
+        }
+    }
+    
         public LocalDate getDate() {
         return date;
     }

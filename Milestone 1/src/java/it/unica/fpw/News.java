@@ -164,6 +164,26 @@ public class News implements Comparable <News>  {
         return category;
     }
     
+    public void setCategory(int c) {
+        switch(c){
+            case 0:
+                this.category = Categoria.News;
+                break;
+            case 1:
+                this.category = Categoria.Piloti;
+                break;
+            case 2:
+                this.category = Categoria.Prove;
+                break;
+                
+            case 3 :
+                this.category = Categoria.Ruote;
+                break;
+            case 4:
+                this.category = Categoria.Scuderie;
+        }
+    }
+    
  
 
  

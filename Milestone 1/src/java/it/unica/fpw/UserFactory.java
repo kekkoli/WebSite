@@ -5,6 +5,7 @@
  */
 package it.unica.fpw;
 
+import it.unica.fpw.Ruolo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -139,13 +140,13 @@ public class UserFactory {
                 User userNuovo = new User();
                 userNuovo.setId(set.getInt("id_user"));
                 userNuovo.setName(set.getString("name"));
+                userNuovo.setSurname(set.getString("surname"));
                 userNuovo.setDescription(set.getString("descrizione"));
                 userNuovo.setEmail(set.getString("email"));
                 userNuovo.setDate(set.getDate("data").toLocalDate());
                 userNuovo.setPassword(set.getString("password"));
                 userNuovo.setUrlImagine(set.getString("urlProfImg"));
-                
-                
+                userNuovo.setRuolo(set.getInt("ruolo"));
                 
                 userDb.add(userNuovo);
             }

@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,34 +37,65 @@ public class NewsFactory {
         return instance;
     }
      public ArrayList<News> getNews(){
-       ArrayList<News> userDb = new ArrayList<News>();
+       ArrayList<News>  newsDb = new ArrayList<News>();
 
         try {
             Connection conn = DatabaseManager.getInstance().getConnection();
             Statement stmt = conn.createStatement();
             String sql = "select * from News";
             ResultSet set = stmt.executeQuery(sql);
-
+            UserFactory usr = UserFactory.getInstance();
+            
             while (set.next()) {
                 News nuovaNews = new News();
                 nuovaNews.setId(set.getInt("id_news"));
-                nuovaNews.setName(set.getString("name"));
+                nuovaNews.setTitle(set.getString("titolo"));
+                nuovaNews.setTesto(set.getString("testo"));
+                nuovaNews.setUrlImagine(set.getString("img"));
+                nuovaNews.setDescrizione(set.getString("didascalia"));
+                nuovaNews.setCategory(set.getInt("categoria"));
+                nuovaNews.setDate(set.getDate("data").toLocalDate());
                 
-                userDb.add(News nuovaNews);
+                nuovaNews.setUser(usr.getUserById(set.getInt("autore")));
+                
+                newsDb.add(nuovaNews);
             }
                     
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return userDb;
+        return newsDb;
     }
      
     public News getNewsById(int id){
-        for(News news : listNews){
-            if(news.getId() == id)
-                return news;
+        try {
+            Connection conn = DatabaseManager.getInstance().getConnection();
+            String sql = "select * from News where id_news = ?";
+            News news = new News();
+            UserFactory usr = UserFactory.getInstance();
+
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+
+            ResultSet set = stmt.executeQuery();
+            if (set.next()) {
+                news.setId(set.getInt("id_news"));
+                news.setTitle(set.getString("titolo"));
+                news.setTesto(set.getString("testo"));
+                news.setUrlImagine(set.getString("img"));
+                news.setDescrizione(set.getString("didascalia"));
+                news.setCategory(set.getInt("categoria"));
+                news.setDate(set.getDate("data").toLocalDate());
+                news.setUser(usr.getUserById(set.getInt("autore")));
+               return news;
+            }
+                    
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         return null;
     }
     

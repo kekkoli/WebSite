@@ -77,7 +77,6 @@ values("Rossi quinto","Nel segno della Honda, ma non quella che ti aspetti: in
                  è riuscito a fara andare forte la M1, che però è quella del team Tech3.",
         "img/immagineNews3.jpg","Lorenzo",4,'2008-11-30',2);
 
-
 insert into News(titolo,testo,img,didascalia,categoria,data,autore)
 values("Doovizioso cade","Nelle Libere, che non concorrono all'accesso alla 
                 qualifica, brillante prestazione della Suzuki, che conferma
@@ -87,4 +86,4 @@ values("Doovizioso cade","Nelle Libere, che non concorrono all'accesso alla
                 5° Pedrosa, 6° Dovizioso, 7° Rabat, 8° Petrucci, 
                 9° Viñales e 10° Pol Espargaro. solo 14° Rossi,
                 in grossa difficoltà.",
-                "img/dovizioso.jpg","Dovizioso",1,'2000-10-15',1);
+                "img/dovizioso.jpeg","Dovizioso",1,'2000-10-15',1);
