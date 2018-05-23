@@ -24,13 +24,13 @@ public class News implements Comparable <News>  {
 
     public News(){
         this.id = -1;
-        this.title = "Curiosita dal web";
+        this.title = "Inserisci Titolo";
         this.category = Categoria.News;
-        this.descrizione = "Dal web ci sono giunte notizie bellissime";
-        this.urlImagine = "immagine.jpg";
+        this.descrizione = "inserisci didascalia";
+        this.urlImagine = "Inserisci Url immagine";
         this.user = new User();
-        this.date = LocalDate.of(1,2,3);
-        this.testo = "testo";
+        this.date = LocalDate.of(1,1,1);
+        this.testo = "Inserisci Testo";
     }
 
     /**
@@ -111,6 +111,8 @@ public class News implements Comparable <News>  {
      */
     
     public String estraiCaratteri(){
+        if(testo.length() < 100)
+            return testo;
         String a = testo.substring(0, 100) + "...";
         return a;
     }

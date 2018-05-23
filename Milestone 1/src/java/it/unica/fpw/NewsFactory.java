@@ -168,7 +168,7 @@ public class NewsFactory {
         int idNuova = -1;
          try {
             Connection conn = DatabaseManager.getInstance().getConnection();
-            conn.setAutoCommit(false);
+            
             String sql = "insert into News(titolo, testo,img,didascalia,categoria,"
                     + "data,autore) values (?, ?, ?, ?, ?, ?, ?)" ;
             
@@ -183,24 +183,56 @@ public class NewsFactory {
             stmt.setInt(7, us.getId());
             
             stmt.executeUpdate();
-            conn.commit();
              
-            sql = "SELECT FROM News where testo = ?";
+            sql = "select * from News where testo = ?";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1,tes);
             ResultSet set = stmt.executeQuery();
             if(set.next())
                 idNuova = (set.getInt("id_news"));
+            stmt.close();
             
+            conn.close();
             
-             stmt.close();
-             conn.close();
+            return idNuova;
 
          }
          catch (SQLException ex) {
             Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
         }
          return idNuova;
+    }
+    
+    public void updateNews(String tit,String tes,String url,String descr,
+            Categoria c,LocalDate dat,User us,int id){
+         try {
+            Connection conn = DatabaseManager.getInstance().getConnection();
+            
+            String sql = "update News set titolo=?, testo=?, img=?, didascalia=?,"
+                    + "categoria=?, data=?,autore=? where id_news = ?" ;
+            
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            
+            stmt.setString(1, tit);
+            stmt.setString(2, tes);
+            stmt.setString(3, url);
+            stmt.setString(4, descr);
+            stmt.setInt(5, c.ordinal());
+            stmt.setDate(6,Date.valueOf(dat));
+            stmt.setInt(7, us.getId());
+            stmt.setInt(8,id);
+            
+            stmt.executeUpdate();
+             
+            stmt.close();
+            
+            conn.close();
+            
+
+         }
+         catch (SQLException ex) {
+            Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
      

@@ -36,26 +36,15 @@ public class NewArticle extends HttpServlet {
             HttpSession session = request.getSession();
             request.setAttribute("categorie", Categoria.values());
 
-            
             NewsFactory newsFactory = NewsFactory.getInstance();
             News news = new News();
-            
-            if((request.getParameter("new")) != null ){
-                news.setTitle(null);
-                news.setCategory(null);
-                news.setDate(null);
-                news.setDescrizione(null);
-                news.setUrlImagine(null);
-                news.setCategory(null);
+
+            if (request.getParameter("new") != null) {
                 request.setAttribute("news", news);
-                
                 request.getRequestDispatcher("scriviArticolo.jsp").forward(request, response);
             }
-                
-           
-           int idNews = Integer.parseInt(request.getParameter("nid"));
-            
-           if (idNews == -1) {
+
+            if (request.getParameter("nid").equals("")) {
                 if (request.getParameter("titolo") != null
                         && request.getParameter("data") != null
                         && request.getParameter("urlImmagine") != null
@@ -69,52 +58,44 @@ public class NewArticle extends HttpServlet {
                     LocalDate data = LocalDate.parse(request.getParameter("data"));
                     String url = request.getParameter("urlImmagine");
                     Categoria cat = Categoria.valueOf(request.getParameter("categoria"));
-                    
-                    newsFactory.addNews(tit, tes, url, descr, cat, data, (User)session.getAttribute("user"));
 
-                
+                    int idNews = newsFactory.addNews(tit, tes, url, descr, cat, data, (User) session.getAttribute("user"));
+
+                    news = newsFactory.getNewsById(idNews);
+                    request.setAttribute("news", news);
+                    request.setAttribute("nid", idNews);
+
+                    request.getRequestDispatcher("scriviArticolo.jsp").forward(request, response);
                 }
-            }else{
-       
-                       
-           
-           
-           news = newsFactory.getNewsById(idNews);
-           
-           request.setAttribute("news", newsFactory.getNewsById(idNews));
-           
-           String s = request.getParameter("titolo");
-           if(s!=null && !s.equals(news.getTitle()))
-               news.setTitle(s);
-           
-            s = request.getParameter("data");
-            if(s!=null && !s.equals(news.getDate().toString()))
-                news.setDate(LocalDate.parse(s));
-            
-           
-           s = request.getParameter("urlImmagine");
-           if(s!=null && !s.equals(news.getUrlImagine()))
-               news.setUrlImagine(s);
-           
-           s = request.getParameter("didascalia");
-           if(s!=null && !s.equals(news.getDescrizione()))
-               news.setDescrizione(s);
-           
-           s = request.getParameter("testo");
-           if(s!=null && !s.equals(news.getTesto()))
-               news.setTesto(s);
-           
-           s = request.getParameter("categoria");
-            if(s!=null && !s.equals(news.getCategory().toString())){
-                for(Categoria cat : Categoria.values())
-                    if(cat.toString( ).equals(s)){
-                        news.setCategory(cat);
-                    }
-            }
-           
-           request.getRequestDispatcher("scriviArticolo.jsp").forward(request, response);
-           
-           } 
+            }//Edita news
+            else
+                if (request.getParameter("titolo") != null
+                    && request.getParameter("data") != null
+                    && request.getParameter("urlImmagine") != null
+                    && request.getParameter("didascalia") != null
+                    && request.getParameter("testo") != null
+                    && request.getParameter("categoria") != null) {
+
+                String tit = request.getParameter("titolo");
+                String tes = request.getParameter("testo");
+                String descr = request.getParameter("didascalia");
+                LocalDate data = LocalDate.parse(request.getParameter("data"));
+                String url = request.getParameter("urlImmagine");
+                Categoria cat = Categoria.valueOf(request.getParameter("categoria"));
+
+                int idNews = Integer.parseInt(request.getParameter("nid"));
+
+                newsFactory.updateNews(tit, tes, url, descr, cat, data, (User) session.getAttribute("user"), idNews);
+
+                request.setAttribute("news", newsFactory.getNewsById(idNews));
+                request.setAttribute("nid", idNews);
+                
+                request.getRequestDispatcher("scriviArticolo.jsp").forward(request, response);
+            }       
+            request.setAttribute("news", newsFactory.getNewsById(Integer.parseInt(request.getParameter("nid"))));
+            request.setAttribute("nid", Integer.parseInt(request.getParameter("nid")));
+            request.getRequestDispatcher("scriviArticolo.jsp").forward(request, response);
+
         }
     }
 

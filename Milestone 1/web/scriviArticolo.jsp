@@ -32,7 +32,7 @@
                 <h2>Acceso negato. Non sei un autore.</h2>
             </c:if>
             <c:if test="${autore == true}">
-                <form action="scriviArticolo.html?nid=${news.getId()}" method="post">  
+                <form action="scriviArticolo.html?nid=${nid}" method="post">  
                     <h2><strong>Scrivi un Articolo</strong></h2>
 
                     <label for="titoloArticolo">Titolo</label>
@@ -56,18 +56,11 @@
 
                     <label for="categoria">Categoria</label>
                     <select name="categoria" class="ruolo" id="categoria">
-                        <c:if test="${news.getTitle() != null}">
-                            <option class="ruolo" value="null">Scegli...(Attualmente
+                            <option class="ruolo" value="${news.getCategory().toString()}">
+                                Scegli...(Attualmente
                                 ${news.getCategory().toString()}) </option>
-                        </c:if>
-
-                        <c:if test="${news.getTitle() == null}">
-                            <option class="ruolo" value="null">Scegli... </option>
-                        </c:if>
-
 
                         <c:forEach var="val" items="${categorie}">
-
                         <option class="ruolo" value="${val.toString()}">
                             ${val.toString()}</option>
                         </c:forEach>

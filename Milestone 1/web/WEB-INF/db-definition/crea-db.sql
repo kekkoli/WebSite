@@ -10,12 +10,12 @@
 
 create table Users(
     id_user serial primary key,
-    name varchar(100),
-    surname varchar(100),
+    name varchar(110),
+    surname varchar(120),
     email varchar(140),
     password varchar(50),
     urlProfImg varchar(300),
-    descrizione varchar(100),
+    descrizione varchar(130),
     ruolo tinyint,
     data date
 );
@@ -37,7 +37,8 @@ create table News(
 DROP TABLE  News;
 DROP TABLE  Users;
 
-delete from News where id_news = 8;
+delete from News where titolo = "Inserisci Titolo";
+update Users set ruolo = 0;
 
 
 insert into Users(name, surname, email, password, urlProfImg,descrizione,ruolo,data)
