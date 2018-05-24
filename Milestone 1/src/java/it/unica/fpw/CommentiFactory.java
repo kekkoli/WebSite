@@ -4,7 +4,14 @@
  * and open the template in the editor.
  */
 package it.unica.fpw;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -51,11 +58,33 @@ public class CommentiFactory {
         return instance;
     }
      
-     public Commenti getCommentsById(int id){
-            for(Commenti commenti : listCommenti){
-            if(commenti.getId() == id)
-                return commenti;
+    public ArrayList<Commenti> getCommentsByIdNews(int id){
+                    ArrayList <Commenti> commDb = new ArrayList<>();
+
+        try {
+            Connection conn = DatabaseManager.getInstance().getConnection();
+            String sql = "select * from Comments where news = ?";
+            UserFactory usr = UserFactory.getInstance();
+
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+
+            ResultSet set = stmt.executeQuery();
+            while(set.next()) {
+                Commenti comm = new Commenti();
+                comm.setUser(usr.getUserById(set.getInt("autore")));
+                comm.setIdNews(set.getInt("news"));
+                comm.setContenuto(set.getString("contenuto"));
+                comm.setData(LocalDate.now());
+                comm.setId(set.getInt("id_comm"));
+                commDb.add(comm);
+            }
+                    
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return null;
-     }
+
+        return commDb;
+    }
 }

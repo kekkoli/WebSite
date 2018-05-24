@@ -37,7 +37,7 @@ public class NewsDetail extends HttpServlet {
             
             request.setAttribute("news", newsfactory.getNewsById(idNews));
             
-            request.setAttribute("commento", com.getCommentsById(idNews));
+            request.setAttribute("commenti", com.getCommentsByIdNews(idNews));
             request.getRequestDispatcher("notizia.jsp").forward(request, response);
             
         }   

@@ -5,19 +5,40 @@
  */
 package it.unica.fpw;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author kekko
  */
 public class Commenti {
+
+    /**
+     * @return the data
+     */
+    public LocalDate getData() {
+        return data;
+    }
+
+    /**
+     * @param data the data to set
+     */
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
     
     private User user;
     private String contenuto;
     private int id;
+    private int idNews;
+    private LocalDate data;
     
     public Commenti(){
         this.user = new User(); 
         this.contenuto = "Articolo bellissimo!";
+        this.idNews = 0;
+        this.data = LocalDate.now();
+        this.id=0;
     }
 
     /**
@@ -60,6 +81,20 @@ public class Commenti {
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+    /**
+     * @return the idNews
+     */
+    public int getIdNews() {
+        return idNews;
+    }
+
+    /**
+     * @param idNews the idNews to set
+     */
+    public void setIdNews(int idNews) {
+        this.idNews = idNews;
     }
     
 }

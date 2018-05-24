@@ -35,8 +35,10 @@
             <hr>
             <h2>Commenti</h2>
             <div id="Commenti"> 
-                <h3>${commento.getUser().getName()}:</h3>
-                <p>${commento.getContenuto()}</p>
+                <c:forEach var="commento" items="${commenti}" >
+                    <h3>${commento.getUser().getName()}:</h3>
+                    <p>${commento.getContenuto()}</p>
+                </c:forEach>
             </div>
            
             

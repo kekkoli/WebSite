@@ -34,8 +34,25 @@ create table News(
     on update cascade on delete cascade
 );
 
+    private LocalDate data;
+
+create table Comments(
+    id_comm serial primary key,
+    contenuto varchar (100),
+    data Date,
+
+    autore bigint unsigned,
+    foreign key (autore) references Users(id_user) 
+    on update cascade on delete cascade,
+    
+    news bigint unsigned,
+    foreign key (news) references News(id_news) 
+    on update cascade on delete cascade
+);
+
 DROP TABLE  News;
 DROP TABLE  Users;
+DROP TABLE Comments;
 
 delete from News where titolo = "Inserisci Titolo";
 update Users set ruolo = 0;
@@ -58,7 +75,7 @@ values("Vittoria di Marquez","Dominio di Marc Marquez, davanti a Johann Zarco e
     Andrea Iannone.Coinvolti in un incidente e fuori gara Andrea Dovizioso, Jorge Lorenzo 
     e Dani Pedrosa: erano in lotta per il secondo posto. 
     Battuti in volata Danilo Petrucci (4°) e Valentino Rossi (5°). 
-    Nono Franco Morbidelli.","img/immagineNews1.jpg","Vittoria di Marquez",0,'2000-10-3',1);
+    Nono Franco Morbidelli.","img/immagineNews1.jpg","Vittoria di Marquez",0,'2000-10-3',4);
 
 insert into News(titolo,testo,img,didascalia,categoria,data,autore)
 values("Lorenzo esce fuori","Il Joker si è svegliato. Dopo la vittoria di Austin ecco 
@@ -89,4 +106,10 @@ values("Doovizioso cade","Nelle Libere, che non concorrono all'accesso alla
                 5° Pedrosa, 6° Dovizioso, 7° Rabat, 8° Petrucci, 
                 9° Viñales e 10° Pol Espargaro. solo 14° Rossi,
                 in grossa difficoltà.",
-                "img/dovizioso.jpeg","Dovizioso",1,'2000-10-15',1);
+                "img/dovizioso.jpeg","Dovizioso",1,'2000-10-15',4);
+
+insert into Comments(contenuto,autore,news,data) values("Articolo bellissimo!",4,7,'2016-11-30');
+insert into Comments(contenuto,autore,news,data) values("Articolo fantastico!",4,7,'2017-11-30');
+insert into Comments(contenuto,autore,news,data) values("Capolavoro!",4,7,'2017-1-03');
+insert into Comments(contenuto,autore,news,data) values("Complimenti davvero!",4,7,'2018-11-30');
+

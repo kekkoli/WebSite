@@ -1,0 +1,32 @@
+Per modellare il sito sono state individuate le seguenti identita':
+	Gli utenti raccolti nella tabella Users,ognuno dei quali coi seguenti attributi:
+		-Id gestito dal database come seriale		
+		-Nome
+		-Cognome
+		-Email
+		-Password
+		-Immagine del profilo
+		-Una didascalia descrittiva
+		-Data di nascita
+		-Il ruolo all' interno del sito;
+	Le news invece rappresentano l entita' legata agli autori,che hanno appunto la possibilita' di inserire nuove notizia nel 		database.Queste presentano i seguenti attributi:
+		-Id seriale come per gli Users
+		-Titolo della notizia
+		-Contenuto della notizia
+		-L immagine della notizia
+		-La didascalia dell immagine della notizia
+		-La data della news
+		-L' autore della News,gestito come chiave esterna che punta ad un elemento della tabella Users;
+	I commenti infine sono legati alle News.Hanno i seguenti attributi:
+		-Id seriale
+		-Data del commento
+		-Contenuto del commento
+		-ID della news
+		-Id dell autore che ha scritto il commento.
+
+Ogni autore dal momento che puo' scrivere piu' news, e dal momento che una news appartiene esclusivamente ad un autore, presentano una relazione uno a molti(Un autore, molte news). Questo viene gestito attraverso una chiave esterna nella tabella News che punta ad un elemento della tabella Users,mediante id.
+
+Discorso analogo per i Commenti: Questi presentano una relazione uno a molti con le News(dal momento che una News puo' avere piu' commenti,ma un singolo commento appartiene ad una sola News),e una relazione uno a molti con gli User(Si possono scrivere piu' commenti ma un commento sara' di un solo autore).
+
+
+	I 

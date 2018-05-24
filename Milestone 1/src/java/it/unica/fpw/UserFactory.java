@@ -205,18 +205,24 @@ public class UserFactory {
     }
     
     public void eliminaProfilo(int id){
-            Connection conn = DatabaseManager.getInstance().getConnection();
-
+        Connection conn = null;
         try {
+            conn = DatabaseManager.getInstance().getConnection();
             conn.setAutoCommit(false);
+            
+            String com = "delete from Comments where autore =?";
+            PreparedStatement stmt = conn.prepareStatement(com);
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+                    
             String ne = "delete from News where autore=?";
-            PreparedStatement stmt = conn.prepareStatement(ne);
+            stmt = conn.prepareStatement(ne);
             stmt.setInt(1, id);
             stmt.executeUpdate();
             
             String ut= "delete from Users where id_user =?";
             stmt = conn.prepareStatement(ut);
-            stmt.setInt(id, id);
+            stmt.setInt(1, id);
             stmt.executeUpdate();
             
             conn.commit();
