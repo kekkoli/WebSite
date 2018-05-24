@@ -215,6 +215,7 @@ public class UserFactory {
             stmt.executeUpdate();
             
             String ut= "delete from Users where id_user =?";
+            stmt = conn.prepareStatement(ut);
             stmt.setInt(id, id);
             stmt.executeUpdate();
             

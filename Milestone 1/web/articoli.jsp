@@ -16,9 +16,9 @@
         <meta name="keywords" content="moto,motogp,moto24h,Spagna,Dovizioso">
         <link href="style.css" rel="stylesheet" type="text/css">
     </head>
-    
+
     <body>
-        
+
         <jsp:include page="header.jsp" />
 
         <jsp:include page="navbar.jsp" />
@@ -26,36 +26,38 @@
         <jsp:include page="aside.jsp" />
 
         <section id="content" class="articoli">
-            
+
             <c:if test="${autore == false}">
                 <h2>Acceso negato. Non sei un autore.</h2>
             </c:if>
-                
+
             <c:if test="${autore == true}">
-                <h2 >Articoli</h2>
-                <table>    
-                    <tr>
-                        <th>Data</th>
-                        <th>Titolo</th>
-                        <th>Modifica</th>
-                        <th>Cancella</th>
-                    </tr>
-                    <c:forEach var="news" items="${listNews}">
+                <c:if test="${listNews}!=null">
+                    <h2 >Articoli</h2>
+                    <table>    
                         <tr>
-                            <td>${news.getDate().toString()}</td>
-                            <td>${news.getTitle()}</td>
-                            <td><form action="scriviArticolo.html?nid=${news.getId()}"
-                                      method="post">
-                                    <button type="submit">
-                                        <img src="img/modifica.jpg" 
-                                        alt="modifica" height="15" width="15" >
-                                    </button>
-                                </form></td>
-                            <td><input type="image" src="img/cancella.jpg"
-                               alt="elimina" height="15" width="15"></td>
+                            <th>Data</th>
+                            <th>Titolo</th>
+                            <th>Modifica</th>
+                            <th>Cancella</th>
                         </tr>
-                    </c:forEach>
-                </table>
+                        <c:forEach var="news" items="${listNews}">
+                            <tr>
+                                <td>${news.getDate().toString()}</td>
+                                <td>${news.getTitle()}</td>
+                                <td><form action="scriviArticolo.html?nid=${news.getId()}"
+                                          method="post">
+                                        <button type="submit">
+                                            <img src="img/modifica.jpg" 
+                                                 alt="modifica" height="15" width="15" >
+                                        </button>
+                                    </form></td>
+                                <td><input type="image" src="img/cancella.jpg"
+                                           alt="elimina" height="15" width="15"></td>
+                            </tr>
+                        </c:forEach>
+                    </table>
+                </c:if>
                 <form action="scriviArticolo.html?new=1"
                       method="post">
                     <button type="submit">
@@ -64,9 +66,9 @@
                     </button>
                 </form>
             </c:if>
-                
+
         </section>
-        
+
         <jsp:include page="footer.jsp" />
 
     </body>

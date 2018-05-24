@@ -37,10 +37,15 @@ public class Profilo extends HttpServlet {
             HttpSession session = request.getSession();
             request.setAttribute("ruolo", Ruolo.values());
 
-            if (request.getParameter("delete").equals("true")) {
+            if (request.getParameter("delete")!=null && request.getParameter("delete").equals("true")) {
                 User us = (User) session.getAttribute("user");
                 UserFactory.getInstance().eliminaProfilo(us.getId());
+                session.setAttribute("loggedIn", false);
+                session.setAttribute("user",null);
+                session.setAttribute("autore",false);
+
                 request.getRequestDispatcher("login.html").forward(request, response);
+                return;
             }
         if (request.getParameter("nome") != null
                 && request.getParameter("cognome") != null
