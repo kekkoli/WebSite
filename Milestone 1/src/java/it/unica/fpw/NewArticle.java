@@ -32,19 +32,26 @@ public class NewArticle extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        /*Questa servlet permette di modificare o creare una News*/
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
             request.setAttribute("categorie", Categoria.values());
 
             NewsFactory newsFactory = NewsFactory.getInstance();
             News news = new News();
-
+            /*In questo caso viene creata la pagina di creazione di una nuova News*/
             if (request.getParameter("new") != null) {
                 request.setAttribute("news", news);
                 request.getRequestDispatcher("scriviArticolo.jsp").forward(request, response);
-            }
 
+            }
+            
             if (request.getParameter("nid").equals("")) {
+                
+                /*Caso di creazione della una nuova news.
+                Vengono controllati i parametri e in caso positivo viene salvata
+                una nuova news sul database.*/
                 if (request.getParameter("titolo") != null
                         && request.getParameter("data") != null
                         && request.getParameter("urlImmagine") != null
@@ -65,10 +72,12 @@ public class NewArticle extends HttpServlet {
                     request.setAttribute("news", news);
                     request.setAttribute("nid", idNews);
 
-                    request.getRequestDispatcher("scriviArticolo.jsp").forward(request, response);
                 }
-            }//Edita news
-            else
+            }
+            else/*Caso in cui venga editata una news.
+                Si procede in modo analogo con la creazione di una nuova.
+                Viene pero' invocato un metodo che al posto di crearla la modifica
+                in base al parametro nid appena passato.*/
                 if (request.getParameter("titolo") != null
                     && request.getParameter("data") != null
                     && request.getParameter("urlImmagine") != null
@@ -91,10 +100,15 @@ public class NewArticle extends HttpServlet {
                 request.setAttribute("nid", idNews);
                 
                 request.getRequestDispatcher("scriviArticolo.jsp").forward(request, response);
-            }       
-            request.setAttribute("news", newsFactory.getNewsById(Integer.parseInt(request.getParameter("nid"))));
-            request.setAttribute("nid", Integer.parseInt(request.getParameter("nid")));
+            }
+                else{
+                request.setAttribute("news", newsFactory.getNewsById(Integer.parseInt(request.getParameter("nid"))));
+                request.setAttribute("nid", Integer.parseInt(request.getParameter("nid")));
+
+                }
+            
             request.getRequestDispatcher("scriviArticolo.jsp").forward(request, response);
+
 
         }
     }

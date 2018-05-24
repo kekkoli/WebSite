@@ -7,7 +7,13 @@
  * Author:  kekko
  * Created: 8-mag-2018
  */
+/*
+Creazione tabelle
+*/
 
+DELETE FROM News where img="Inserisci Url immagine";
+;
+/*Creazione tabella Users con attributi.*/
 create table Users(
     id_user serial primary key,
     name varchar(110),
@@ -19,6 +25,8 @@ create table Users(
     ruolo tinyint,
     data date
 );
+
+/*Creazione tabella News con attributi.*/
 
 create table News(
     id_news serial primary key,
@@ -34,7 +42,7 @@ create table News(
     on update cascade on delete cascade
 );
 
-    private LocalDate data;
+/*Creazione tabella Comments con attributi.*/
 
 create table Comments(
     id_comm serial primary key,
@@ -50,13 +58,8 @@ create table Comments(
     on update cascade on delete cascade
 );
 
-DROP TABLE  News;
-DROP TABLE  Users;
-DROP TABLE Comments;
 
-delete from News where titolo = "Inserisci Titolo";
-update Users set ruolo = 0;
-
+/*Riempimento tabella Users*/
 
 insert into Users(name, surname, email, password, urlProfImg,descrizione,ruolo,data)
 values ("Davide", "De Luca", "ginopippo@gmail.com", "bluesky", "immagine1.jpg",
@@ -70,12 +73,16 @@ insert into Users(name, surname, email, password, urlProfImg,descrizione,ruolo,d
 values ("Giulio", "Campus", "asdrubale@gmail.com", "crosta", "immagine3.jpg",
 "Non guardare al passato pensa al futuro",2,'1990-01-20');
 
+
+
+/*Riempimento tabella News*/
+
 insert into News(titolo,testo,img,didascalia,categoria,data,autore)
 values("Vittoria di Marquez","Dominio di Marc Marquez, davanti a Johann Zarco e
     Andrea Iannone.Coinvolti in un incidente e fuori gara Andrea Dovizioso, Jorge Lorenzo 
     e Dani Pedrosa: erano in lotta per il secondo posto. 
     Battuti in volata Danilo Petrucci (4°) e Valentino Rossi (5°). 
-    Nono Franco Morbidelli.","img/immagineNews1.jpg","Vittoria di Marquez",0,'2000-10-3',4);
+    Nono Franco Morbidelli.","img/immagineNews1.jpg","Vittoria di Marquez",0,'2000-10-3',1);
 
 insert into News(titolo,testo,img,didascalia,categoria,data,autore)
 values("Lorenzo esce fuori","Il Joker si è svegliato. Dopo la vittoria di Austin ecco 
@@ -106,10 +113,12 @@ values("Doovizioso cade","Nelle Libere, che non concorrono all'accesso alla
                 5° Pedrosa, 6° Dovizioso, 7° Rabat, 8° Petrucci, 
                 9° Viñales e 10° Pol Espargaro. solo 14° Rossi,
                 in grossa difficoltà.",
-                "img/dovizioso.jpeg","Dovizioso",1,'2000-10-15',4);
+                "img/dovizioso.jpeg","Dovizioso",1,'2000-10-15',1);
 
-insert into Comments(contenuto,autore,news,data) values("Articolo bellissimo!",4,7,'2016-11-30');
-insert into Comments(contenuto,autore,news,data) values("Articolo fantastico!",4,7,'2017-11-30');
-insert into Comments(contenuto,autore,news,data) values("Capolavoro!",4,7,'2017-1-03');
-insert into Comments(contenuto,autore,news,data) values("Complimenti davvero!",4,7,'2018-11-30');
+
+/*Riempimento tabella Comments*/
+insert into Comments(contenuto,autore,news,data) values("Articolo bellissimo!",3,1,'2016-11-30');
+insert into Comments(contenuto,autore,news,data) values("Articolo fantastico!",1,2,'2017-11-30');
+insert into Comments(contenuto,autore,news,data) values("Capolavoro!",1,3,'2017-1-03');
+insert into Comments(contenuto,autore,news,data) values("Complimenti davvero!",2,4,'2018-11-30');
 

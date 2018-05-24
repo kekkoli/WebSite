@@ -22,7 +22,10 @@ import java.util.logging.Logger;
  * @author kekko
  */
 public class UserFactory {
-
+    /*Questa classe gestisce la restituzione degli User in base a Id o Email.
+    Inoltre gestisce il login dell' utente col controllo dei parametri e la modifica 
+    dei dati del profilo.
+    Infine e' presente il metodo che elimina l utente.*/
     private static UserFactory instance;
     private ArrayList<User> userList = new ArrayList<>();
 
@@ -35,6 +38,7 @@ public class UserFactory {
         }
         return instance;
     }
+    
 
     public User getUserById(int id) {
         try {

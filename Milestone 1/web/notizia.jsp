@@ -15,18 +15,18 @@
         <link href="style.css" rel="stylesheet" type="text/css">
         <title>Notizia</title>
     </head>
-    
+
     <body>
-        
+
         <jsp:include page="header.jsp" />
 
         <jsp:include page="navbar.jsp" />
 
         <jsp:include page="aside.jsp" />
-        
+
         <section id="content" class="notizia">
             <p><strong>Categoria :</strong>${news.getCategory()} -- 
-            <strong>Data:</strong> ${news.getDate().toString()}</p>
+                <strong>Data:</strong> ${news.getDate().toString()}</p>
             <p>Scritto da: <strong>${news.getUser().getName()} </strong></p>
             <div>${news.getTitle()}</div>
             <h3><img src="${news.getUrlImagine()}" width="400" height="200" alt="foto"></h3>
@@ -34,52 +34,22 @@
             <p>${news.getTesto()}</p>
             <hr>
             <h2>Commenti</h2>
-            <div id="Commenti"> 
-                <c:forEach var="commento" items="${commenti}" >
-                    <h3>${commento.getUser().getName()}:</h3>
-                    <p>${commento.getContenuto()}</p>
-                </c:forEach>
-            </div>
-           
-            
+            <c:if test="${nComm > 0}">
+                <div id="Commenti"> 
+
+                    <c:forEach var="commento" items="${commenti}" >
+                        <h3>${commento.getUser().getName()}:</h3>
+                        <p>${commento.getContenuto()}</p>
+                    </c:forEach>
+                </div>
+            </c:if>
             <textarea rows="4" cols="32" name="testo" 
-                >Scrivi un commento</textarea>
+                      >Scrivi un commento</textarea>
             <input type="submit" value="Commenta" id="pulsanteCommenti"/>
-
-            
-            
-                 
-            
-            
-            <!--
-        -- 
-
-            Il contenuto di questa pagina e' una notizia di motoGp
-            All' interno e' presente un immagine e una sezione di testo 
-            descrittiva.-->
-             <!--
-            <p>Categoria: <strong>Sport </strong> -- Data: 23/03/2018 
-               -- Scritto da: <strong>Francesco Ligas </strong></p>
-            <h2>Vittoria di Dovizioso a Loasil</h2>
-            <h3>
-            <img title="moto" alt="Dovisioso"
-                 src="img/dovizioso.jpeg"
-                 width="400" height="200">
-            </h3>
-            <p><strong>Dopo tre secondi posti di fila </strong> 
-               finalmente <strong>Dovizioso </strong> riesce a domare la pista di Losail e 
-               conquistare la vittoria nel GP inaugurale della stagione.
-            </p>
-            <p><strong>DesmoDovi </strong> si impone in rimonta dal 5° posto in griglia, piegando
-            in volata Marquez che ci ha provato fino in fondo, ma come in Austria 
-            e Giappone l'anno scorso si è dovuto arrendere sul filo di lana 
-            dell'ultima curva: secondo, ma che show.     
-            </p>
-             -->
         </section>   
-        
+
         <jsp:include page="footer.jsp" />
 
-        
+
     </body>
 </html>

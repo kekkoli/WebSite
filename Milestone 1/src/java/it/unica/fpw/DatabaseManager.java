@@ -16,7 +16,9 @@ import java.util.logging.Logger;
  * @author kekko
  */
 public class DatabaseManager {
-
+    /*Questa classe serve per gestire le connessioni dal database*/
+    
+    
     private static DatabaseManager instance;
     private String url;
 

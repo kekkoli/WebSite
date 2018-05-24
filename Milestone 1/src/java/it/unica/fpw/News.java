@@ -12,7 +12,7 @@ import java.time.LocalDate;
  * @author kekko
  */
 public class News implements Comparable <News>  {
-
+    /*Classe News*/ 
     private int id;
     private LocalDate date;
     private String title;

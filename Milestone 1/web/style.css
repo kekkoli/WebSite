@@ -262,6 +262,13 @@ Ogni pagina infatti avra' una specifica classe*/
     
     margin-top: 2%;
 }
+
+#pulsanteNuovo{
+    margin-top: 2%;
+    border-style: solid;
+    border-color: black;
+    width: 90%;
+}
 table tr:nth-child(even){
     background-color: #8ffcff;
 }
@@ -330,7 +337,7 @@ th{
     width:30%;
 }
 
-#pulsanteSalva{
+#pulsanteSalva,#pulsanteELimina{
     height: 25px;
     width: 70%;
     margin: 0px;

@@ -22,7 +22,7 @@ public class User {
     private LocalDate date;
     private Ruolo ruolo;
     
-    
+    /*Classe che gestisce gli User.*/
     public User(){
         this.name = "Francesco";
         this.surname = "Ligas";

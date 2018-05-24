@@ -31,41 +31,47 @@ public class Login extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        /*Servlet che si occupa del login e del logout da parte di un utente*/
         try (PrintWriter out = response.getWriter()) {
             
             HttpSession session = request.getSession();
+            
+            /*Se Viene passato il parametro logout viene effettuto il logout e 
+            Invalidata la sessione.*/
             
             if (request.getParameter("logout") != null){
                 session.invalidate();
                 request.getRequestDispatcher("login.jsp").forward(request, response);
                 return;
             }
-            
-            //loggato
+            /*Se l utente e' gia loggato viene reindirizzato alla pagina delle notizie*/
             if (session.getAttribute("loggedIn") != null &&
                 session.getAttribute("loggedIn").equals(true)){
                     response.sendRedirect("notizie.html");
                     return;
             }
             else{
-                //da loggare
+                /*Verifica dei parametri corretti nel login*/
                 String email = request.getParameter("email");
                 String password = request.getParameter("password");
                 UserFactory factory = UserFactory.getInstance();
                 
                 if (email != null && password != null && factory.login(email, password)){
-                     //loggato cn succueso
+                     //loggato con successo
                     int userId = factory.getUserByEmail(email).getId();
                     session.setAttribute("loggedIn", true);
                     session.setAttribute("user", factory.getUserById(userId));
+                    
+                    //Settata la variabile di sessione
                     if(factory.getUserById(userId).getRuolo().equals(Ruolo.Autore))
                         session.setAttribute("autore", true);
                     
                     response.sendRedirect("notizie.html");
                     return;
                 }
+                /*Login senza successo*/
                 else if(email != null && password != null){
-                    //login male
                     request.setAttribute("invalidData", true);
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                     return;

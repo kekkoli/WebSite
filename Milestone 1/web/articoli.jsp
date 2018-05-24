@@ -32,7 +32,7 @@
             </c:if>
 
             <c:if test="${autore == true}">
-                <c:if test="${listNews}!=null">
+                <c:if test="${n > 0}">
                     <h2 >Articoli</h2>
                     <table>    
                         <tr>
@@ -60,10 +60,7 @@
                 </c:if>
                 <form action="scriviArticolo.html?new=1"
                       method="post">
-                    <button type="submit">
-                        <img src="img/modifica.jpg" 
-                             alt="modifica" height="15" width="15" >
-                    </button>
+                        <input type="submit" id="pulsanteNuovo" value="Scrivi Nuovo Articolo">
                 </form>
             </c:if>
 

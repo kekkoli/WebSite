@@ -30,6 +30,7 @@ public class NewsDetail extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        /*Servlet che Restituisce le informazioni della notizia*/
         try (PrintWriter out = response.getWriter()) {
             int idNews = Integer.parseInt(request.getParameter("nid"));
             NewsFactory newsfactory =  NewsFactory.getInstance();
@@ -38,6 +39,7 @@ public class NewsDetail extends HttpServlet {
             request.setAttribute("news", newsfactory.getNewsById(idNews));
             
             request.setAttribute("commenti", com.getCommentsByIdNews(idNews));
+            request.setAttribute("nComm", com.getCommentsByIdNews(idNews).size());
             request.getRequestDispatcher("notizia.jsp").forward(request, response);
             
         }   

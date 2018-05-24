@@ -70,7 +70,7 @@
 
                 </form>
                 <form action="profilo.html?delete=true" method="post" >                       
-                    <input type="submit"  value="Elimina Profilo">
+                    <input type="submit" id="pulsanteELimina" value="Elimina Profilo">
                 </form>
             </c:if>
 

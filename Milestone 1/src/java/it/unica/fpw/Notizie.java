@@ -31,6 +31,8 @@ public class Notizie extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
+        /*Questa Servlet genera le notizia per  la homepage.*/
         try (PrintWriter out = response.getWriter()) {
             NewsFactory news = NewsFactory.getInstance();
             

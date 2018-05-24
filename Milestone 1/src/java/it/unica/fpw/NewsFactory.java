@@ -21,12 +21,14 @@ import java.util.logging.Logger;
  * @author kekko
  */
 public class NewsFactory {
+    /*La newsFactory si occupa di restituire le News su richiesta.
+    Contiene dei metodi che restituiscono una o piu' News in base a id,categoria
+     e autore.Le news vengono pescate dal database.
+    Vi e' inoltre il medotodo che consente la modifica o creazione
+    della news,sempre su database.*/
     
-     
     private static NewsFactory instance;
     private ArrayList<News> listNews = new ArrayList<>();
-    
-    
     
     private NewsFactory(){
     }

@@ -12,20 +12,8 @@ import java.time.LocalDate;
  * @author kekko
  */
 public class Commenti {
-
-    /**
-     * @return the data
-     */
-    public LocalDate getData() {
-        return data;
-    }
-
-    /**
-     * @param data the data to set
-     */
-    public void setData(LocalDate data) {
-        this.data = data;
-    }
+    
+    /*Classe commenti*/
     
     private User user;
     private String contenuto;
@@ -97,4 +85,18 @@ public class Commenti {
         this.idNews = idNews;
     }
     
+    
+      /**
+     * @return the data
+     */
+    public LocalDate getData() {
+        return data;
+    }
+
+    /**
+     * @param data the data to set
+     */
+    public void setData(LocalDate data) {
+        this.data = data;
+    }
 }

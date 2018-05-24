@@ -33,20 +33,28 @@ public class Profilo extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        /*Questa Servlet si occupa della gestione della modifica del profilo.
+        Sara' infatti possibile modificare i singoli campi dell' utente e 
+        l' eventuale eliminazione*/
+        
+        
         try (PrintWriter out = response.getWriter()) {
+            
             HttpSession session = request.getSession();
+            
+            //Setto l attributo Ruolo con l array dei ruoli
             request.setAttribute("ruolo", Ruolo.values());
-
+            /*Eliminazione del profilo. Se viene cliccato il bottone viene passato il parametro
+            Delete e si procede all eliminazione.Vengono resettate le varabili di sessione.*/
             if (request.getParameter("delete")!=null && request.getParameter("delete").equals("true")) {
                 User us = (User) session.getAttribute("user");
                 UserFactory.getInstance().eliminaProfilo(us.getId());
-                session.setAttribute("loggedIn", false);
-                session.setAttribute("user",null);
-                session.setAttribute("autore",false);
-
+                session.invalidate();
                 request.getRequestDispatcher("login.html").forward(request, response);
-                return;
             }
+            
+            /*Modifica effettiva del profilo.
+            Vengono controllati i parametri e in caso siano non nulli viene aggiornato il profilo*/
         if (request.getParameter("nome") != null
                 && request.getParameter("cognome") != null
                 && request.getParameter("email") != null
@@ -54,7 +62,9 @@ public class Profilo extends HttpServlet {
                 && request.getParameter("urlImmagine") != null
                 && request.getParameter("ruolo") != null
                 && request.getParameter("data") != null) {
-
+            
+            
+            //recupero i parametri
             String nome = request.getParameter("nome");
             String cognome = request.getParameter("cognome");
             String email = request.getParameter("email");
@@ -63,10 +73,19 @@ public class Profilo extends HttpServlet {
             String pass = request.getParameter("password");
             Ruolo r = Ruolo.valueOf(request.getParameter("ruolo"));
             LocalDate data = LocalDate.parse(request.getParameter("data"));
-
+            
+            if(r.equals(Ruolo.Autore))
+                session.setAttribute("autore", true);
+           
+            
+            //modifica effettiva
             UserFactory userFactory = UserFactory.getInstance();
             User us = (User) session.getAttribute("user");
-            userFactory.updateUser(nome, cognome, email, des, url, r, data, us, pass);
+            
+            if(us.getRuolo().equals(Ruolo.Autore)&&!r.equals(Ruolo.Autore))
+                session.setAttribute("autore", false);
+            userFactory.updateUser(nome, cognome, email, url,des, r, data, us, pass);
+            //Viene aggiornato lo user corrente
             session.setAttribute("user", userFactory.getUserById(us.getId()));
         }
         request.getRequestDispatcher("profilo.jsp").forward(request, response);
