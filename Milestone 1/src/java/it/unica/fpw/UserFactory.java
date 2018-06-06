@@ -22,6 +22,7 @@ import java.util.logging.Logger;
  * @author kekko
  */
 public class UserFactory {
+
     /*Questa classe gestisce la restituzione degli User in base a Id o Email.
     Inoltre gestisce il login dell' utente col controllo dei parametri e la modifica 
     dei dati del profilo.
@@ -38,7 +39,6 @@ public class UserFactory {
         }
         return instance;
     }
-    
 
     public User getUserById(int id) {
         try {
@@ -169,7 +169,7 @@ public class UserFactory {
     }
 
     public void updateUser(String name, String surname, String email,
-            String url, String descr, Ruolo r, LocalDate dat, User us,String password) {
+            String url, String descr, Ruolo r, LocalDate dat, User us, String password) {
         try {
             Connection conn = DatabaseManager.getInstance().getConnection();
 
@@ -190,14 +190,14 @@ public class UserFactory {
             stmt.executeUpdate();
 
             stmt.close();
-            
-            if(!password.equals("")){
-                sql="update Users set password =? where id_user=?";
-                
-                stmt=conn.prepareStatement(sql);
+
+            if (!password.equals("")) {
+                sql = "update Users set password =? where id_user=?";
+
+                stmt = conn.prepareStatement(sql);
                 stmt.setString(1, password);
                 stmt.setInt(2, us.getId());
-                
+
                 stmt.executeUpdate();
                 stmt.close();
             }
@@ -207,56 +207,53 @@ public class UserFactory {
             Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void eliminaProfilo(int id){
+
+    public void eliminaProfilo(int id) {
         Connection conn = null;
         try {
             conn = DatabaseManager.getInstance().getConnection();
             conn.setAutoCommit(false);
-            
+
             String com = "delete from Comments where autore =?";
             PreparedStatement stmt = conn.prepareStatement(com);
             stmt.setInt(1, id);
             stmt.executeUpdate();
-                    
+
             String ne = "delete from News where autore=?";
             stmt = conn.prepareStatement(ne);
             stmt.setInt(1, id);
             stmt.executeUpdate();
-            
-            String ut= "delete from Users where id_user =?";
+
+            String ut = "delete from Users where id_user =?";
             stmt = conn.prepareStatement(ut);
             stmt.setInt(1, id);
             stmt.executeUpdate();
-            
+
             conn.commit();
-            
-        }catch(SQLException e){
-            Logger.getLogger(UserFactory.class.getName()).log(Level.SEVERE,null,e);
-            if(conn!=null){
-                try{
+
+        } catch (SQLException e) {
+            Logger.getLogger(UserFactory.class.getName()).log(Level.SEVERE, null, e);
+            if (conn != null) {
+                try {
                     conn.rollback();
-                }catch(SQLException ex){
-                    Logger.getLogger(UserFactory.class.getName()).log(Level.SEVERE,null,e);
+                } catch (SQLException ex) {
+                    Logger.getLogger(UserFactory.class.getName()).log(Level.SEVERE, null, e);
                 }
-            }                        
-        }            
+            }
+        }
     }
-    
-    
-     public ArrayList<User> getUsersByNameOrSurname(String pat) {
+
+    public ArrayList<User> getUsersByNameOrSurname(String pat) {
         ArrayList<User> userDb = new ArrayList<User>();
 
         try {
             Connection conn = DatabaseManager.getInstance().getConnection();
-            String sql = "select * from Users where name like ? or surname like ?";
+            String sql = "select * from Users where name like ?";
+
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1,pat);
-            stmt.setString(2,pat);
+            stmt.setString(1, "%" + pat + "%");
 
-            
-            ResultSet set = stmt.executeQuery(sql);
-
+            ResultSet set = stmt.executeQuery();
             while (set.next()) {
                 User userNuovo = new User();
                 userNuovo.setId(set.getInt("id_user"));
@@ -271,12 +268,11 @@ public class UserFactory {
 
                 userDb.add(userNuovo);
             }
-
         } catch (SQLException ex) {
             Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return userDb;
     }
-    
+
 }

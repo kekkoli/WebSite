@@ -22,6 +22,9 @@
             <json:property name="nome" value="${us.getName()}"/>
             <json:property name="cognome" value="${us.getSurname()}"/>
             <json:property name="profImg" value="${us.getUrlImagine()}"/>
+            <json:property name="id" value="${us.getId()}"/>
+
+
         </json:object>
     </c:forEach>
 </json:array>

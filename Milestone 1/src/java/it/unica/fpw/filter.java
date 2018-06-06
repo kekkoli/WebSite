@@ -46,9 +46,10 @@ public class filter extends HttpServlet {
                             
 
                     request.setAttribute("categoryList", s);
+                    
                     ArrayList<User> userList= new ArrayList<>();
-
-                    for(User user : UserFactory.getInstance().getUsersByNameOrSurname(toSearch)){
+                    UserFactory userFactory = UserFactory.getInstance();
+                    for(User user : userFactory.getUsersByNameOrSurname(toSearch)){
                         userList.add(user);
                     }
                         request.setAttribute("userList", userList);

@@ -11,7 +11,7 @@
         <label for="search">Cerca</label>
         <input type="text" name="ricerca" id="search" value="">
     </h2>
-    <section >            
+    <section>            
         <h2 class="mostra">Categorie</h2>
         <h2 class="nascondi"><a href="articoli.html">Categorie</a></h2>
         <ul class = "listaCategorie">
@@ -23,6 +23,7 @@
             <li><strong><a href="notizie.html?category=Piloti">Piloti</a></strong></li>
         </ul>   
     </section>
+    
     <section id="section2">
         <h2 class="mostra">Autori</h2>
         <h2 class="nascondi"><a class="nascondi" href="articoli.html">Autori</a></h2>

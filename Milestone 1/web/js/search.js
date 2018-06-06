@@ -6,14 +6,21 @@
 
 
 
-function createElement(elemento) {
-    if (elemento.type === 'categoria')
-        var cont = $("<li>").html('<a href=notizie.html?category=' + elemento.content + '>' + elemento.content);
-    return $(".listaCategorie").append(cont);
-    
-    if (elemento.type === 'user')
-        cont = $("<li>").html('<a href=notizie.html?userId=' + elemento.id + '>' + elemento.nome);
-    return $(".listaAutori").append(cont);
+function createCategory(categoria) {
+    if (categoria.type === 'categoria') {
+        var cont = $("<li>").html('<a href=notizie.html?category=' + categoria.content + '>' + categoria.content);
+        return $(".listaCategorie").append(cont);
+    }
+
+}
+
+function createAutore(autore) {
+    if (autore.type === 'user') {
+        var cont = $("<li>").html('<a href=notizie.html?userId=' + autore.id + '>' + autore.nome);
+        return $(".listaAutori").append(cont);
+    }
+
+
 
 }
 
@@ -22,17 +29,18 @@ function createElement(elemento) {
 function stateSuccess(data) {
 
     var newsDiv = $(".listaCategorie");
-
-    $(newsDiv).empty();
-    
-    var newsDiv = $(".listaAutori");
-
     $(newsDiv).empty();
 
     for (var instance in data)
-    {
-        $(newsDiv).append(createElement(data[instance]))
-    }
+        $(newsDiv).append(createCategory(data[instance]))
+
+
+    newsDiv = $(".listaAutori");
+    $(newsDiv).empty();
+
+    for (instance in data)
+        $(newsDiv).append(createAutore(data[instance]))
+
 }
 
 function stateFailure(data, state) {

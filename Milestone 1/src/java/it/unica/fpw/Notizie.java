@@ -36,8 +36,8 @@ public class Notizie extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             NewsFactory news = NewsFactory.getInstance();
 
-            if (request.getParameter("idUser") != null) {
-                User user = UserFactory.getInstance().getUserById(Integer.parseInt(request.getParameter("idUser")));
+            if (request.getParameter("userId") != null) {
+                User user = UserFactory.getInstance().getUserById(Integer.parseInt(request.getParameter("userId")));
                 request.setAttribute("listNews", news.getNewsByUser(user));
                 request.getRequestDispatcher("notizie.jsp").forward(request, response);
 
