@@ -11,10 +11,10 @@
         <label for="search">Cerca</label>
         <input type="text" name="ricerca" id="search" value="">
     </h2>
-    <section>            
+    <section >            
         <h2 class="mostra">Categorie</h2>
         <h2 class="nascondi"><a href="articoli.html">Categorie</a></h2>
-        <ul>
+        <ul class = "listaCategorie">
             <li><strong><a href="notizie.html">Tutte</a></strong></li>
             <li><strong><a href="notizie.html?category=News">News</a></strong></li>
             <li><strong><a href="notizie.html?category=Prove">Prove</a></strong></li>
@@ -26,7 +26,9 @@
     <section id="section2">
         <h2 class="mostra">Autori</h2>
         <h2 class="nascondi"><a class="nascondi" href="articoli.html">Autori</a></h2>
-        <h4 ><strong>Francesco Ligas</strong></h4>
+        <ul class = "listaAutori">
+            <li>Francesco Ligas</li>
+        </ul>
     </section>
 </aside>
 

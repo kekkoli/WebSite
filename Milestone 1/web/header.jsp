@@ -11,4 +11,11 @@
        <a href="notizie.html"><img src="img/logo.png" title="moto" alt="Logo"></a>
        <a href="notizie.html" id="titolo">MOTO 24h</a>    
    </h1>
+    
+        <script type="text/javascript" 
+        src="js/jquery.js"></script>
+    <script type="text/javascript" 
+        src="js/search.js"></script>
+
 </header>
+

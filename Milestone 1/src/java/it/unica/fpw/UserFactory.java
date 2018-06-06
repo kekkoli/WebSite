@@ -242,4 +242,41 @@ public class UserFactory {
             }                        
         }            
     }
+    
+    
+     public ArrayList<User> getUsersByNameOrSurname(String pat) {
+        ArrayList<User> userDb = new ArrayList<User>();
+
+        try {
+            Connection conn = DatabaseManager.getInstance().getConnection();
+            String sql = "select * from Users where name like ? or surname like ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1,pat);
+            stmt.setString(2,pat);
+
+            
+            ResultSet set = stmt.executeQuery(sql);
+
+            while (set.next()) {
+                User userNuovo = new User();
+                userNuovo.setId(set.getInt("id_user"));
+                userNuovo.setName(set.getString("name"));
+                userNuovo.setSurname(set.getString("surname"));
+                userNuovo.setDescription(set.getString("descrizione"));
+                userNuovo.setEmail(set.getString("email"));
+                userNuovo.setDate(set.getDate("data").toLocalDate());
+                userNuovo.setPassword(set.getString("password"));
+                userNuovo.setUrlImagine(set.getString("urlProfImg"));
+                userNuovo.setRuolo(set.getInt("ruolo"));
+
+                userDb.add(userNuovo);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return userDb;
+    }
+    
 }

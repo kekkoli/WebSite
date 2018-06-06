@@ -236,6 +236,36 @@ public class NewsFactory {
             Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+      public ArrayList<News> getNewsByContent(String p) {
+        ArrayList<News> newsDb = new ArrayList<News>();
+        try {
+            Connection conn = DatabaseManager.getInstance().getConnection();
+            String sql = "select * from News where testo like ?";
+            UserFactory usr = UserFactory.getInstance();
+
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1,"%" + p + "%");
+
+            ResultSet set = stmt.executeQuery();
+            while (set.next()) {
+                News news = new News();
+                news.setId(set.getInt("id_news"));
+                news.setTitle(set.getString("titolo"));
+                news.setTesto(set.getString("testo"));
+                news.setUrlImagine(set.getString("img"));
+                news.setDescrizione(set.getString("didascalia"));
+                news.setCategory(set.getInt("categoria"));
+                news.setDate(set.getDate("data").toLocalDate());
+                news.setUser(usr.getUserById(set.getInt("autore")));
+                newsDb.add(news);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return newsDb;
+    }
 }
      
      

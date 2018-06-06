@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,6 +7,7 @@ package it.unica.fpw;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author kekko
  */
-public class Notizie extends HttpServlet {
+public class filter extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,33 +31,36 @@ public class Notizie extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        /*Questa Servlet genera le notizia per  la homepage.*/
         try (PrintWriter out = response.getWriter()) {
-            NewsFactory news = NewsFactory.getInstance();
+            NewsFactory factory = NewsFactory.getInstance();
+            
+            String command = request.getParameter("cmd");
 
-            if (request.getParameter("idUser") != null) {
-                User user = UserFactory.getInstance().getUserById(Integer.parseInt(request.getParameter("idUser")));
-                request.setAttribute("listNews", news.getNewsByUser(user));
-                request.getRequestDispatcher("notizie.jsp").forward(request, response);
+            if (command != null) {
+                if (command.equals("search")) {
+                    String toSearch = request.getParameter("toSearch");
+                    ArrayList<String> s = new ArrayList<>();
+                    for(Categoria categoria : Categoria.values())
+                        if(categoria.toString().contains(toSearch))
+                            s.add(categoria.toString());
+                            
 
-            }
+                    request.setAttribute("categoryList", s);
+                    ArrayList<User> userList= new ArrayList<>();
 
-            String s = request.getParameter("category");
-
-            Categoria c;
-            if (s != null) {
-                for (Categoria cat : Categoria.values()) {
-                    if (cat.toString().equals(s)) {
-                        request.setAttribute("listNews", news.getNewsByCategory(cat));
+                    for(User user : UserFactory.getInstance().getUsersByNameOrSurname(toSearch)){
+                        userList.add(user);
                     }
+                        request.setAttribute("userList", userList);
+
+                    response.setContentType("application/json");
+                    response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
+                    response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
+
+                    request.getRequestDispatcher("filter.jsp").forward(request, response);
                 }
-            } else {
-                request.setAttribute("listNews", news.getNews());
+
             }
-
-            request.getRequestDispatcher("notizie.jsp").forward(request, response);
-
         }
     }
 
