@@ -33,26 +33,27 @@ public class filter extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             NewsFactory factory = NewsFactory.getInstance();
-            
+
             String command = request.getParameter("cmd");
 
             if (command != null) {
                 if (command.equals("search")) {
-                    String toSearch = request.getParameter("toSearch");
+                    String toSearch = request.getParameter("q");
                     ArrayList<String> s = new ArrayList<>();
-                    for(Categoria categoria : Categoria.values())
-                        if(categoria.toString().contains(toSearch))
+                    for (Categoria categoria : Categoria.values()) {
+                        if (categoria.toString().contains(toSearch)) {
                             s.add(categoria.toString());
-                            
+                        }
+                    }
 
                     request.setAttribute("categoryList", s);
-                    
-                    ArrayList<User> userList= new ArrayList<>();
+
+                    ArrayList<User> userList = new ArrayList<>();
                     UserFactory userFactory = UserFactory.getInstance();
-                    for(User user : userFactory.getUsersByNameOrSurname(toSearch)){
+                    for (User user : userFactory.getUsersByNameOrSurname(toSearch)) {
                         userList.add(user);
                     }
-                        request.setAttribute("userList", userList);
+                    request.setAttribute("userList", userList);
 
                     response.setContentType("application/json");
                     response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");

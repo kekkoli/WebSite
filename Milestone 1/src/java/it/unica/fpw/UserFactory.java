@@ -248,10 +248,12 @@ public class UserFactory {
 
         try {
             Connection conn = DatabaseManager.getInstance().getConnection();
-            String sql = "select * from Users where name like ?";
+            String sql = "select * from Users where (name like ? or surname like ?) and "
+                    + "ruolo = 0";
 
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, "%" + pat + "%");
+            stmt.setString(2, "%" + pat + "%");
 
             ResultSet set = stmt.executeQuery();
             while (set.next()) {

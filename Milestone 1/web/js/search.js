@@ -48,14 +48,12 @@ function stateFailure(data, state) {
 }
 
 $(document).ready(function () {
-    $("#search").keypress(function (event) {
-        if (event.which === 13) {
-            alert('You pressed enter!');
+    $("#search").keyup(function (event) {
             $.ajax({
                 url: "filter.json",
                 data: {
                     cmd: "search",
-                    toSearch: event.target.value
+                    q: event.target.value
                 },
                 dataType: 'json',
                 success: function (data, state) {
@@ -65,7 +63,6 @@ $(document).ready(function () {
                     stateFailure(data, state);
                 }
             });
-        }
     });
 
 });
