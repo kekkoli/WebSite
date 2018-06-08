@@ -206,12 +206,12 @@ public class NewsFactory {
     }
     
     public void updateNews(String tit,String tes,String url,String descr,
-            Categoria c,LocalDate dat,User us,int id){
+            Categoria c,LocalDate dat,int id){
          try {
             Connection conn = DatabaseManager.getInstance().getConnection();
             
             String sql = "update News set titolo=?, testo=?, img=?, didascalia=?,"
-                    + "categoria=?, data=?,autore=? where id_news = ?" ;
+                    + "categoria=?, data=? where id_news = ?" ;
             
             PreparedStatement stmt = conn.prepareStatement(sql);
             
@@ -221,8 +221,7 @@ public class NewsFactory {
             stmt.setString(4, descr);
             stmt.setInt(5, c.ordinal());
             stmt.setDate(6,Date.valueOf(dat));
-            stmt.setInt(7, us.getId());
-            stmt.setInt(8,id);
+            stmt.setInt(7,id);
             
             stmt.executeUpdate();
              

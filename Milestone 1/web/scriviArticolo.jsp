@@ -32,7 +32,10 @@
                 <h2>Acceso negato. Non sei un autore.</h2>
             </c:if>
             <c:if test="${autore == true}">
-                <form action="scriviArticolo.html?nid=${nid}" method="post">  
+                <form action="scriviArticolo.html?nid=${nid}&modificato=true" method="post">  
+                    <c:if test="${modificato == true}">
+                        <h1>ID = ${nid}</h1>
+                    </c:if>
                     <h2><strong>Scrivi un Articolo</strong></h2>
 
                     <label for="titoloArticolo">Titolo</label>
@@ -42,7 +45,7 @@
                     <input type="date" name="data" id="data" value="${news.getDate().toString()}">
 
                     <label for="urlImmagine">Url Immagine</label>
-                    <input type="text" name="urlImmagine" id="urlImmagine" value="${news.getUrlImagine()}">
+                    <input type="url" name="urlImmagine" id="urlImmagine" value="${news.getUrlImagine()}">
 
                     <label for="didascalia">Inserire didascalia</label>
                     <input type="text" name="didascalia" id="didascalia" value="${news.getDescrizione()}">

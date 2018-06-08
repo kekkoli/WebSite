@@ -26,7 +26,7 @@
     </servlet>
     <servlet>
         <servlet-name>filter</servlet-name>
-        <servlet-class>it.unica.fpw.filter</servlet-class>
+        <servlet-class>it.unica.fpw.Filter</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>

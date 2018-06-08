@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author kekko
  */
-public class filter extends HttpServlet {
+public class Filter extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,10 +32,12 @@ public class filter extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
+            /*In questa servlet viene gestita la creazione dinamica dei contenuti.*/
             NewsFactory factory = NewsFactory.getInstance();
 
             String command = request.getParameter("cmd");
-
+            /*Si verifica se viene digitato qualcge carattere e si fanno i confronti nel database*/
             if (command != null) {
                 if (command.equals("search")) {
                     String toSearch = request.getParameter("q");
@@ -54,7 +56,7 @@ public class filter extends HttpServlet {
                         userList.add(user);
                     }
                     request.setAttribute("userList", userList);
-
+                    /*Vengono settate le variabili che usera' il javascript*/
                     response.setContentType("application/json");
                     response.setHeader("Expires", "Sat, 6 May 1995 12:00:00 GMT");
                     response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");

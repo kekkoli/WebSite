@@ -34,11 +34,13 @@ public class Articles extends HttpServlet {
         /*Questa servlet si occupa della generazione degli articoli della tabella in articoli.html*/
         try (PrintWriter out = response.getWriter()) {
             HttpSession session = request.getSession();
-            User currentUser = (User)session.getAttribute("user");
-            /*Viene preso lo User Corrente e vengono restuite le News di cui lo User e' autore*/
-            NewsFactory newsFactory = NewsFactory.getInstance();
-            request.setAttribute("listNews", newsFactory.getNewsByUser(currentUser));
-            request.setAttribute("n", newsFactory.getNewsByUser(currentUser).size());
+            if (session.getAttribute("loggedIn") != null && session.getAttribute("loggedIn").equals(true)) {
+                User currentUser = (User) session.getAttribute("user");
+                /*Viene preso lo User Corrente e vengono restuite le News di cui lo User e' autore*/
+                NewsFactory newsFactory = NewsFactory.getInstance();
+                request.setAttribute("listNews", newsFactory.getNewsByUser(currentUser));
+                request.setAttribute("n", newsFactory.getNewsByUser(currentUser).size());
+            }
             request.getRequestDispatcher("articoli.jsp").forward(request, response);
         }
     }

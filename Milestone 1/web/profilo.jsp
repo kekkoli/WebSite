@@ -40,7 +40,7 @@
                     <input type="text" name="cognome" id="cognome" value="${user.getSurname()}">
 
                     <label for="urlImmagine">Url Immagine</label>
-                    <input type="text" name="urlImmagine" id="urlImmagine" value="${user.getUrlImagine()}">
+                    <input type="url" name="urlImmagine" id="urlImmagine" value="${user.getUrlImagine()}">
 
                     <label for="data">Data</label>
                     <input type="date" name="data" id="data" value="${user.getDate().toString()}">

@@ -94,18 +94,19 @@ public class NewArticle extends HttpServlet {
 
                 int idNews = Integer.parseInt(request.getParameter("nid"));
 
-                newsFactory.updateNews(tit, tes, url, descr, cat, data, (User) session.getAttribute("user"), idNews);
+                newsFactory.updateNews(tit, tes, url, descr, cat, data, idNews);
 
                 request.setAttribute("news", newsFactory.getNewsById(idNews));
                 request.setAttribute("nid", idNews);
                 
-                request.getRequestDispatcher("scriviArticolo.jsp").forward(request, response);
             }
                 else{
                 request.setAttribute("news", newsFactory.getNewsById(Integer.parseInt(request.getParameter("nid"))));
                 request.setAttribute("nid", Integer.parseInt(request.getParameter("nid")));
 
                 }
+            if(request.getParameter("modificato")!=null)
+                request.setAttribute("modificato", true);
             
             request.getRequestDispatcher("scriviArticolo.jsp").forward(request, response);
 

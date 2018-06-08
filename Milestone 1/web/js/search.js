@@ -16,7 +16,7 @@ function createCategory(categoria) {
 
 function createAutore(autore) {
     if (autore.type === 'user') {
-        var cont = $("<li>").html('<a href=notizie.html?userId=' + autore.id + '>' + autore.nome);
+        var cont = $("<li>").html('<a href=notizie.html?userId=' + autore.id + '>' + autore.nome + " " + autore.cognome);
         return $(".listaAutori").append(cont);
     }
 

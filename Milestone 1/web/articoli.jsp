@@ -27,11 +27,11 @@
 
         <section id="content" class="articoli">
 
-            <c:if test="${autore == false}">
-                <h2>Acceso negato. Non sei un autore.</h2>
+            <c:if test="${autore == false || loggedIn != true}">
+                <h2>Acceso negato</h2>
             </c:if>
 
-            <c:if test="${autore == true}">
+            <c:if test="${autore == true && loggedIn == true}">
                 <c:if test="${n > 0}">
                     <h2 >Articoli</h2>
                     <table>    
